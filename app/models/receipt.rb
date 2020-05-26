@@ -1,4 +1,4 @@
 class Receipt < ApplicationRecord
-  belongs_to :user_id
-  belongs_to :supplier_id
+  belongs_to :user
+  belongs_to :supplier
 end

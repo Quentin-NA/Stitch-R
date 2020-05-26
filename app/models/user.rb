@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-  
+
   has_many :receipts
   has_many :receivers
 
@@ -14,6 +14,7 @@ class User < ApplicationRecord
     user_params[:google_picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
+    user_params[:refresh_token] = auth.credentials.refresh_token
     user_params = user_params.to_h
 
     user = User.find_by(provider: auth.provider, uid: auth.uid)

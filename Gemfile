@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'omniauth-google-oauth2'
 gem 'pundit'
 gem 'google-api-client'
+gem 'signet'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

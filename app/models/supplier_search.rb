@@ -1,0 +1,2 @@
+class SupplierSearch < ApplicationRecord
+end

@@ -22,6 +22,8 @@ class SupplierSearchesController < ApplicationController
       render :new
     end
     authorize @search
+    @keyword = @search[:keyword]
+    @keyword = "#{@search[:subject]}, #{@search[:contains]}, #{@search[:not_contains]}, #{@search[:start_date]}, #{@search[:end_date]}, #{@search[:label]}, #{@search[:attachment]}"
   end
 
   private

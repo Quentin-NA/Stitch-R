@@ -1,3 +1,4 @@
+# https://developers.google.com/gmail/api/v1/reference/users/messages/get
 class GmailApi::GetUserMessage < GmailApi::Connexion
   attr_reader :message_id
 

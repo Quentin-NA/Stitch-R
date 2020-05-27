@@ -1,6 +1,7 @@
 require 'google/apis/gmail_v1'
 require 'google/api_client/client_secrets.rb'
 
+# https://www.rubydoc.info/gems/google-api-client/0.9.23/Google/Apis/GmailV1/GmailService
 class GmailApi::Connexion
   def initialize(user)
     @user = user

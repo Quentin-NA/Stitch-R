@@ -10,7 +10,7 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '08e21426af5c41dbb78a9fad812e4f61b4892c198b33f5fa77cd05eb53f0339db835b7a817dabdbd490454c7a3cdf826f2c39623066ae4bf6b519eb731da1537'
   config.omniauth :google_oauth2, ENV["GOOGLE_ID"], ENV["GOOGLE_SECRET"],
-    scope: 'email, profile',
+    scope: 'email, profile, gmail.readonly',
     info_fields: 'email, first_name, last_name',
     image_size: 'square',  # 50x50, guaranteed ratio
     secure_image_url: true

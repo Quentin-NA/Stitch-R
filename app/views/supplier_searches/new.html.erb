@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Let' add a new supplier</h1>
+   <%= simple_form_for @supplier do |f| %>
+      <%= f.input :email, :label => 'Supplier Email' %>
+      <%= f.input :object %>
+      <%= f.input :remember_me, :as => :boolean %>
+      <%= f.button :submit %>
+    <% end %>
+</div>

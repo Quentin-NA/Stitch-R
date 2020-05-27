@@ -1,4 +1,4 @@
-class ReceiptPolicy < ApplicationPolicy
+class ReceiverPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all

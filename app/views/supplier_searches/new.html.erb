@@ -1,5 +1,5 @@
 <div class="container mb-5 mt-5 shadow p-3 bg-white rounded">
-  <h1 class="text-center">Let's add a new supplier</h1>
+  <h1 class="text-center mt-3">Let's add a new supplier</h1>
   <div class="form w-75 mx-auto">
     <%= simple_form_for [@user, @search] do |f| %>
       <div class= "d-flex justify-content-around mt-5">
@@ -22,7 +22,7 @@
         <%= f.input :keyword, :label => "Tous les mails jusqu'au", as: :date %>
         <%= f.input :keyword, :label => 'Rechercher' %>
         <%= f.input :keyword, :label => 'Contenant une pièce jointe', as: :boolean %>
-        <%= f.button :submit, :label => 'Add', class: "btn btn-primary mt-3" %>
+        <%= f.button :submit, :label => 'Add', class: "btn btn-primary mt-3 mb-3" %>
       <% end %>
   </div>
 </div>

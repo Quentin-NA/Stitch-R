@@ -10,18 +10,19 @@
           <%= f.input :category, :label => 'Category', collection: SupplierSearch::CATEGORY %>
         </div>
       </div>
-        <%= f.input :keyword, :label => 'Objet' %>
+        <%= f.input :subject, :label => 'Objet' %>
         <div class= "d-flex">
           <div class="flex-grow-1">
-            <%= f.input :keyword, :label => 'Contient les mots' %>
+            <%= f.input :contains, :label => 'Contient les mots' %>
           </div>
           <div class="flex-grow-1 ml-1">
-           <%= f.input :keyword, :label => 'Ne doit pas contenir' %>
+           <%= f.input :not_contains, :label => 'Ne doit pas contenir' %>
           </div>
         </div>
-        <%= f.input :keyword, :label => "Tous les mails jusqu'au", as: :date %>
-        <%= f.input :keyword, :label => 'Rechercher' %>
-        <%= f.input :keyword, :label => 'Contenant une pièce jointe', as: :boolean %>
+        <%= f.input :start_date, :label => "Tous les mails jusqu'au", as: :date %>
+        <%= f.input :end_date, :label => "Tous les mails jusqu'au", as: :date %>
+        <%= f.input :label, :label => 'Rechercher' %>
+        <%= f.input :attachment, :label => 'Contenant une pièce jointe', as: :boolean %>
         <%= f.button :submit, :label => 'Add', class: "btn btn-primary mt-3 mb-3" %>
       <% end %>
   </div>

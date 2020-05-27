@@ -9,17 +9,17 @@
       </li>
 
       <li class="side-bar-item">
-        <a href="/">
+        <%= link_to user_receivers_path(@user) do %>
           <i class="fas fa-user-tie"></i>
           <span class="side-bar-title">Mon Comptable</span>
-        </a>
+        <% end %>
       </li>
 
       <li class="side-bar-item">
-        <a href="/">
+        <%= link_to user_supplier_searches_path(@user) do %>
           <i class="fas fa-truck"></i>
           <span class="side-bar-title">Mes Fournisseurs</span>
-        </a>
+        <% end %>
       </li>
 
       <li class="side-bar-item">

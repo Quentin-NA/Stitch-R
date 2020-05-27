@@ -1,4 +1,7 @@
-class Api::Gmail::Connexion
+require 'google/apis/gmail_v1'
+require 'google/api_client/client_secrets.rb'
+
+class GmailApi::Connexion
   def initialize(user)
     @user = user
     secrets = Google::APIClient::ClientSecrets.new(
@@ -12,7 +15,7 @@ class Api::Gmail::Connexion
           }
       }
     )
-    @gmail = Gmail::GmailService.new
+    @gmail = Google::Apis::GmailV1::GmailService.new
     @gmail.authorization = secrets.to_authorization
   end
 end

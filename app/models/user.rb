@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_many :receipts
+  has_many :supplier_searches
+  has_many :receipts, through: :supplier_searches
   has_many :receivers
 
   def self.find_for_google_oauth(auth)

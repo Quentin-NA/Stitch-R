@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_145614) do
+
+ActiveRecord::Schema.define(version: 2020_05_28_150228) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +28,10 @@ ActiveRecord::Schema.define(version: 2020_05_27_145614) do
 
   create_table "receipts", force: :cascade do |t|
     t.string "gmail_id"
-    t.bigint "user_id", null: false
     t.bigint "supplier_search_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["supplier_search_id"], name: "index_receipts_on_supplier_search_id"
-    t.index ["user_id"], name: "index_receipts_on_user_id"
   end
 
   create_table "receivers", force: :cascade do |t|
@@ -49,13 +49,15 @@ ActiveRecord::Schema.define(version: 2020_05_27_145614) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "subject", default: "", null: false
-    t.string "contains", default: "", null: false
-    t.string "not_contains", default: "", null: false
+    t.string "subject", default: ""
+    t.string "contains", default: ""
+    t.string "not_contains", default: ""
     t.date "start_date"
     t.date "end_date"
-    t.string "label", default: "", null: false
+    t.string "label", default: ""
     t.boolean "attachment", default: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_supplier_searches_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,6 +75,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_145614) do
     t.string "last_name"
     t.string "token"
     t.datetime "token_expiry"
+    t.boolean "expires"
+    t.string "refresh_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -80,6 +84,6 @@ ActiveRecord::Schema.define(version: 2020_05_27_145614) do
   add_foreign_key "forwards", "receipts"
   add_foreign_key "forwards", "receivers"
   add_foreign_key "receipts", "supplier_searches"
-  add_foreign_key "receipts", "users"
   add_foreign_key "receivers", "users"
+  add_foreign_key "supplier_searches", "users"
 end

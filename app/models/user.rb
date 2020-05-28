@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
-  
-  has_many :receipts
+
+  has_many :supplier_searches
+  has_many :receipts, through: :supplier_searches
   has_many :receivers
 
   def self.find_for_google_oauth(auth)
@@ -13,6 +14,7 @@ class User < ApplicationRecord
     user_params.merge! auth.info.slice("email", "first_name", "last_name")
     user_params[:google_picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
+    user_params[:refresh_token] = auth.credentials.refresh_token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
     user_params = user_params.to_h
 

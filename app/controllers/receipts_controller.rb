@@ -1,5 +1,5 @@
 class ReceiptsController < ApplicationController
-  
+
   def index
     # @user = getProfile
     # @receipts = gmail.user.messages

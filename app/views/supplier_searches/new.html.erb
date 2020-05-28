@@ -21,7 +21,7 @@
         </div>
         <%= f.input :start_date, :label => "Tous les mails jusqu'au", as: :date %>
         <%= f.input :end_date, :label => "Tous les mails jusqu'au", as: :date %>
-        <%= f.input :label, :label => 'Rechercher' %>
+        <%= f.input :label, :label => 'Rechercher', collection: SupplierSearch::LABEL %>
         <%= f.input :attachment, :label => 'Contenant une pièce jointe', as: :boolean %>
         <%= f.button :submit, :label => 'Add', class: "btn btn-primary mt-3 mb-3" %>
       <% end %>

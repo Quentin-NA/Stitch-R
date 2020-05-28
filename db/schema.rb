@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_05_28_150228) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,12 +49,12 @@ ActiveRecord::Schema.define(version: 2020_05_28_150228) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "subject", default: "", null: false
-    t.string "contains", default: "", null: false
-    t.string "not_contains", default: "", null: false
+    t.string "subject", default: ""
+    t.string "contains", default: ""
+    t.string "not_contains", default: ""
     t.date "start_date"
     t.date "end_date"
-    t.string "label", default: "", null: false
+    t.string "label", default: ""
     t.boolean "attachment", default: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_supplier_searches_on_user_id"

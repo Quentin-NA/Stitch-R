@@ -7,6 +7,13 @@ class SupplierSearchesController < ApplicationController
     # authorize @receipts
   end
 
+  def show
+    @supplier_search = SupplierSearch.find(params[:id])
+    query = @supplier_search.query
+    @messages = GmailApi::ListUserMessages.new(current_user).call(query)
+
+  end
+
   def new
     @user = current_user
     @search = SupplierSearch.new

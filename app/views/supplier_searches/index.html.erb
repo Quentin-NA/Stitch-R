@@ -1,1 +1,26 @@
-<%= link_to "Add a search", new_user_supplier_search_path %>
+<div class="container">
+
+  <%= link_to "Add a search", new_user_supplier_search_path %>
+  <div class="card-container">
+
+    <div class="card">
+
+      <div class="card-body">
+        <div class="d-flex">
+          <%= image_tag "//logo.clearbit.com/easyjet.com", class: "supplier-logo"%>
+          <p class="card-text pl-1">
+            [30] new receipts found since last connection,[xx] saved,[x] shared with (accountant).
+          <%#= link_to "view all receipts", user_supplier_search_path(current_user,#currentsearch)%>
+          <button type="button" class="btn btn-link">view all receipts</button>
+          </p>
+          <div><i class="far fa-times-circle"></i></div>
+        </div>
+        </div>
+        <div class="card-footer d-flex">
+            <div><a href="#!" class="btn btn-outline-secondary">run</a></div>
+            <div class="flex-grow-1 pl-1"><p>last searched on (search_timestamp)</p></div>
+            <div class="align-self-end"><i class="fas fa-cog"></i></div>
+      </div>
+    </div>
+  </div>
+</div>

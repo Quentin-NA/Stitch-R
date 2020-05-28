@@ -2,6 +2,7 @@ class SupplierSearchesController < ApplicationController
 
   def index
     @searches = policy_scope(SupplierSearch)
+    @supplier_searches = SupplierSearch.all
   end
 
   def new
@@ -11,14 +12,23 @@ class SupplierSearchesController < ApplicationController
   end
 
   def create
-    @search = SupplierSearch.create(search_params)
+    @search = SupplierSearch.new(search_params)
+    @search.user = current_user
     authorize @search
-    @user = current_user
+
     if @search.save
       redirect_to user_supplier_searches_path
     else
       render :new
     end
+    
+    # @keyword = @search[:keyword]
+    # @keyword = "#{@search[:subject]}, #{@search[:contains]}, #{@search[:not_contains]}, #{@search[:start_date]}, #{@search[:end_date]}, #{@search[:label]}, #{@search[:attachment]}"
+  end
+
+  def supplier_id
+    @supplier_search = SupplierSearch.find(params[:user_id])
+
   end
 
   private

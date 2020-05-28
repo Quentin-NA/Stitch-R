@@ -1,10 +1,7 @@
 class SupplierSearchesController < ApplicationController
 
   def index
-    # @user = getProfile
-    # @receipts = gmail.user.messages
     @searches = policy_scope(SupplierSearch)
-    # authorize @receipts
   end
 
   def new
@@ -15,15 +12,13 @@ class SupplierSearchesController < ApplicationController
 
   def create
     @search = SupplierSearch.create(search_params)
+    authorize @search
     @user = current_user
     if @search.save
       redirect_to user_supplier_searches_path
     else
       render :new
     end
-    authorize @search
-    @keyword = @search[:keyword]
-    @keyword = "#{@search[:subject]}, #{@search[:contains]}, #{@search[:not_contains]}, #{@search[:start_date]}, #{@search[:end_date]}, #{@search[:label]}, #{@search[:attachment]}"
   end
 
   private

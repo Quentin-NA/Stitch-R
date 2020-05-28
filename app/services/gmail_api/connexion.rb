@@ -17,6 +17,8 @@ class GmailApi::Connexion
       }
     )
     @gmail = Google::Apis::GmailV1::GmailService.new
-    @gmail.authorization = secrets.to_authorization
+    signet = secrets.to_authorization # return a Signet::OAuth2::Client object
+    signet.refresh! # refresh Signet::OAuth2::Client token
+    @gmail.authorization = signet
   end
 end

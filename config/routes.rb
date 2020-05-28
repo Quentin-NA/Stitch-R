@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index] do
     resources :receipts, only: [:index]
     resources :receivers, only: [:index]
-    resources :supplier_searches, only: [:index, :new, :create]
+    resources :supplier_searches, only: [:index, :show, :new, :create]
   end
 
   get "/dashboard", to: "pages#dashboard"

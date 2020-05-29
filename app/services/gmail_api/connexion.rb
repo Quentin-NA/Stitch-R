@@ -10,6 +10,7 @@ class GmailApi::Connexion
         "web" =>
           {
             "access_token" => user.token,
+            # "token_expiry" => user.token_expiry,
             "refresh_token" => user.refresh_token,
             "client_id" => ENV['GOOGLE_ID'],
             "client_secret" => ENV['GOOGLE_SECRET'],

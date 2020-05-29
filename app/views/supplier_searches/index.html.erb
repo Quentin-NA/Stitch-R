@@ -1,6 +1,6 @@
 <div class="container">
 
-  <%= link_to "Add a search", new_user_supplier_search_path %>
+  <%= link_to "Add a search", new_supplier_search_path %>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
     <div class="card">
@@ -10,7 +10,7 @@
           <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
           <p class="card-text pl-1">
             [30] new receipts found since last connection,[xx] saved,[x] shared with (accountant).
-          <br><%= link_to "view all receipts", user_supplier_search_path(current_user, search)%>
+          <br><%= link_to "view all receipts", supplier_search_path(search) %>
           </p>
           <div><i class="far fa-times-circle"></i></div>
         </div>

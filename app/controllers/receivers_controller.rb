@@ -14,7 +14,7 @@ class ReceiversController < ApplicationController
     @receiver = Receiver.new(receiver_params)
     @receiver.user = current_user
     if @receiver.save
-      redirect_to user_receivers_path
+      redirect_to receivers_path
     else
       render :new
     end

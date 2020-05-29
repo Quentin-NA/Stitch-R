@@ -12,7 +12,11 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar'%>
+    <%= render 'shared/sidebar' unless controller_name == "pages" && action_name == "home"%>
+
+
+  <% if controller_name == "pages" && action_name == "home" %>
     <div>
       <%= render 'shared/flashes' %>
       <div class="content-wrapper">
@@ -21,5 +25,10 @@
       <p class="alert"><%= alert %></p>
     </div>
     <%= render 'shared/footer' %>
+    <% else %>
+      <div class="with-dashboard-container text-center pt-3">
+        <%= yield %>
+      </div>
+  <% end  %>
   </body>
 </html>

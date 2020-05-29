@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+  def after_sign_in_path_for(resource)
+    # return the path based on resource
+    supplier_searches_path
+  end
+  def after_sign_up_path_for(resource)
+    supplier_searches_path
+  end
+
   private
 
   def skip_pundit?

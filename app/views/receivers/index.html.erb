@@ -2,4 +2,5 @@
   <% @receivers.each do |receiver|  %>
   <li> <%= receiver.name %></li>
   <% end %>
-</div>
+
+  <%= link_to "Ajouter un partenaire", new_receiver_path, class:"btn btn-primary"  %>

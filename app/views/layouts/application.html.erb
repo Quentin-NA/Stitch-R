@@ -15,7 +15,6 @@
     <%= render 'shared/navbar'%>
     <%= render 'shared/sidebar' unless controller_name == "pages" && action_name == "home"%>
 
-
   <% if controller_name == "pages" && action_name == "home" %>
     <div>
       <%= render 'shared/flashes' %>

@@ -7,32 +7,53 @@
           <span class="side-bar-title">Mon Profil</span>
         <% end %>
       </li>
-      
-      <li class="side-bar-item">
-        <%= link_to receivers_path(current_user) do %>
-          <i class="fas fa-user-tie"></i>
-          <span class="side-bar-title">Mon Comptable</span>
-        <%= link_to supplier_searches_path do %>
-          <i class="fas fa-truck"></i>
-          <span class="side-bar-title">Mes Fournisseurs</span>
-        <% end %>
-      </li>
 
       <li class="side-bar-item">
         <%= link_to supplier_searches_path(current_user) do %>
           <i class="fas fa-truck"></i>
           <span class="side-bar-title">Mes Fournisseurs</span>
-        <%= link_to receivers_path do %>
+        <% end %>
+      </li>
+
+      <li class="side-bar-item">
+        <%= link_to receivers_path(current_user) do %>
           <i class="fas fa-user-tie"></i>
           <span class="side-bar-title">Mon Comptable</span>
         <% end %>
       </li>
 
 
-      <li class="side-bar-item">
+      <li class="side-bar-item mb-5">
         <a href="/">
           <i class="fas fa-history"></i>
           <span class="side-bar-title">Historique</span>
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-github"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-linkedin"></i>
         </a>
       </li>
     </ul>

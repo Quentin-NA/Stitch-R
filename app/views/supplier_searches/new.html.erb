@@ -1,7 +1,7 @@
 
   <h1 class="text-center mt-3">Let's add a new supplier</h1>
   <div class="form w-75 mx-auto">
-    <%= simple_form_for [@user, @search] do |f| %>
+    <%= simple_form_for @search do |f| %>
       <div class= "d-flex justify-content-around mt-5">
         <div class="flex-grow-1">
           <%= f.input :from, :label => 'Supplier Email' %>

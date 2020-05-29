@@ -6,8 +6,8 @@ class SupplierSearchesController < ApplicationController
   end
 
   def show
-    @supplier_search = SupplierSearch.find(params[:id])
-    query = @supplier_search.query
+    @supplier_search = current_user
+    # query = @supplier_search.query
     @messages = GmailApi::ListUserMessages.new(current_user).call(query)
     authorize @supplier_search
   end
@@ -24,7 +24,7 @@ class SupplierSearchesController < ApplicationController
     authorize @search
 
     if @search.save
-      redirect_to user_supplier_searches_path
+      redirect_to supplier_searches_path
     else
       render :new
     end
@@ -34,7 +34,7 @@ class SupplierSearchesController < ApplicationController
   end
 
   def supplier_id
-    @supplier_search = SupplierSearch.find(params[:user_id])
+    @supplier_search = current_user
   end
 
   # def count

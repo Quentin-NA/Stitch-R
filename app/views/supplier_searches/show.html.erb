@@ -1,4 +1,56 @@
 <div class="container">
   <h2>Supplier [name] receipts </h2>
   <%= @messages %>
+  <table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Subject</th>
+        <th>Date&time</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# @messages.each do |message| %>
+      <%#= message.snippet %>
+      <tr>
+        <th scope="row"><i class="far fa-square"></i></th>
+        <td><strong>This is the email title (clickable)</strong><br>
+        Total: 68,99 € ven., mai 15, 2020 Merci pour votre pourboire, Dick Voici votre nouvelle facture pour Yamada 8. Total 68,99 € 1 Menu mix 1 14,50 € 1 B1 15,50 € 1 Gyoza 5,00 € 1 Nouilles sautées au boeuf</td>
+        <td> 25,may 2020 14:20 </td>
+        <td>
+          <div class="d-flex justify-content-around">
+            <i class="far fa-save"></i>
+            <i class="far fa-minus-square"></i>
+          </div>
+        </td>
+      </tr>
+      <%# end %>
+      <tr>
+        <th scope="row"><i class="far fa-square"></i></th>
+        <td><strong>This is the email title</strong><br>
+        Total: 68,99 € ven., mai 15, 2020 Merci pour votre pourboire, Dick Voici votre nouvelle facture pour Yamada 8. Total 68,99 € 1 Menu mix 1 14,50 € 1 B1 15,50 € 1 Gyoza 5,00 € 1 Nouilles sautées au boeuf</td>
+        <td> 25,may 2020 14:20 </td>
+        <td>
+          <div class="d-flex justify-content-around">
+            <i class="far fa-save"></i>
+            <i class="far fa-minus-square"></i>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row"><i class="far fa-square"></i></th>
+        <td><strong>This is the email title</strong><br>
+        Total: 68,99 € ven., mai 15, 2020 Merci pour votre pourboire, Dick Voici votre nouvelle facture pour Yamada 8. Total 68,99 € 1 Menu mix 1 14,50 € 1 B1 15,50 € 1 Gyoza 5,00 € 1 Nouilles sautées au boeuf</td>
+        <td> 25,may 2020 14:20 </td>
+        <td>
+          <div class="d-flex justify-content-around">
+            <i class="far fa-save"></i>
+            <i class="far fa-minus-square"></i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>

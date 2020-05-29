@@ -9,7 +9,7 @@ class SupplierSearchesController < ApplicationController
     @supplier_search = SupplierSearch.find(params[:id])
     query = @supplier_search.query
     @messages = GmailApi::ListUserMessages.new(current_user).call(query)
-
+    authorize @supplier_search
   end
 
   def new
@@ -28,15 +28,18 @@ class SupplierSearchesController < ApplicationController
     else
       render :new
     end
-    
+
     # @keyword = @search[:keyword]
     # @keyword = "#{@search[:subject]}, #{@search[:contains]}, #{@search[:not_contains]}, #{@search[:start_date]}, #{@search[:end_date]}, #{@search[:label]}, #{@search[:attachment]}"
   end
 
   def supplier_id
     @supplier_search = SupplierSearch.find(params[:user_id])
-
   end
+
+  # def count
+  #   @receipts_count =
+  # end
 
   private
 

@@ -1,8 +1,5 @@
-<%= render 'shared/sidebar' %>
-
-<div class="with-dashboard-container mb-5 mt-5 shadow p-3 bg-white">
   <h1>Mes comptables</h1>
   <% @receivers.each do |receiver|  %>
-  <ul><li> <%= receiver.name %></li></ul>
+  <li> <%= receiver.name %></li>
   <% end %>
 </div>

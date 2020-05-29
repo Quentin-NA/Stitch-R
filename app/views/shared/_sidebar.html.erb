@@ -9,6 +9,9 @@
       </li>
       
       <li class="side-bar-item">
+        <%= link_to receivers_path(current_user) do %>
+          <i class="fas fa-user-tie"></i>
+          <span class="side-bar-title">Mon Comptable</span>
         <%= link_to supplier_searches_path do %>
           <i class="fas fa-truck"></i>
           <span class="side-bar-title">Mes Fournisseurs</span>
@@ -16,6 +19,9 @@
       </li>
 
       <li class="side-bar-item">
+        <%= link_to supplier_searches_path(current_user) do %>
+          <i class="fas fa-truck"></i>
+          <span class="side-bar-title">Mes Fournisseurs</span>
         <%= link_to receivers_path do %>
           <i class="fas fa-user-tie"></i>
           <span class="side-bar-title">Mon Comptable</span>

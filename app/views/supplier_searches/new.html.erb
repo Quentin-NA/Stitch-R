@@ -1,6 +1,4 @@
-<%= render 'shared/sidebar' %>
 
-<div class="with-dashboard-container mb-5 mt-5 shadow p-3 bg-white">
   <h1 class="text-center mt-3">Let's add a new supplier</h1>
   <div class="form w-75 mx-auto">
     <%= simple_form_for @search do |f| %>
@@ -27,5 +25,5 @@
         <%= f.input :attachment, :label => 'Contenant une pièce jointe', as: :boolean %>
         <%= f.button :submit, :label => 'Add', class: "btn btn-primary mt-3 mb-3" %>
       <% end %>
-  </div>
+
 </div>

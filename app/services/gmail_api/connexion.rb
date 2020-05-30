@@ -19,7 +19,7 @@ class GmailApi::Connexion
     )
     @gmail = Google::Apis::GmailV1::GmailService.new
     signet = secrets.to_authorization # return a Signet::OAuth2::Client object
-    signet.refresh! if signet.expired? # refresh Signet::OAuth2::Client token
+    signet.refresh! #if signet.expired? # refresh Signet::OAuth2::Client token
     @gmail.authorization = signet
   end
 end

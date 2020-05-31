@@ -1,6 +1,5 @@
 <div class="container">
-  <h2>Supplier [name] receipts </h2>
-  <%= @messages %>
+  <h2> Supplier <%#= from = headers[1].value %> receipts </h2>
   <table class="table table-hover table-responsive text-left">
     <thead>
       <tr>
@@ -11,13 +10,13 @@
       </tr>
     </thead>
     <tbody>
-      <%# @messages.each do |message| %>
-      <%#= message.snippet %>
+    <% @messages.each do |message| %>
       <tr>
+      <% headers = GmailApi::GetUserMessageHeaders.new(current_user, message.id, @metadatas).call %>
         <th scope="row"><i class="far fa-square"></i></th>
-        <td><strong>This is the email title (clickable)</strong><br>
-        Total: 68,99 € ven., mai 15, 2020 Merci pour votre pourboire, Dick Voici votre nouvelle facture pour Yamada 8. Total 68,99 € 1 Menu mix 1 14,50 € 1 B1 15,50 € 1 Gyoza 5,00 € 1 Nouilles sautées au boeuf</td>
-        <td> 25,may 2020 14:20 </td>
+        <td><strong><%= subject = headers[2].value %></strong><br>
+        <%= snippet = GmailApi::GetUserMessage.new(current_user, message.id).call.snippet %></td>
+        <td><%= date = headers[0].value %></td>
         <td>
           <div class="d-flex justify-content-around">
             <i class="far fa-save"></i>
@@ -25,32 +24,10 @@
           </div>
         </td>
       </tr>
-      <%# end %>
-      <tr>
-        <th scope="row"><i class="far fa-square"></i></th>
-        <td><strong>This is the email title</strong><br>
-        Total: 68,99 € ven., mai 15, 2020 Merci pour votre pourboire, Dick Voici votre nouvelle facture pour Yamada 8. Total 68,99 € 1 Menu mix 1 14,50 € 1 B1 15,50 € 1 Gyoza 5,00 € 1 Nouilles sautées au boeuf</td>
-        <td> 25,may 2020 14:20 </td>
-        <td>
-          <div class="d-flex justify-content-around">
-            <i class="far fa-save"></i>
-            <i class="far fa-minus-square"></i>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row"><i class="far fa-square"></i></th>
-        <td><strong>This is the email title</strong><br>
-        Total: 68,99 € ven., mai 15, 2020 Merci pour votre pourboire, Dick Voici votre nouvelle facture pour Yamada 8. Total 68,99 € 1 Menu mix 1 14,50 € 1 B1 15,50 € 1 Gyoza 5,00 € 1 Nouilles sautées au boeuf</td>
-        <td> 25,may 2020 14:20 </td>
-        <td>
-          <div class="d-flex justify-content-around">
-            <i class="far fa-save"></i>
-            <i class="far fa-minus-square"></i>
-          </div>
-        </td>
-      </tr>
+    <% end %>
     </tbody>
   </table>
+
+  <%= @messages %>
 
 </div>

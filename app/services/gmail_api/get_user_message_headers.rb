@@ -29,17 +29,17 @@ class GmailApi::GetUserMessageHeaders
   end
 end
 
-# Validate in console: GmailApi::GetUserMessageHeaders.new(params).call.payload.headers
+# Validated in console: GmailApi::GetUserMessageHeaders.new(params).call.payload.headers
 # Returns an array of header objects with @name=(eg"From") @value=(Reçu uber <guber.france@uber.com>) attributes
 # Depending on number of headers, values can be called = response.first.value
 
-  # def call
-  #   @message = @gmail.get_user_message(@user.uid, @message_id, format: "metadata", metadata_headers: @metadatas)
-  #   @headers = @message.payload.headers
-  #   @header_content = []
-  #   @headers.each do |header|
-  #     @label = header.name
-  #     @content = header.value
-  #     @header_content << @content #"{#{@label}"=>" + #{@content}}"
-  #   end
-  # end
+# Should this method be part of a Service?
+
+    # @header_objects = []
+    # @header_objects.each do |header|
+    #   @label = header.name
+    #   @content = header.value
+    #   @header_hashed = "{'#{@label}'"+"=>"+"'#{@value}'}"
+    #   @headers_hashed << @header_hashed
+      # should create an array of x metadata hashes
+    #end

@@ -25,21 +25,7 @@ class GmailApi::GetUserMessageHeaders
   end
 
   def call
-    @gmail.get_user_message(@user.uid, @message_id, format: "metadata", metadata_headers: @metadatas).payload.headers
+    @header_obj = @gmail.get_user_message(@user.uid, @message_id, format: "metadata", metadata_headers: @metadatas).payload.headers
   end
 end
 
-# Validate in console: GmailApi::GetUserMessageHeaders.new(params).call.payload.headers
-# Returns an array of header objects with @name=(eg"From") @value=(Reçu uber <guber.france@uber.com>) attributes
-# Depending on number of headers, values can be called = response.first.value
-
-  # def call
-  #   @message = @gmail.get_user_message(@user.uid, @message_id, format: "metadata", metadata_headers: @metadatas)
-  #   @headers = @message.payload.headers
-  #   @header_content = []
-  #   @headers.each do |header|
-  #     @label = header.name
-  #     @content = header.value
-  #     @header_content << @content #"{#{@label}"=>" + #{@content}}"
-  #   end
-  # end

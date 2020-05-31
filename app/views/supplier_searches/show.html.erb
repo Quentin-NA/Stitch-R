@@ -1,28 +1,27 @@
 <div class="container">
-  <h2> Supplier <%#= from = headers[1].value %> receipts </h2>
+  <h2> <%#= add Supplier name to model + image %> Supplier receipts </h2>
   <table class="table table-hover table-responsive text-left">
     <thead>
       <tr>
-        <th>#</th>
+        <th>Action</th>
         <th>Subject</th>
         <th>Date&time</th>
-        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
     <% @messages.each do |message| %>
       <tr>
       <% headers = GmailApi::GetUserMessageHeaders.new(current_user, message.id, @metadatas).call %>
-        <th scope="row"><i class="far fa-square"></i></th>
-        <td><strong><%= subject = headers[2].value %></strong><br>
-        <%= snippet = GmailApi::GetUserMessage.new(current_user, message.id).call.snippet %></td>
-        <td><%= date = headers[0].value %></td>
-        <td>
+        <th scope="row">
           <div class="d-flex justify-content-around">
-            <i class="far fa-save"></i>
-            <i class="far fa-minus-square"></i>
+            <i id= "receipt-select" class="far fa-square"></i>
+            <i id= "receipt-dismiss" class="far fa-minus-square"></i>
           </div>
-        </td>
+        </th>
+        <td><strong><%= subject = headers[1].value %></strong><br>
+        <%= snippet = GmailApi::GetUserMessage.new(current_user, message.id).call.snippet %> <br>
+        <span class="badge badge-secondary"> attachment 1</span></td>
+        <td><%= date = headers[0].value %></td>
       </tr>
     <% end %>
     </tbody>
@@ -31,3 +30,6 @@
   <%= @messages %>
 
 </div>
+
+<!-- id = receipt-select // checkbox (should highlight row + change icon ticket) -->
+<!-- id = receipt-dismiss // when clicked should change receipt status to dismissed -->

@@ -1,9 +1,7 @@
-<%= render 'shared/sidebar' %>
-
 <div class="with-dashboard-container mb-5 mt-5 shadow p-3 bg-white">
-  <h1 class="text-center mt-3">Let's add a new receiver</h1>
+  <h1 class="text-center mt-3">Ajouter un partenaire</h1>
   <div class="form w-75 mx-auto">
-    <%= simple_form_for [@user, @receiver] do |f| %>
+    <%= simple_form_for @receiver do |f| %>
       <div class= "d-flex justify-content-around mt-5">
         <div class="flex-grow-1">
           <%= f.input :email, :label => 'Receiver Email' %>
@@ -14,5 +12,3 @@
       </div>
         <%= f.button :submit, :label => 'Add', class: "btn btn-primary mt-3 mb-3" %>
       <% end %>
-  </div>
-</div>

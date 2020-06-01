@@ -1,3 +1,5 @@
+require 'date'
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
@@ -10,5 +12,10 @@ class PagesController < ApplicationController
 
   def profil
     @user = current_user
+  end
+
+  def history
+    @user = current_user
+    @receipts = Receipt.where(status: 'new')
   end
 end

@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to dashboard_path, class: "navbar-brand" do %>
+  <%= link_to supplier_searches_path, class: "navbar-brand" do %>
     <%= image_tag "logostitchr.png" %>
     <% end %>
 
@@ -11,19 +11,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+        <li class="nav-item active pr-2 pt-2">
+          <p>Hello <%= current_user.first_name %> !</p>
         </li>
         <li class="nav-item dropdown">
           <% avatar_url = current_user.google_picture_url || "http://placehold.it/30x30" %>
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Mon profil", "profil", class: "dropdown-item" %>
+            <%= link_to "Deconection", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>

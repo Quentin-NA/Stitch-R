@@ -1,8 +1,11 @@
-<%= render 'shared/sidebar' %>
-
-<div class="with-dashboard-container mb-5 mt-5 shadow p-3 bg-white">
-  <h1>Mes comptables</h1>
+  <h1>Mes partenaires</h1>
   <% @receivers.each do |receiver|  %>
-  <ul><li> <%= receiver.name %></li></ul>
+    <li> <%= receiver.name %> <%= link_to receiver_path(receiver), method: :delete, data: { confirm: "Voulez-vous effacer ce partenaire?" } do %>
+                  <i class="fas fa-trash"></i>
+                  <% end %>
+    </li>
+
   <% end %>
-</div>
+
+  <%= link_to "Ajouter un partenaire", new_receiver_path, class:"btn btn-primary"  %>
+

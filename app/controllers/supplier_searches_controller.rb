@@ -7,9 +7,9 @@ class SupplierSearchesController < ApplicationController
 
   def show
     @supplier_search = SupplierSearch.find(params[:id])
-    query = @supplier_search.query
-    @messages = GmailApi::ListUserMessages.new(current_user).call(query)
-
+    StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
+    @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new")
+    authorize @supplier_search
   end
 
   def new
@@ -22,23 +22,12 @@ class SupplierSearchesController < ApplicationController
     @search = SupplierSearch.new(search_params)
     @search.user = current_user
     authorize @search
-
     if @search.save
-      redirect_to user_supplier_searches_path
+      redirect_to supplier_searches_path
     else
       render :new
     end
-    
-    # @keyword = @search[:keyword]
-    # @keyword = "#{@search[:subject]}, #{@search[:contains]}, #{@search[:not_contains]}, #{@search[:start_date]}, #{@search[:end_date]}, #{@search[:label]}, #{@search[:attachment]}"
   end
-
-  def supplier_id
-    @supplier_search = SupplierSearch.find(params[:user_id])
-
-  end
-
-  private
 
   def search_params
     params.require(:supplier_search).permit(:from, :category, :keyword, :subject, :contains, :not_contains, :start_date, :end_date, :label, :attachment)

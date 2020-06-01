@@ -2,30 +2,58 @@
   <div class="side-bar-body" style="position: relative;">
     <ul>
       <li class="side-bar-item">
-        <%= link_to "/profil" do %>
-          <i class="fas fa-address-card"></i>
-          <span class="side-bar-title">Mon Profil</span>
-        <% end %>
-      </li>
-
-      <li class="side-bar-item">
-        <%= link_to user_receivers_path(@user) do %>
-          <i class="fas fa-user-tie"></i>
-          <span class="side-bar-title">Mon Comptable</span>
-        <% end %>
-      </li>
-
-      <li class="side-bar-item">
-        <%= link_to user_supplier_searches_path(@user) do %>
+        <%= link_to supplier_searches_path do %>
           <i class="fas fa-truck"></i>
           <span class="side-bar-title">Mes Fournisseurs</span>
         <% end %>
       </li>
 
       <li class="side-bar-item">
-        <a href="/">
+        <%= link_to receivers_path do %>
+          <i class="fas fa-user-tie"></i>
+          <span class="side-bar-title">Mes partenaires</span>
+        <% end %>
+      </li>
+
+
+      <li class="side-bar-item">
+        <a href="/history">
           <i class="fas fa-history"></i>
           <span class="side-bar-title">Historique</span>
+        </a>
+      </li>
+
+      <li class="side-bar-item mb-5">
+        <%= link_to "/profil" do %>
+          <i class="fas fa-address-card"></i>
+          <span class="side-bar-title">Mon Profil</span>
+        <% end %>
+      </li>
+    </ul>
+    <ul>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-github"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li class="inline m-1">
+        <a href="#">
+        <i class="fab fa-linkedin"></i>
         </a>
       </li>
     </ul>

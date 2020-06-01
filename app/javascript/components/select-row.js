@@ -18,14 +18,4 @@ const selectRow = () => {
   });
 };
 
-// const changeStatus = () => {
-//   if (event.path[3].style.opacity === "0.3") {
-//     Receipt.status = "Not sent"
-//   } else {
-//     Receipt.status = "Sent"
-//   };
-// };
-
-// export { changeStatus };
 export { selectRow };
-

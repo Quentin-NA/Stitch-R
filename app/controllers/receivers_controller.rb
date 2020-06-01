@@ -21,6 +21,13 @@ class ReceiversController < ApplicationController
     authorize @receiver
   end
 
+  def destroy
+    @receiver = Receiver.find(params[:id])
+    @receiver.destroy
+    redirect_to receivers_path
+    authorize @receiver
+  end
+
   private
 
   def receiver_params

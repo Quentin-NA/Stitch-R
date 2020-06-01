@@ -22,7 +22,6 @@ class SupplierSearchesController < ApplicationController
     @search = SupplierSearch.new(search_params)
     @search.user = current_user
     authorize @search
-
     if @search.save
       redirect_to supplier_searches_path
     else

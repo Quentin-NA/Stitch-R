@@ -7,7 +7,10 @@ class GmailApi::GetUserMessage < GmailApi::Connexion
     @message_id = message_id
   end
 
-  def call
-    @gmail.get_user_message(@user.uid, @message_id)
+  def call (args = {})
+    @gmail.get_user_message(@user.uid, @message_id, args)
   end
 end
+
+# GmailApi::GetUserMessage.new(User.first, id).call(format: 'metadata', metadata_headers : '...')
+# @from = GmailApi::GetUserMessage.new(User.first,"17219de3308e42b4").call(format: 'metadata', metadata_headers : 'From')

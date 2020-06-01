@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_28_150228) do
+ActiveRecord::Schema.define(version: 2020_06_01_104118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,14 @@ ActiveRecord::Schema.define(version: 2020_05_28_150228) do
     t.bigint "supplier_search_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "from", null: false
+    t.string "subject"
+    t.string "snippet"
+    t.datetime "send_date", null: false
+    t.string "status", null: false
+    t.bigint "user_id", null: false
     t.index ["supplier_search_id"], name: "index_receipts_on_supplier_search_id"
+    t.index ["user_id"], name: "index_receipts_on_user_id"
   end
 
   create_table "receivers", force: :cascade do |t|
@@ -82,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_150228) do
   add_foreign_key "forwards", "receipts"
   add_foreign_key "forwards", "receivers"
   add_foreign_key "receipts", "supplier_searches"
+  add_foreign_key "receipts", "users"
   add_foreign_key "receivers", "users"
   add_foreign_key "supplier_searches", "users"
 end

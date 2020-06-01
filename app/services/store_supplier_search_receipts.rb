@@ -32,6 +32,8 @@ class StoreSupplierSearchReceipts
           supplier_search: @supplier_search,
           snippet: content.snippet,
           status: "new",
+          #attachments: content.payload.parts.map {|part| part.filename}
+          #attachement_id: content.payload.parts.map {|part| part.body.attachment_id}
         )
       end
     end

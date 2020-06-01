@@ -27,20 +27,23 @@ class SupplierSearchesController < ApplicationController
     else
       render :new
     end
-
-    # @keyword = @search[:keyword]
-    # @keyword = "#{@search[:subject]}, #{@search[:contains]}, #{@search[:not_contains]}, #{@search[:start_date]}, #{@search[:end_date]}, #{@search[:label]}, #{@search[:attachment]}"
   end
 
-  def supplier_id
-    @supplier_search = current_user
+  def update
+    @receipt = Receipt.find(params[:id])
+    authorize @receipt
+    @receipt.update(params[:status])
   end
-
-  # def count
-  #   @receipts_count =
-  # end
 
   private
+
+  def sent
+    @supplier_search.status = "Sent"
+  end
+
+  def not_sent
+    @supplier_search.status = "Not sent"
+  end
 
   def search_params
     params.require(:supplier_search).permit(:from, :category, :keyword, :subject, :contains, :not_contains, :start_date, :end_date, :label, :attachment)

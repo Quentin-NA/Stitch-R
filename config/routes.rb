@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :users, only: [:index]
-  resources :receipts, only: [:index]
+  resources :receipts, only: [:index, :update]
   resources :receivers, only: [:index, :new, :create, :destroy]
   resources :supplier_searches, only: [:index, :show, :new, :create]
 

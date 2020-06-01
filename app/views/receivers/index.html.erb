@@ -1,4 +1,4 @@
-  <h1>Mes comptables</h1>
+  <h1>Mes partenaires</h1>
   <% @receivers.each do |receiver|  %>
     <li> <%= receiver.name %> <%= link_to receiver_path(receiver), method: :delete, data: { confirm: "Voulez-vous effacer ce partenaire?" } do %>
                   <i class="fas fa-trash"></i>
@@ -7,7 +7,5 @@
 
   <% end %>
 
-  <%= link_to "Ajouter un partenaire", new_receiver_path %>
-
-
+  <%= link_to "Ajouter un partenaire", new_receiver_path, class:"btn btn-primary"  %>
 

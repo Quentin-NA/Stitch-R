@@ -1,6 +1,7 @@
 <div class="container">
 
-  <%= link_to "Add a search", new_supplier_search_path %>
+  <%= link_to "Nouvelle Recherche", new_supplier_search_path %>
+
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
     <div class="card">
@@ -9,15 +10,15 @@
           <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
           <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
           <p class="card-text pl-1">
-            [30] new receipts found since last connection,[xx] saved,[x] shared with (accountant).
-          <br><%= link_to "view all receipts", supplier_search_path(search) %>
+            [30] nouveaux reçus trouvés depuis la dernière connection,[xx] sauvgardés,[x] partagés avec (accountant).
+          <br><%= link_to "Voir tous les reçus", supplier_search_path(search) %>
           </p>
           <div><i class="far fa-times-circle"></i></div>
         </div>
       </div>
       <div class="card-footer d-flex">
         <div><a href="#!" class="btn btn-outline-secondary">run</a></div>
-        <div class="flex-grow-1 pl-1"><p>last searched on (search_timestamp)</p></div>
+        <div class="flex-grow-1 pl-1"><p>Dernière recherche (search_timestamp)</p></div>
         <div class="align-self-end"><i class="fas fa-cog"></i></div>
       </div>
     </div>

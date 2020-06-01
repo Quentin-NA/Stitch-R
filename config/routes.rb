@@ -1,4 +1,13 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
+
+  # Sidekiq Web UI, only for admins.
+
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   root to: 'pages#home'
 
   devise_for :users,
@@ -11,5 +20,6 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "pages#dashboard"
   get "/profil", to: "pages#profil"
+  get "/history", to: "pages#history"
 
 end

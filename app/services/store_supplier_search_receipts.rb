@@ -14,6 +14,7 @@ class StoreSupplierSearchReceipts
   def call
     query = @supplier_search.query
     gmail_messages = GmailApi::ListUserMessages.new(@user).call(query)
+    return if gmail_messages.nil?
     gmail_messages.each do |message|
       content = GmailApi::GetUserMessage.new(@user, message.id)
                                         .call(format: 'metadata',

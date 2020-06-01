@@ -8,7 +8,7 @@ class SupplierSearchesController < ApplicationController
   def show
     @supplier_search = SupplierSearch.find(params[:id])
     StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
-    @receipts = Receipt.where(supplier_search_id: params[:id])
+    @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new")
     authorize @supplier_search
   end
 

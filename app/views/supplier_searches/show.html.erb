@@ -14,8 +14,16 @@
     <tbody>
       <% @receipts.each do |receipt| %>
         <tr>
-          <th scope="row"><i class="far fa-square"></i>
-                          <i class="far fa-minus-square btn-minus"></i></th>
+          <th scope="row">
+            <%# <i class="far fa-square"></i> %>
+            <%# <i class="far fa-minus-square btn-minus"></i> %>
+            <%= link_to share_receipt_path(receipt) do %>
+              <i class="fas fa-share-square"></i>
+            <% end %>
+            <%= link_to dismiss_receipt_path(receipt) do %>
+              <i class="far fa-window-close"></i>
+            <% end %>
+          </th>
           <td><strong><%= receipt.subject %></strong>
                   <br><%= receipt.snippet %></td>
           <td><%= receipt.send_date%> </td>

@@ -33,6 +33,6 @@ import { selectRow } from '../components/select-row';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  selectRow();
-  checked();
+  // selectRow();
+  // checked();
 });

@@ -1,5 +1,4 @@
 const selectRow = () => {
-	// const rows = document.querySelectorAll("tr");
 	const dismissButtons = document.querySelectorAll(".btn-minus");
 
 	dismissButtons.forEach((minus_button) => {

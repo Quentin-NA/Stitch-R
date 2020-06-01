@@ -1,5 +1,10 @@
   <h1>Mes comptables</h1>
   <% @receivers.each do |receiver|  %>
-  <li> <%= receiver.name %></li>
+    <li> <%= receiver.name %> <%= link_to 'supprimer',
+                  receiver_path(receiver), method: :delete,
+                  data: { confirm: "Are you sure?" }  %></li>
   <% end %>
-</div>
+
+  <%= link_to "Ajouter un partenaire", new_receiver_path %>
+
+

@@ -12,8 +12,8 @@ class SupplierSearch < ApplicationRecord
     query << "subject:(#{subject}) " if subject.present?
     query << "#{contains} " if contains.present?
     query << "#{not_contains} " if not_contains.present?
-    query << "after:#{start_date.strftime('%Y/%m/%d')} " if !start_date.today?
-    query << "before:#{end_date.strftime('%Y/%m/%d')} " if !end_date.today?
+    # query << "after:#{start_date.strftime('%Y/%m/%d')} " if !start_date.today?
+    # query << "before:#{end_date.strftime('%Y/%m/%d')} " if !end_date.today?
     query << "has:attachment" if attachment.present?
 
     query.join

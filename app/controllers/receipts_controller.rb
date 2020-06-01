@@ -20,9 +20,9 @@ class ReceiptsController < ApplicationController
     @receipt = Receipt.find(params[:id])
     authorize @receipt
     @receipt.status = "shared"
+    @receipt.receiver_id = params[:receiver_id]
     @receipt.save
     flash[:notice] = "Le reçu a bien été envoyé"
     redirect_to supplier_search_path(@receipt.supplier_search)
   end
-  
 end

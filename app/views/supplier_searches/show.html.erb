@@ -17,7 +17,7 @@
           <th scope="row">
             <%# <i class="far fa-square"></i> %>
             <%# <i class="far fa-minus-square btn-minus"></i> %>
-            <%= link_to share_receipt_path(receipt) do %>
+            <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
               <i class="fas fa-share-square"></i>
             <% end %>
             <%= link_to dismiss_receipt_path(receipt) do %>

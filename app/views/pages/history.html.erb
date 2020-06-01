@@ -1,1 +1,6 @@
 <h1>Historique</h1>
+
+<% @receipts.each do |receipt| %>
+<li> <%= receipt.send_date %> <%=  receipt.subject %></li>
+<%=raise  %>
+<% end %>

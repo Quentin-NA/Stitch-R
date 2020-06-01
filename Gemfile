@@ -35,6 +35,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'omniauth-google-oauth2'
 gem 'pundit'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 #Google API
 gem 'google-api-client', '~> 0.34'

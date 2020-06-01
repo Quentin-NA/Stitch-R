@@ -27,6 +27,7 @@ class SupplierSearchesController < ApplicationController
     else
       render :new
     end
+  end
 
   def search_params
     params.require(:supplier_search).permit(:from, :category, :keyword, :subject, :contains, :not_contains, :start_date, :end_date, :label, :attachment)

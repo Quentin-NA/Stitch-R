@@ -27,12 +27,12 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { selectRow } from '../components/select-row';
+import { checked } from '../components/select-row';
 import { selectRow } from '../components/select-row';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  selectRow();
-  checked();
+  // selectRow();
+  // checked();
 });

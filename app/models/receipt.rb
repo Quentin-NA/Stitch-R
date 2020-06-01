@@ -1,5 +1,5 @@
 class Receipt < ApplicationRecord
   belongs_to :supplier_search
   belongs_to :user
-  has_many :reveivers
+  belongs_to :receiver, optional: true
 end

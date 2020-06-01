@@ -1,5 +1,4 @@
 const selectRow = () => {
-	// const rows = document.querySelectorAll("tr");
 	const dismissButtons = document.querySelectorAll(".btn-minus");
 
 	dismissButtons.forEach((minus_button) => {
@@ -19,18 +18,19 @@ const selectRow = () => {
 };
 
 const checked = () => {
-  const checkboxes = document.querySelectorAll(".fa-square");
-  checkboxes.forEach((checkbox) => {
+	const checkboxes = document.querySelectorAll(".fa-square");
+
+	checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("click", (event) => {
       console.log(event);
-      if (event.target.className == "far fa-square") {
-        checkbox.classList.remove(("fa-square"));
-        checkbox.classList.add(("fa-check-square"));
-      } else {
-        checkbox.classList.remove(("fa-check-square"));
-        checkbox.classList.add(("fa-square"));
-      };
-    });
+			if (event.target.className == "far fa-square") {
+				checkbox.classList.remove(("fa-square"));
+				checkbox.classList.add(("fa-check-square"));
+			} else {
+				checkbox.classList.remove(("fa-check-square"));
+				checkbox.classList.add(("fa-square"));
+			};
+		});
   });
 };
 

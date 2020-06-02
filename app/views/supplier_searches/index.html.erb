@@ -23,9 +23,7 @@
         </div>
       </div>
       <div class="card-footer d-flex">
-        <div><a href="#!" class="btn btn-outline-secondary">run</a></div>
-        <div class="flex-grow-1 pl-1"><p>Dernière recherche <%= search.updated_at %></p></div>
-        <div class="align-self-end"><i class="fas fa-cog"></i></div>
+        <div class="flex-grow-1 pl-1"><p>Dernière recherche <br> <%= search.updated_at.strftime("%d %b %Y - %H:%M") %></p></div>
       </div>
     </div>
     <% end %>

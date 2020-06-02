@@ -2,7 +2,8 @@ class SupplierSearch < ApplicationRecord
   CATEGORY = ['Transport', 'Alimentation','Fournitures']
   LABEL = ['Tous les messages', 'Boîte de réception','Messages suivis', 'Messages envoyés', 'Messages lus', 'Messages non lus']
   has_many :receipts
-  has_many :user
+  has_many :supplier_searches_users
+  has_many :users, through: :supplier_searches_users
 
   def query
     query = []

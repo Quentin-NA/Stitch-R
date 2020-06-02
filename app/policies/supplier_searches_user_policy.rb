@@ -1,4 +1,4 @@
-class ReceiptPolicy < ApplicationPolicy
+class SupplierSearchesUserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -10,13 +10,4 @@ class ReceiptPolicy < ApplicationPolicy
   def create?
     record.user == user
   end
-
-  def share?
-    record.user == user
-  end
-
-  def dismiss?
-    record.user == user
-  end
-
 end

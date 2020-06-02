@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_080116) do
+ActiveRecord::Schema.define(version: 2020_06_02_082650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,8 +63,6 @@ ActiveRecord::Schema.define(version: 2020_06_02_080116) do
     t.date "end_date"
     t.string "label", default: ""
     t.boolean "attachment", default: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_supplier_searches_on_user_id"
   end
 
   create_table "supplier_searches_users", id: false, force: :cascade do |t|
@@ -101,5 +99,4 @@ ActiveRecord::Schema.define(version: 2020_06_02_080116) do
   add_foreign_key "receipts", "supplier_searches"
   add_foreign_key "receipts", "users"
   add_foreign_key "receivers", "users"
-  add_foreign_key "supplier_searches", "users"
 end

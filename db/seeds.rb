@@ -7,10 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'SupplierSearch Creation'
 
-  SupplierSearch.create(from: "uber.france@uber.com", user_id: 1)
-  SupplierSearch.create(from: "noreply@oui.sncf", contains: "Confirmation", user_id: 1)
-  SupplierSearch.create(from: "freemobile@free-mobile.fr", user_id: 1)
-  SupplierSearch.create(from: "ne_pas_repondre@sfr.fr", contains: "facture", user_id: 1)
-  SupplierSearch.create(from: "express@airbnb.com", contains: "receipt", user_id: 1)
+  # SupplierSearch.create(from: "uber.france@uber.com", user_id: 1)
+  # SupplierSearch.create(from: "noreply@oui.sncf", contains: "Confirmation", user_id: 1)
+  # SupplierSearch.create(from: "noreply@heroku.com", user_id: 1)
+  # SupplierSearch.create(from: "freemobile@free-mobile.fr", user_id: 1)
+  # SupplierSearch.create(from: "ne_pas_repondre@sfr.fr", contains: "facture", user_id: 1)
+  # SupplierSearch.create(from: "express@airbnb.com", contains: "receipt", user_id: 1)
+  
+  
+  
+  SupplierSearch.create(from: "uber.france@uber.com")
+  SupplierSearch.create(from: "noreply@oui.sncf")
+  SupplierSearch.create(from: "noreply@heroku.com")
+  SupplierSearch.create(from: "freemobile@free-mobile.fr")
+  SupplierSearch.create(from: "ne_pas_repondre@sfr.fr")
+  SupplierSearch.create(from: "express@airbnb.com")
+  SupplierSearch.create(from: "noreply.mobile@orange.com")
 
 

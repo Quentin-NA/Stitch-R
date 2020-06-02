@@ -1,0 +1,18 @@
+<h1>Ajouter de nouvelles recherches</h1>
+<div class="row">
+  <% @supplier_searches.each do |supplier_search| %>
+    <div class="col-sm-3 my-3">
+      <div class="card mx-2 shadow bg-white rounded">
+        <div class="card-body">
+          <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+          <p class="card-text"><%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%></p>
+          <h5 class="card-title"><%= supplier_search.from %></h5>
+          <div class="d-flex">
+            <a href="#" class="btn btn-primary mr-2">Souscrire</a>
+            <a href="#" class="btn btn-primary">Ne pas souscrire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

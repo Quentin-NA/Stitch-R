@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_06_02_085920) do
 
   # These are extensions that must be enabled in order to support this database
@@ -63,8 +64,13 @@ ActiveRecord::Schema.define(version: 2020_06_02_085920) do
     t.date "end_date"
     t.string "label", default: ""
     t.boolean "attachment", default: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_supplier_searches_on_user_id"
+  end
+
+  create_table "supplier_searches_users", id: false, force: :cascade do |t|
+    t.bigint "supplier_search_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["supplier_search_id"], name: "index_supplier_searches_users_on_supplier_search_id"
+    t.index ["user_id"], name: "index_supplier_searches_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,5 +101,4 @@ ActiveRecord::Schema.define(version: 2020_06_02_085920) do
   add_foreign_key "receipts", "supplier_searches"
   add_foreign_key "receipts", "users"
   add_foreign_key "receivers", "users"
-  add_foreign_key "supplier_searches", "users"
 end

@@ -1,6 +1,4 @@
 <div class="container">
-
-  <h2>Reçus [name] fournisseur </h2>
   <h2 class= "text-left">Reçus [name] fournisseur </h2>
   <table class="table table-hover table-responsive text-left">
     <thead>
@@ -25,8 +23,10 @@
           </th>
           <td><strong><%= receipt.subject %></strong>
             <br><%= receipt.snippet %><br>
-            <% receipt.attachment_names.each do |attachment| %>
-              <span class="badge badge-secondary"><%= attachment %></span>
+            <% if receipt.attachment_names.present? %>
+              <% receipt.attachment_names.each do |attachment| %>
+                <span class="badge badge-secondary"><%= attachment %></span>
+              <% end %>
             <% end %></td>
           <td><%= receipt.send_date.strftime("%d %b %Y - %H:%M")%> </td>
         </tr>

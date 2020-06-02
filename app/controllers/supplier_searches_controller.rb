@@ -2,7 +2,7 @@ class SupplierSearchesController < ApplicationController
 
   def index
     @searches = policy_scope(SupplierSearch)
-    @supplier_searches = SupplierSearch.all
+    @supplier_searches = current_user.supplier_searches
   end
 
   def show

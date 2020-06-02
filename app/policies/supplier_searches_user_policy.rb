@@ -6,8 +6,17 @@ class SupplierSearchesUserPolicy < ApplicationPolicy
       # scope.where(user: user)
     end
 
-    def create?
-      record.user == user
-    end
-  end 
+  end
+
+  def create?
+    true
+  end
+
+  def subscribe?
+    true
+  end
+
+  def unsubscribe?
+    true
+  end
 end

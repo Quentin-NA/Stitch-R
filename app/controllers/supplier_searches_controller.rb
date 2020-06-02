@@ -17,12 +17,12 @@ class SupplierSearchesController < ApplicationController
     @search = SupplierSearch.new
     authorize @search
   end
-
+  
   def create
     @search = SupplierSearch.new(search_params)
-    @search.user = current_user
     authorize @search
     if @search.save
+      @supplier_searches_user = SupplierSearchesUser.create(supplier_search: @search, user: current_user)
       redirect_to supplier_searches_path
     else
       render :new

@@ -9,15 +9,15 @@ h2{
 
 .jumbotron {
   display: inline-flex;
+  width: 100%;
+  height: 40em;
 
   .display-3{
     font-size: 36px
   }
 }
 
-#header-gif{
-  width: 150px;
-  height: 550px;
-  padding-left: 40px;
+.bckimage{
+  background-image: url(home_freelance.png);
+  background-size: cover;
 }
-

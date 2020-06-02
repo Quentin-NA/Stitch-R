@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  has_many :supplier_searches
+  has_many :supplier_searches_users
+  has_many :supplier_searches, through: :supplier_searches_users
   has_many :receipts
   has_many :receivers
 

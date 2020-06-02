@@ -20,14 +20,21 @@ class SupplierSearchesController < ApplicationController
 
   def create
     @search = SupplierSearch.new(search_params)
-    @search.user = current_user
     authorize @search
     if @search.save
+      @supplier_searches_user = SupplierSearchesUser.create(supplier_search: @search, user: current_user)
       redirect_to supplier_searches_path
     else
       render :new
     end
   end
+
+  def destroy
+    @supplier_search = SupplierSearch.find(params[:id])
+    @supplier_search.destroy
+    redirect_to supplier_searches_path
+    authorize @supplier_search
+    end
 
   def search_params
     params.require(:supplier_search).permit(:from, :category, :keyword, :subject, :contains, :not_contains, :start_date, :end_date, :label, :attachment)

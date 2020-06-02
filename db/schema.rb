@@ -65,8 +65,13 @@ ActiveRecord::Schema.define(version: 2020_06_02_090605) do
     t.date "end_date"
     t.string "label", default: ""
     t.boolean "attachment", default: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_supplier_searches_on_user_id"
+  end
+
+  create_table "supplier_searches_users", id: false, force: :cascade do |t|
+    t.bigint "supplier_search_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["supplier_search_id"], name: "index_supplier_searches_users_on_supplier_search_id"
+    t.index ["user_id"], name: "index_supplier_searches_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_090605) do
     t.datetime "token_expiry"
     t.boolean "expires"
     t.string "refresh_token"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -96,5 +102,4 @@ ActiveRecord::Schema.define(version: 2020_06_02_090605) do
   add_foreign_key "receipts", "supplier_searches"
   add_foreign_key "receipts", "users"
   add_foreign_key "receivers", "users"
-  add_foreign_key "supplier_searches", "users"
 end

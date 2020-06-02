@@ -10,12 +10,14 @@
         <div class="d-flex">
           <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
           <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
-          <p class="card-text pl-1">
-            [30] nouveaux reçus trouvés depuis la dernière connection,[xx] sauvgardés,[x] partagés avec (accountant).
+            <p class="card-text pl-1">
+             <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
+             nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
+             partagés avec (accountant).
           <br><%= link_to "Voir tous les reçus", supplier_search_path(search) %>
           </p>
           <div><%= link_to supplier_search_path(search), method: :delete, data: { confirm: "Voulez-vous effacer cette recherche?" } do %>
-                  <i class="fas fa-trash"></i>
+                  <i class="far fa-times-circle"></i>
                   <% end %>
           </div>
         </div>

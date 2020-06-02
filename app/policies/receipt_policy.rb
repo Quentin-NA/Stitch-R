@@ -5,10 +5,10 @@ class ReceiptPolicy < ApplicationPolicy
       # For a multi-tenant SaaS app, you may want to use:
       # scope.where(user: user)
     end
-  end
-  
-  def create?
-    record.user == user
+
+    def create?
+      record.user == user
+    end
   end
 
   def share?

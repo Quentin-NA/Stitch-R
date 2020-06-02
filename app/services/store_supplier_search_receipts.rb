@@ -22,8 +22,18 @@ class StoreSupplierSearchReceipts
       headers = content.payload.headers.map do |header|
         [header.name, header.value]
       end.to_h
+
+      filenames = []
+      if content.payload.parts.nil?
+        return
+      else
+        filenames << content.payload.parts.map do |part|
+          part.filename
+        end
+      end
+
       unless Receipt.find_by(gmail_id: message.id)
-        Receipt.create!(
+        receipt = Receipt.create!(
           user: @user,
           gmail_id: message.id,
           from: headers["From"],
@@ -32,9 +42,18 @@ class StoreSupplierSearchReceipts
           supplier_search: @supplier_search,
           snippet: content.snippet,
           status: "new",
-          #attachments: content.payload.parts.map {|part| part.filename}
+          attachment_names: filenames
           #attachement_id: content.payload.parts.map {|part| part.body.attachment_id}
         )
+          # if content.payload.parts
+          #   puts "============================================="
+          #   p content.payload.parts.map {|part| part.filename if part.filename.present?}.compact
+          #   puts "============================================="
+          #   receipt.attachment_names = content.payload.parts.map {|part| part.filename if part.filename.present?}.compact
+          # else
+          #   receipt.attachment_names = []
+          # end
+          # receipt.save!
       end
     end
   end

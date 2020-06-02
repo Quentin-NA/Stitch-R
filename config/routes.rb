@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :receipts, only: [:index, :update] do
     member do
       get :share
-      get :dismiss 
+      get :dismiss
     end
   end
   resources :receivers, only: [:index, :new, :create, :destroy]
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
   get "/profil", to: "pages#profil"
   get "/history", to: "pages#history"
+  get "/trash", to: "pages#trash"
 
 end

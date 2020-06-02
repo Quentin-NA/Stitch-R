@@ -16,6 +16,11 @@ class PagesController < ApplicationController
 
   def history
     @user = current_user
-    @receipts = Receipt.where(status: 'new')
+    @receipts = Receipt.where(status: 'shared')
+  end
+
+  def trash
+    @user = current_user
+    @receipts = Receipt.where(status: 'dismissed')
   end
 end

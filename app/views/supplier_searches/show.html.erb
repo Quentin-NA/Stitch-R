@@ -1,8 +1,6 @@
 <div class="container">
-  <h2>Reçus [name] fournisseur </h2>
-  <%#= simple_form_for @search do |f| %>
-    <%#= f.input :label, :label => 'Où chercher ?', collection: SupplierSearch::LABEL %>
-  <%# end %>
+  <h2 class= "text-left">Reçus [name] fournisseur </h2>
+
   <table class="table table-hover table-responsive text-left">
     <thead>
       <tr>
@@ -13,7 +11,7 @@
     </thead>
     <tbody>
       <% @receipts.each do |receipt| %>
-        <tr>
+        <tr class = "font-weight-light">
           <th scope="row">
             <%# <i class="far fa-square"></i> %>
             <%# <i class="far fa-minus-square btn-minus"></i> %>
@@ -26,7 +24,7 @@
           </th>
           <td><strong><%= receipt.subject %></strong>
                   <br><%= receipt.snippet %></td>
-          <td><%= receipt.send_date%> </td>
+          <td><%= receipt.send_date.strftime("%d %b %Y - %H:%M")%> </td>
         </tr>
       <% end %>
     </tbody>

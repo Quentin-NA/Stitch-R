@@ -1,21 +1,39 @@
-<h1>Ajouter de nouvelles recherches</h1>
-<div class="row">
-  <% @supplier_searches.each do |supplier_search| %>
-    <div class="col-sm-3 my-3">
-      <div class="card mx-2 shadow bg-white rounded">
+<div class="container">
+<h1>Bienvenue <%= current_user.first_name %>!</h1>
+<p>Nous avons analysé votre boîte mail et trouvé des reçus pour les fournisseurs suivants. Notre catalogue de recherches contient les fournisseurs les plus fréquements recherchés par nos utilisateurs. A vous de jouer, sélectionner les fournisseurs que vous souhaitez ajouter à votre espace et créer vos propres recherches si besoin.</p>
+  <div class="card-container">
+    <% @supplier_searches.each do |supplier_search| %>
+      <div class="card">
         <div class="card-body">
-          <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-          <p class="card-text"><%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%></p>
-          <h5 class="card-title"><%= supplier_search.from %></h5>
           <div class="d-flex">
-            <% if current_user.supplier_searches.include?(supplier_search) %>
-              <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-primary"  %>
-            <% else %>
-              <%= link_to "Souscrire", subscribe_supplier_searches_user_path(supplier_search), class: "btn btn-primary"  %>
-            <% end %>
+            <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+            <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
+            <p class="card-text pl-1">nous avons trouvé [x] reçus</p>
+            <div>
+              <% if current_user.supplier_searches.include?(supplier_search) %>
+                <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link"  %>
+              <% else %>
+                <%= link_to "Souscrire", subscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
+    <% end %>
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <p>
+            <%= link_to "Créez une Recherche", new_supplier_search_path, class: "btn btn-primary m-3" %>
+
+            <%= image_tag "https://lh3.googleusercontent.com/7_oQX4naDvPEgU61ktMMJV3pX2v9qMH7oG9UeqqiKO37Tep0VGCqH7BKOASN2ra_DTY=s360-rw", class: "supplier-logo"%>
+          </p>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
+    <div> <% link_to receivers_path do %>
+      <span class="btn btn-primary btn-lg" href="#!">Add your partners</span>
+    <% end %>
+    </div>
 </div>

@@ -1,8 +1,6 @@
 <div class="container">
-
-  <%= link_to "Nouvelle Recherche", new_supplier_search_path, class: "btn btn-primary m-3" %>
-  <%= link_to "Les plus recherchés", supplier_searches_users_path, class: "btn btn-primary m-3" %>
-
+<h1>Votre tableau de bord </h1>
+<p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés. Vous voulez en ajouter? Cliquez ici</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
     <div class="card">
@@ -27,6 +25,17 @@
       </div>
     </div>
     <% end %>
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <p>
+            <%= link_to "Ajoutez des fournisseurs", supplier_searches_users_path, class: "btn btn-primary m-3" %>
+
+            <%= image_tag "https://lh3.googleusercontent.com/7_oQX4naDvPEgU61ktMMJV3pX2v9qMH7oG9UeqqiKO37Tep0VGCqH7BKOASN2ra_DTY=s360-rw", class: "supplier-logo"%>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -1,8 +1,5 @@
 <div class="container">
   <h2>Reçus [name] fournisseur </h2>
-  <%#= simple_form_for @search do |f| %>
-    <%#= f.input :label, :label => 'Où chercher ?', collection: SupplierSearch::LABEL %>
-  <%# end %>
   <table class="table table-hover table-responsive text-left">
     <thead>
       <tr>
@@ -26,6 +23,9 @@
           </th>
           <td><strong><%= receipt.subject %></strong>
                   <br><%= receipt.snippet %></td>
+                  <%# @receipt.attachment_names.each do |attachment| %>
+                    <span class="badge badge-secondary"><%= receipt.attachment_names.count %></span>
+                  <%# end %>
           <td><%= receipt.send_date%> </td>
         </tr>
       <% end %>

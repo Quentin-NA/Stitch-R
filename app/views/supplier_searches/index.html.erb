@@ -10,7 +10,7 @@
         <div class="d-flex">
           <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
           <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
-            <p class="card-text pl-1">
+          <p class="card-text pl-1">
              <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
              nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
              partagés avec (accountant).

@@ -17,13 +17,20 @@ class StoreSupplierSearchReceipts
     return if gmail_messages.nil?
     gmail_messages.each do |message|
       content = GmailApi::GetUserMessage.new(@user, message.id)
-                                        .call(format: 'metadata',
-                                              metadata_headers: ["From", "Date", "Subject"])
+                                        .call#(format: 'metadata',
+                                              #metadata_headers: ["From", "Date", "Subject"])
       headers = content.payload.headers.map do |header|
         [header.name, header.value]
       end.to_h
+
+      if content.payload.parts.present?
+        filenames = content.payload.parts.map do |part|
+          part.filename if part.filename.present?
+        end.compact
+      end
+
       unless Receipt.find_by(gmail_id: message.id)
-        Receipt.create!(
+        receipt = Receipt.create!(
           user: @user,
           gmail_id: message.id,
           from: headers["From"],
@@ -32,6 +39,7 @@ class StoreSupplierSearchReceipts
           supplier_search: @supplier_search,
           snippet: content.snippet,
           status: "new",
+          attachment_names: filenames
         )
       end
     end

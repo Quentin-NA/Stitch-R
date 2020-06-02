@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_085920) do
+ActiveRecord::Schema.define(version: 2020_06_02_090605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_06_02_085920) do
     t.string "status", null: false
     t.bigint "user_id", null: false
     t.bigint "receiver_id"
+    t.string "attachment_names", array: true
+    t.index ["attachment_names"], name: "index_receipts_on_attachment_names", using: :gin
     t.index ["receiver_id"], name: "index_receipts_on_receiver_id"
     t.index ["supplier_search_id"], name: "index_receipts_on_supplier_search_id"
     t.index ["user_id"], name: "index_receipts_on_user_id"

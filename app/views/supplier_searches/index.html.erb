@@ -14,8 +14,10 @@
             [30] nouveaux reçus trouvés depuis la dernière connection,[xx] sauvgardés,[x] partagés avec (accountant).
           <br><%= link_to "Voir tous les reçus", supplier_search_path(search) %>
           </p>
-          <div><i class="far fa-times-circle"></i></div>
-        </div>
+          <div><%= link_to supplier_search_path(search), method: :delete, data: { confirm: "Voulez-vous effacer cette recherche?" } do %>
+                  <i class="fas fa-trash"></i>
+                  <% end %>
+          </div>
       </div>
       <div class="card-footer d-flex">
         <div><a href="#!" class="btn btn-outline-secondary">run</a></div>
@@ -26,5 +28,6 @@
     <% end %>
   </div>
 </div>
+
 
 

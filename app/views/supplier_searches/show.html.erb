@@ -22,10 +22,10 @@
             <% end %>
           </th>
           <td><strong><%= receipt.subject %></strong>
-                  <br><%= receipt.snippet %></td>
-                  <%# @receipt.attachment_names.each do |attachment| %>
-                    <span class="badge badge-secondary"><%= receipt.attachment_names.count %></span>
-                  <%# end %>
+                  <br><%= receipt.snippet %><br>
+                  <% receipt.attachment_names.each do |attachment| %>
+                    <span class="badge badge-secondary"><%= attachment %></span>
+                  <% end %></td>
           <td><%= receipt.send_date%> </td>
         </tr>
       <% end %>

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :receivers, only: [:index, :new, :create, :destroy]
-  resources :supplier_searches, only: [:index, :show, :new, :create]
+  resources :supplier_searches, only: [:index, :show, :new, :create, :destroy]
   
   resources :supplier_searches_users, only: [:index] do
     member do
@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       get :unsubscribe
     end
   end
+ 
+  resources :supplier_searches_users, only: [:index]
 
   get "/dashboard", to: "pages#dashboard"
   get "/profil", to: "pages#profil"

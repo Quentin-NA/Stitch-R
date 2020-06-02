@@ -17,7 +17,7 @@ class SupplierSearchesController < ApplicationController
     @search = SupplierSearch.new
     authorize @search
   end
-  
+
   def create
     @search = SupplierSearch.new(search_params)
     authorize @search
@@ -28,6 +28,13 @@ class SupplierSearchesController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @supplier_search = SupplierSearch.find(params[:id])
+    @supplier_search.destroy
+    redirect_to supplier_searches_path
+    authorize @supplier_search
+    end
 
   def search_params
     params.require(:supplier_search).permit(:from, :category, :keyword, :subject, :contains, :not_contains, :start_date, :end_date, :label, :attachment)

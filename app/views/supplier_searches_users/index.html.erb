@@ -19,10 +19,12 @@
               <p class="card-text pl-1">aucun reçu trouvé</p>
             <% end %>
             <div>
-              <% if current_user.supplier_searches.include?(supplier_search) %>
-                <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link"  %>
-              <% else %>
-                <%= link_to "Souscrire", subscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
+              <% current_user.supplier_searches.each do |search| %>
+                <% if search.subscribe == true %>
+                  <%= link_to "Ne pas souscrire", not_subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link"  %>
+                <% elsif search.subscribe == false %>
+                  <%= link_to "Souscrire", subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
+                <% end %>
               <% end %>
             </div>
           </div>

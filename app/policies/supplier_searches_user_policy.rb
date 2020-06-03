@@ -7,16 +7,16 @@ class SupplierSearchesUserPolicy < ApplicationPolicy
     end
 
   end
-
+  
   def create?
     true
   end
-
+  
   def subscribe?
     true
   end
-
-  def unsubscribe?
+  
+  def subscribing?
     true
   end
 end

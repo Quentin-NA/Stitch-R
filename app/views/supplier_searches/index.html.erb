@@ -3,31 +3,37 @@
 <p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés. Vous voulez en ajouter? Cliquez ici</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex">
-          <% if search.image.present? %>
-              <%= image_tag search.image, class: "supplier-logo"%>
-            <% else %>
-              <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-              <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
-          <% end %>
-          <p class="card-text pl-1">
-             <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
-             nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
-             partagés avec (accountant).
-          <br><%= link_to "Voir tous les reçus", supplier_search_path(search) %>
-          </p>
-          <div><%= link_to supplier_search_path(search), method: :delete, data: { confirm: "Voulez-vous effacer cette recherche?" } do %>
-                  <i class="far fa-times-circle"></i>
-                  <% end %>
+      <% if search.subscribe == true %>
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex">
+              <% if search.image.present? %>
+                  <%= image_tag search.image, class: "supplier-logo"%>
+                <% else %>
+                  <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+                  <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
+              <% end %>
+              <p class="card-text pl-1">
+                <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
+                nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
+                partagés avec (accountant).
+              <br><%= link_to "Voir tous les reçus", supplier_search_path(search) %>
+              </p>
+              <div><%= link_to supplier_search_path(search), method: :delete, data: { confirm: "Voulez-vous effacer cette recherche?" } do %>
+                      <i class="far fa-times-circle"></i>
+                      <% end %>
+                  </div>
               </div>
+            </div>
+            <div class="card-footer d-flex">
+              <div class="flex-grow-1 pl-1"><p>Dernière recherche <br> <%= search.updated_at.strftime("%d %b %Y - %H:%M") %></p></div>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                <label class="custom-control-label" for="customSwitch1">Automatiser?</label>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="card-footer d-flex">
-          <div class="flex-grow-1 pl-1"><p>Dernière recherche <br> <%= search.updated_at.strftime("%d %b %Y - %H:%M") %></p></div>
-        </div>
-      </div>
+        <% end %>
     <% end %>
     <div class="card">
       <div class="card-body">

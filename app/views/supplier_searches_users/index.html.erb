@@ -12,7 +12,12 @@
                 <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
                 <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
             <% end %>
-            <p class="card-text pl-1">nous avons trouvé [x] reçus</p>
+            <% count = GmailApi::CountUserMessages.new(current_user).call(supplier_search.query) %>
+            <% if count > 0 %>
+              <p class="card-text pl-1">nous avons trouvé <span class="badge badge-success text-white"><%= count %> reçus</span></p>
+            <% else %>
+              <p class="card-text pl-1">aucun reçu trouvé</p>
+            <% end %>
             <div>
               <% if current_user.supplier_searches.include?(supplier_search) %>
                 <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link"  %>
@@ -34,8 +39,10 @@
       </div>
     </div>
   </div>
-    <div> <% link_to receivers_path do %>
-      <span class="btn btn-primary btn-lg" href="#!">Add your partners</span>
-    <% end %>
+  <br>
+  <div class="justify-content-end">
+    <div class="content-right"> <% link_to receivers_path %>
+      <span class="btn btn-primary btn-lg" href="#!">Ajoutez vos parternaires! </span>
     </div>
+  </div>
 </div>

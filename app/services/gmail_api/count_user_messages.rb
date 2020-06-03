@@ -4,6 +4,6 @@ class GmailApi::CountUserMessages < GmailApi::Connexion
   def call(query)
     # TO DO => gérer la pagination + récupérer resultSizeEstimate
     @response = @gmail.list_user_messages(@user.uid, q: query)
-    @response.resultSizeEstimate
+    @response.result_size_estimate
   end
 end

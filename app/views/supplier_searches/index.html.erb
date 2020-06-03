@@ -9,7 +9,7 @@
           <% if search.image.present? %>
               <%= image_tag search.image, class: "supplier-logo"%>
             <% else %>
-              <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+              <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
               <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
           <% end %>
           <p class="card-text pl-1">

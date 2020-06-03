@@ -3,42 +3,40 @@
 <p>Nous avons analysé votre boîte mail et trouvé des reçus pour les fournisseurs suivants. Notre catalogue de recherches contient les fournisseurs les plus fréquements recherchés. A vous de jouer! sélectionnez les fournisseurs que vous souhaitez ajouter à votre espace et créez vos propres recherches si besoin.</p>
   <div class="card-container">
     <% @supplier_searches.each do |supplier_search| %>
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex">
-            <% if supplier_search.image.present? %>
-                <%= image_tag supplier_search.image, class: "supplier-logo"%>
-              <% else %>
-                <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-                <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
-            <% end %>
-            <% count = GmailApi::CountUserMessages.new(current_user).call(supplier_search.query) %>
-            <% if count > 0 %>
-              <p class="card-text pl-1">nous avons trouvé <span class="badge badge-success text-white"><%= count %> reçus</span></p>
-            <% else %>
-              <p class="card-text pl-1">aucun reçu trouvé</p>
-            <% end %>
-            <div>
-              <% if current_user.supplier_searches.include?(supplier_search) %>
-                <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link"  %>
-              <% else %>
-                <%= link_to "Souscrire", subscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
+      <% count = GmailApi::CountUserMessages.new(current_user).call(supplier_search.query) %>
+      <% if count > 0 %>
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex">
+              <% if supplier_search.image.present? %>
+                  <%= image_tag supplier_search.image, class: "supplier-logo"%>
+                <% else %>
+                  <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+                  <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
               <% end %>
+                <p class="card-text pl-1">nous avons trouvé <span class="badge badge-success text-white"><%= count %> reçus</span></p>
+              <div>
+                <% if current_user.supplier_searches.include?(supplier_search) %>
+                  <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link"  %>
+                <% else %>
+                  <%= link_to "Souscrire", subscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex">
-          <p>
-            <%= link_to "Créez une Recherche", new_supplier_search_path, class: "btn btn-primary m-3" %>
-          </p>
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex">
+            <p>
+              <%= link_to "Créez une Recherche", new_supplier_search_path, class: "btn btn-primary m-3" %>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <br>
   <div class="justify-content-end">
     <div class="content-right"> <%= link_to new_receiver_path do %>

@@ -1,38 +1,40 @@
 <div class="container">
-  <h2 class= "text-left">Reçus [name] fournisseur </h2>
+
+  <div class="d-flex flex-row m-2 align-center">
+    <%= image_tag @supplier_search.image, class: "supplier-logo"%>
+    <h2 class= "text-left pl-3">Reçus <%= @supplier_search.name %> </h2>
+  </div>
+
   <table class="table table-hover table-responsive text-left">
     <thead>
       <tr>
-        <th>Actions</th>
         <th>Objet</th>
         <th>Date/Heure</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <% @receipts.each do |receipt| %>
-        <tr class = "font-weight-light">
-          <th scope="row">
-            <%# <i class="far fa-square"></i> %>
-            <%# <i class="far fa-minus-square btn-minus"></i> %>
-            <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
-              <i class="fas fa-share-square"></i>
-            <% end %>
-            <%= link_to dismiss_receipt_path(receipt) do %>
-              <i class="far fa-window-close"></i>
-            <% end %>
-          </th>
-          <td>
-            <strong> <%= receipt.user.email %> </strong><br>
-            <strong><%= receipt.subject %></strong>
-            <br><%= receipt.snippet %><br>
+        <tr>
+          <th>
+            <span><%= receipt.subject %></span>
+            <br class=text-muted><%= receipt.snippet.truncate(100) %><br>
             <% if receipt.attachment_names.present? %>
               <% receipt.attachment_names.each do |attachment| %>
-                <span class="badge badge-secondary"><%= attachment %></span>
+                <span class="badge badge-secondary badge-pill"><%= attachment %></span>
               <% end %>
             <% end %>
-          </td>
-          <td>
+          </th>
+          <td class = "font-weight-light">
             <%= receipt.send_date.strftime("%d %b %Y - %H:%M")%>
+          </td>
+          <td scope="row">
+            <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
+              <!-- <i class="fas fa-share-square"></i> -->
+            <% end %>
+            <%= link_to dismiss_receipt_path(receipt) do %>
+              <!-- <i class="far fa-window-close"></i> -->
+            <% end %>
           </td>
         </tr>
       <% end %>

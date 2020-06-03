@@ -33,7 +33,7 @@ d = SupplierSearch.create(
 e = SupplierSearch.create(
   name: "Bouygues Telecom",
   image: "https://lh3.googleusercontent.com/FbOR4JspRzJa3XbJCh_kj4sTZZz61s2PDj4RFv0EZ2ROY3HGG6YkSITEUwrbljsg6A=s360-rw",
-  from: "ne_pas_repondre@sfr.fr"
+  from: "facture@bouygues-telecom.fr"
   )
 
 f = SupplierSearch.create(

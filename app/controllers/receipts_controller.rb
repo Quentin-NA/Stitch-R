@@ -6,7 +6,15 @@ class ReceiptsController < ApplicationController
     @receipts = policy_scope(Receipt)
     # authorize @receipts
   end
-  
+
+  def show
+    @user = current_user
+    @receipt = Receipt.find(params[:id])
+    @gmail_message = GmailApi::GetUserMessage.new(@user, @receipt.gmail_id).call
+    binding.pry
+    authorize @receipt
+  end
+
   def dismiss
     @receipt = Receipt.find(params[:id])
     authorize @receipt
@@ -15,7 +23,7 @@ class ReceiptsController < ApplicationController
     flash[:notice] = "Le reçu a bien été ignoré"
     redirect_to supplier_search_path(@receipt.supplier_search)
   end
-  
+
   def share
     @receipt = Receipt.find(params[:id])
     authorize @receipt

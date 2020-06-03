@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :users, only: [:index]
-  resources :receipts, only: [:index, :update] do
+  resources :receipts, only: [:index, :update, :show] do
     member do
       get :share
       get :dismiss
@@ -22,14 +22,14 @@ Rails.application.routes.draw do
   end
   resources :receivers, only: [:index, :new, :create, :destroy]
   resources :supplier_searches, only: [:index, :show, :new, :create, :destroy]
-  
+
   resources :supplier_searches_users, only: [:index] do
     member do
       get :subscribe
       get :unsubscribe
     end
   end
- 
+
   resources :supplier_searches_users, only: [:index]
 
   get "/dashboard", to: "pages#dashboard"

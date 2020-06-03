@@ -6,8 +6,12 @@
     <div class="card">
       <div class="card-body">
         <div class="d-flex">
-          <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-          <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
+          <% if search.image.present? %>
+              <%= image_tag search.image, class: "supplier-logo"%>
+            <% else %>
+              <% @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+              <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
+          <% end %>
           <p class="card-text pl-1">
              <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
              nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
@@ -30,8 +34,6 @@
         <div class="d-flex">
           <p>
             <%= link_to "Ajoutez des fournisseurs", supplier_searches_users_path, class: "btn btn-primary m-3" %>
-
-            <%= image_tag "https://lh3.googleusercontent.com/7_oQX4naDvPEgU61ktMMJV3pX2v9qMH7oG9UeqqiKO37Tep0VGCqH7BKOASN2ra_DTY=s360-rw", class: "supplier-logo"%>
           </p>
         </div>
       </div>

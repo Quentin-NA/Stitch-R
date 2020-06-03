@@ -41,8 +41,9 @@
   </div>
   <br>
   <div class="justify-content-end">
-    <div class="content-right"> <% link_to receivers_path %>
-      <span class="btn btn-primary btn-lg" href="#!">Ajoutez vos parternaires! </span>
+    <div class="content-right"> <%= link_to new_receiver_path do %>
+          <span class="btn btn-primary mt-3">Ajouer un partenaire</span>
+        <% end %>
     </div>
   </div>
 </div>

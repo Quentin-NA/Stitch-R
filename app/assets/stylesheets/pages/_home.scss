@@ -1,23 +1,22 @@
 // Specific CSS for your home-page
 h1{
-  font-size: 36px
+  font-size: 2.5em;
 }
 
-h2{
-
-}
 
 .jumbotron {
   display: inline-flex;
   width: 100%;
-  height: 40em;
 
   .display-3{
-    font-size: 36px
+    font-size: 2.5em;
   }
 }
 
-.bckimage{
-  background-image: url(home_freelance.png);
-  background-size: cover;
+#email{
+  background-image: url('emails.png');
+  width: 40%;
+  margin-left: 1em;
+  border-radius: 1em;
 }
+

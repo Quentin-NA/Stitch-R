@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   
   resources :supplier_searches_users, only: [:index] do
     member do
-      get :subscribe
-      get :unsubscribe
+      get :subscribing
+      get :not_subscribing
     end
   end
  

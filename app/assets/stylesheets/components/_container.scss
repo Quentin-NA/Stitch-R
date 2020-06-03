@@ -10,3 +10,16 @@
   overflow: scroll;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
+
+.without-dashboard-container {
+    position: fixed;
+    top: 90px;
+    left: 135px;
+    width: 80%;
+    height: 600px;
+    margin-bottom: 20px;
+    color: grey;
+    list-style: none;
+    overflow: scroll;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}

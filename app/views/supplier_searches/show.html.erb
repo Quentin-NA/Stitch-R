@@ -21,14 +21,19 @@
               <i class="far fa-window-close"></i>
             <% end %>
           </th>
-          <td><strong><%= receipt.subject %></strong>
+          <td>
+            <strong> <%= receipt.user.email %> </strong><br>
+            <strong><%= receipt.subject %></strong>
             <br><%= receipt.snippet %><br>
             <% if receipt.attachment_names.present? %>
               <% receipt.attachment_names.each do |attachment| %>
                 <span class="badge badge-secondary"><%= attachment %></span>
               <% end %>
-            <% end %></td>
-          <td><%= receipt.send_date.strftime("%d %b %Y - %H:%M")%> </td>
+            <% end %>
+          </td>
+          <td>
+            <%= receipt.send_date.strftime("%d %b %Y - %H:%M")%>
+          </td>
         </tr>
       <% end %>
     </tbody>

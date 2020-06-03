@@ -1,15 +1,17 @@
 <div class="container">
-
-  <%= link_to "Nouvelle Recherche", new_supplier_search_path, class: "btn btn-primary m-3" %>
-  <%= link_to "Les plus recherchés", supplier_searches_users_path, class: "btn btn-primary m-3" %>
-
+<h1>Votre tableau de bord </h1>
+<p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés. Vous voulez en ajouter? Cliquez ici</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
     <div class="card">
       <div class="card-body">
         <div class="d-flex">
-          <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-          <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
+          <% if search.image.present? %>
+              <%= image_tag search.image, class: "supplier-logo"%>
+            <% else %>
+              <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+              <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
+          <% end %>
           <p class="card-text pl-1">
              <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
              nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
@@ -27,6 +29,15 @@
       </div>
     </div>
     <% end %>
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <p>
+            <%= link_to "Ajoutez des fournisseurs", supplier_searches_users_path, class: "btn btn-primary m-3" %>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

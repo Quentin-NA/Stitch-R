@@ -4,7 +4,11 @@
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
     <div class="card">
-      <div class="card-body">
+      <% if Receipt.where(supplier_search_id: search.id, status: "new").count > 0 %>
+        <div class="card-body border border-primary text-dark">
+      <% else %>
+        <div class="card-body">
+      <% end %>
         <div class="d-flex">
           <% if search.image.present? %>
               <%= image_tag search.image, class: "supplier-logo"%>
@@ -12,7 +16,7 @@
               <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
               <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
           <% end %>
-          <p class="card-text pl-1">
+            <p class="card-text pl-1 ">
              <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
              nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
              partagés avec (accountant).

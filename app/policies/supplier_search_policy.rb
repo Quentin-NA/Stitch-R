@@ -19,4 +19,8 @@ class SupplierSearchPolicy < ApplicationPolicy
   def subscribing?
     true
   end
+
+  def not_subscribing?
+    true
+  end
 end

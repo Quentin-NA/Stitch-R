@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_102910) do
+ActiveRecord::Schema.define(version: 2020_06_03_143435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_102910) do
     t.boolean "subscribe", default: true
   end
 
-  create_table "supplier_searches_users", id: false, force: :cascade do |t|
+  create_table "supplier_searches_users", force: :cascade do |t|
     t.bigint "supplier_search_id", null: false
     t.bigint "user_id", null: false
     t.index ["supplier_search_id"], name: "index_supplier_searches_users_on_supplier_search_id"

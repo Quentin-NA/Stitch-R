@@ -12,11 +12,11 @@ class SupplierSearchesUserPolicy < ApplicationPolicy
     true
   end
   
-  def subscribe?
+  def subscribing?
     true
   end
   
-  def subscribing?
+  def not_subscribing?
     true
   end
 end

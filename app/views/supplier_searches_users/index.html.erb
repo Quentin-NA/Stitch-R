@@ -24,25 +24,34 @@
               <% else %>
                 <%= link_to "Souscrire", subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
               <% end %>
+                <p class="card-text pl-1">nous avons trouvé <span class="badge badge-success text-white"><%= count %> reçus</span></p>
+              <div>
+                <% if current_user.supplier_searches.include?(supplier_search) %>
+                  <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link"  %>
+                <% else %>
+                  <%= link_to "Souscrire", subscribe_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex">
-          <p>
-            <%= link_to "Créez une Recherche", new_supplier_search_path, class: "btn btn-primary m-3" %>
-          </p>
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex">
+            <p>
+              <%= link_to "Créez une Recherche", new_supplier_search_path, class: "btn btn-primary m-3" %>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <br>
   <div class="justify-content-end">
-    <div class="content-right"> <% link_to receivers_path %>
-      <span class="btn btn-primary btn-lg" href="#!">Ajoutez vos parternaires! </span>
+    <div class="content-right"> <%= link_to new_receiver_path do %>
+          <span class="btn btn-primary mt-3">Ajouer un partenaire</span>
+        <% end %>
     </div>
   </div>
 </div>

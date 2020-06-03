@@ -1,7 +1,14 @@
 class ReceiversController < ApplicationController
   def index
-    @receivers = policy_scope(Receiver)
+    @receivers = policy_scope(Receiver.where(user_id: current_user))
     @user = current_user
+  end
+
+  def show
+    @supplier_search = SupplierSearch.find(params[:id])
+    StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
+    @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new", user_id: current_user)
+    authorize @supplier_search
   end
 
   def new
@@ -14,7 +21,7 @@ class ReceiversController < ApplicationController
     @receiver = Receiver.new(receiver_params)
     @receiver.user = current_user
     if @receiver.save
-      redirect_to receivers_path
+      redirect_to supplier_searches_path
     else
       render :new
     end

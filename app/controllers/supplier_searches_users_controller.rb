@@ -12,4 +12,12 @@ class SupplierSearchesUsersController < ApplicationController
     flash[:notice] = "Vous avez ajouté une nouvelle recherche"
     redirect_to supplier_searches_users_path
   end
+
+  def unsubscribe
+    @search = SupplierSearch.find(params[:id])
+    @search.destroy
+    authorize @search
+    flash[:notice] = "Vous avez ajouté une nouvelle recherche"
+    redirect_to supplier_searches_users_path
+  end
 end

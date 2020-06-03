@@ -12,9 +12,9 @@ g = SupplierSearch.create(from: "noreply.mobile@orange.com")
 puts 'SupplierSearch Created'
 
 
-SupplierSearchesUser.create(supplier_search: a, user: User.first)
-SupplierSearchesUser.create(supplier_search: b, user: User.first)
-SupplierSearchesUser.create(supplier_search: c, user: User.first)
+# SupplierSearchesUser.create(supplier_search: a, user: User.first)
+# SupplierSearchesUser.create(supplier_search: b, user: User.first)
+# SupplierSearchesUser.create(supplier_search: c, user: User.first)
 # SupplierSearchesUser.create(supplier_search: d, user: user.first)
 # SupplierSearchesUser.create(supplier_search: e, user: "1")
 # SupplierSearchesUser.create(supplier_search: f, user: "1")

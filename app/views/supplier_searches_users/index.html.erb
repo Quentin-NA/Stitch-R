@@ -9,9 +9,9 @@
           <h5 class="card-title"><%= supplier_search.from %></h5>
           <div class="d-flex">
             <% if current_user.supplier_searches.include?(supplier_search) %>
-              <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-primary"  %>
-            <% else %>
               <%= link_to "Souscrire", subscribe_supplier_searches_user_path(supplier_search), class: "btn btn-primary"  %>
+            <% else %>
+              <%= link_to "Ne pas souscrire", unsubscribe_supplier_searches_user_path(supplier_search), class: "btn btn-primary"  %>
             <% end %>
           </div>
         </div>

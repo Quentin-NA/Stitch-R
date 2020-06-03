@@ -4,12 +4,19 @@ class SupplierSearchesUsersController < ApplicationController
     @supplier_searches = SupplierSearch.all
   end
 
-  def subscribe
+  def subscribing
     @search = SupplierSearch.find(params[:id])
-    @supplier_searches_user = SupplierSearchesUser.new(supplier_search: @search, user: current_user)
-    authorize @supplier_searches_user
-    @supplier_searches_user.save
+    authorize @search
+    SupplierSearchesUser.create(user: current_user, supplier_search: @search)
     flash[:notice] = "Vous avez ajouté une nouvelle recherche"
+    redirect_to supplier_searches_users_path
+  end
+
+  def not_subscribing
+    skip_authorization
+    @search = SupplierSearchesUser.find_by(user: current_user, supplier_search: SupplierSearch.find(params[:id]))
+    @search.destroy
+    flash[:notice] = "Vous avez supprimé cette recherche"
     redirect_to supplier_searches_users_path
   end
 end

@@ -1,5 +1,5 @@
-# SupplierSearchesUser.destroy_all
-# SupplierSearch.destroy_all
+SupplierSearchesUser.destroy_all
+SupplierSearch.destroy_all
 # Get image urls from GooglePlay store, open image in new window
 
 puts 'SupplierSearch Creation'

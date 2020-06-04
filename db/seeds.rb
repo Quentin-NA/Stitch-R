@@ -6,8 +6,9 @@ puts 'SupplierSearch Creation'
 a = SupplierSearch.create(
   name: "Uber",
   from: "uber.france@uber.com",
-  not_contains: "eats",
-  image: "https://lh3.googleusercontent.com/qy_wZ92sFQccojEtscg52vtdAQmCIeQ4jsybMPmuML9Or7_SEOyrt0Jn0wyG-l2Fyw=s360-rw"
+  contains: "'votre course'",
+  not_contains: "Jump",
+  image: "logo/uber.png"
   )
 
 b = SupplierSearch.create(
@@ -33,7 +34,7 @@ d = SupplierSearch.create(
 e = SupplierSearch.create(
   name: "Bouygues Telecom",
   image: "https://lh3.googleusercontent.com/FbOR4JspRzJa3XbJCh_kj4sTZZz61s2PDj4RFv0EZ2ROY3HGG6YkSITEUwrbljsg6A=s360-rw",
-  from: "facture@bouygues-telecom.fr"
+  from: "facture@bouygues-telecom.fr",
   )
 
 f = SupplierSearch.create(
@@ -45,17 +46,38 @@ f = SupplierSearch.create(
 
 g = SupplierSearch.create(
   name: "Booking",
-  image: "https://lh3.googleusercontent.com/A0QsKezU_em5H1IiwKUUluEDOK7VuGVNLii3FVL89NDVKVvRsOSHjS5AeLAUywYhArE3=s360-rw",
+  image: "logo/booking.png",
   from: "customer.service@booking.com",
   contains: "confirmée"
   )
 
 h = SupplierSearch.create(
   name: "Easyjet",
-  image: "https://lh3.googleusercontent.com/ChO3ZS6EErZWrbHqPpMNCHKRgUhSj82f_b4lGNNjvYtqDroCVABJXB-gwOYlrNBM65kU=s360-rw",
-  from: "confirmation@easyjet.com",
+  image: "logo/easyjet.png",
+  from: "confirmation@easyjet.com"
   )
 
+i = SupplierSearch.create(
+  name: "Uber Eats",
+  image: "logo/uber_eats.png",
+  from: "uber.france@uber.com",
+  subject: "eats",
+  not_contains: "pourboire",
+  )
+
+j = SupplierSearch.create(
+  name: "Uber Jump",
+  image: "logo/jump.png",
+  from: "uber.france@uber.com",
+  subject: "Jump"
+  )
+
+k = SupplierSearch.create(
+  name: "Lime",
+  image: "logo/lime.png",
+  from: "no-reply@limebike.com",
+  subject: "reçu"
+  )
 
 puts 'SupplierSearch Created'
 

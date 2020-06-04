@@ -1,15 +1,32 @@
 <div class="container">
 
-  <div class="d-flex flex-row m-2 align-center">
-    <%= image_tag @supplier_search.image, class: "supplier-logo"%>
-    <h2 class= "text-left pl-3">Reçus <%= @supplier_search.name %> </h2>
+  <div>
+    <div class="d-flex justify-content-between pt-2">
+      <div class="d-flex flex-row m-2">
+        <%= image_tag @supplier_search.image, class: "supplier-logo"%>
+        <h2 class= "text-left pl-3">Reçus <%= @supplier_search.name %> </h2>
+      </div>
+      <div class="dropdown open">
+        <button class="btn btn-outline-secondary dropdown-toggle"
+          type="button" id="dropdownMenu3" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Envoi automatique
+        </button>
+        <div class="dropdown-menu">
+          <h6 class="dropdown-header">Selectionnez</h6>
+          <a class="dropdown-item" href="#!">Comptable</a>
+          <a class="dropdown-item" href="#!">Qonto</a>
+        </div>
+      </div>
+    </div>
+
+    <p><%= @supplier_search.receipts.count %> nouveaux reçus à traiter</p>
   </div>
 
   <table class="table table-hover table-responsive text-left">
     <thead>
       <tr>
-        <th>Objet</th>
         <th>Date/Heure</th>
+        <th>Objet</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -17,24 +34,29 @@
       <% @receipts.each do |receipt| %>
         <tr>
           <th>
-            <span><%= receipt.subject %></span>
-            <br class=text-muted><%= receipt.snippet.truncate(100) %><br>
-            <% if receipt.attachment_names.present? %>
-              <% receipt.attachment_names.each do |attachment| %>
-                <span class="badge badge-secondary badge-pill"><%= attachment %></span>
-              <% end %>
-            <% end %>
+            <%= receipt.send_date.strftime("%d-%m-%y %n à %H:%M")%>
           </th>
-          <td class = "font-weight-light">
-            <%= receipt.send_date.strftime("%d %b %Y - %H:%M")%>
+          <td>
+            <span class="text-weight-bold"><%= receipt.subject %> >></span>
+              <% if receipt.attachment_names.present? %>
+                <span class="text-weight-light"><%= receipt.snippet.truncate(100) %></span>
+                <% receipt.attachment_names.each do |attachment| %>
+                  <span class="badge badge-secondary badge-pill"><%= attachment %></span>
+                <% end %>
+              <% end %>
+            </p>
           </td>
           <td scope="row">
-            <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
-              <!-- <i class="fas fa-share-square"></i> -->
-            <% end %>
-            <%= link_to dismiss_receipt_path(receipt) do %>
-              <!-- <i class="far fa-window-close"></i> -->
-            <% end %>
+            <div class="justify-content-between">
+              <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
+              <button class="btn btn-primary btn-sm">partager</button>
+                <!-- <i class="fas fa-share-square"></i> -->
+              <% end %>
+              <%= link_to dismiss_receipt_path(receipt) do %>
+              <button class="btn btn-outline-secondary btn-sm">ignorer</button>
+                <!-- <i class="far fa-window-close"></i> -->
+              <% end %>
+            </div>
           </td>
         </tr>
       <% end %>

@@ -19,8 +19,8 @@
            <%= f.input :not_contains, :label => 'Ne doit pas contenir' %>
           </div>
         </div>
-        <%= f.input :start_date, :label => "Tous les mails jusqu'au", as: :date %>
-        <%= f.input :end_date, :label => "Tous les mails jusqu'au", as: :date %>
+        <%= f.input :start_date, :label => "Tous les mails à partir de", as: :date %>
+        <%#= f.input :end_date, :label => "Tous les mails jusqu'au", as: :date %>
         <%= f.input :label, :label => 'Où chercher ?', collection: SupplierSearch::LABEL %>
         <%= f.input :attachment, :label => 'Contenant une pièce jointe', as: :boolean %>
         <%= f.button :submit, :value => 'Ajouter', class: "btn btn-primary mt-3 mb-3" %>

@@ -1,13 +1,32 @@
-  <h1 class="text-center mt-3">Ajouter un partenaire</h1>
+  <h1 class="text-center mt-3">Ajouter un partenaire bancaire</h1>
+  <p class="text-center">Facilitez la réconciliation et l'enregistrement comptable, renseigner les partenaires avec lesquels vous souhaitez partager vos reçus.</p>
   <div class="form w-75 mx-auto">
+
     <%= simple_form_for @receiver do |f| %>
       <div class= "d-flex justify-content-around mt-5">
         <div class="flex-grow-1">
-          <%= f.input :email, :label => 'Receiver Email' %>
+          <%= f.input :name, :label => 'Votre comptable' %>
         </div>
         <div class="category ml-5">
-          <%= f.input :name, :label => 'Name' %>
+          <%= f.input :email, :label => 'Email', placeholder: "email@comptable.com" %>
         </div>
       </div>
-        <%= f.button :submit, :label => 'Add', class: "btn btn-primary mt-3 mb-3" %>
+      <p>Votre partenaire bancaire</p>
+      <div class="flex-fill">
+          <%= image_tag "/logo/qonto.png", class: "supplier-logo" %>
+          <%= image_tag "/logo/shine.png", class: "supplier-logo" %>
+          <%= image_tag "/logo/spendesk.png", class: "supplier-logo" %>
+          <%= image_tag "/logo/manager-one.png", class: "supplier-logo" %>
+      </div>
+
+      <div class= "d-flex justify-content-around mt-5">
+        <div class="flex-grow-1">
+          <%= f.input :name, as: :radio_buttons, collection: Receiver::PAYMENT, wrapper: :vertical_collection_inline %>
+        </div>
+        <div class="category ml-5">
+          <%= f.input :email, :label => 'Email', placeholder: "eg. votre-email@spendesk.com" %>
+        </div>
+      </div>
+        <%= f.button :submit, :label => 'Ajouter', class: "btn btn-primary mt-3 mb-3" %>
       <% end %>
+

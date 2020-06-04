@@ -29,9 +29,11 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { checked } from '../components/select-row';
 import { selectRow } from '../components/select-row';
+import { showAdditionnalFields } from '../components/show_additionnal_fields';
 import { goToOnBoarding } from '../components/go_to_onboarding';
 
 document.addEventListener('turbolinks:load', () => {
+  showAdditionnalFields();
   // Call your functions here, e.g:
   // initSelect2();
   // selectRow();

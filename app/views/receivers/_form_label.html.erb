@@ -1,4 +1,10 @@
-<div class='receiver-label'>
+<div class='receiver-label <%= 'accountant-label' if receiver == 'accountant' %>'>
   <%= image_tag "logos/#{receiver.downcase}.png", class: "receiver-logo" %>
-  <div><%= receiver %></div>
+  <div>
+    <% if receiver == 'accountant' %>
+      mon comptable
+    <% else %>
+      <%= receiver %>
+    <% end %>
+  </div>
 </div>

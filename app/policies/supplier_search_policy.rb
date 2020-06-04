@@ -7,21 +7,21 @@ class SupplierSearchPolicy < ApplicationPolicy
     end
 
   end
-  
+
   def create?
     user
   end
 
-  def destroy?
-    record.user == user
+    def destroy?
+      record.user == user
+    end
+
+    def subscribing?
+      true
+    end
+
+    def not_subscribing?
+      true
+    end
   end
 
-  def subscribing?
-    true
-  end
-
-  def not_subscribing?
-    true
-  end
-  
-end

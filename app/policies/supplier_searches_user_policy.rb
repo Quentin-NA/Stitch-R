@@ -6,17 +6,16 @@ class SupplierSearchesUserPolicy < ApplicationPolicy
       # scope.where(user: user)
     end
 
-  end
-  
-  def create?
-    true
-  end
-  
-  def subscribing?
-    true
-  end
-  
-  def not_subscribing?
-    true
+    def create?
+      true
+    end
+
+    def subscribing?
+      true
+    end
+
+    def not_subscribing?
+      true
+    end
   end
 end

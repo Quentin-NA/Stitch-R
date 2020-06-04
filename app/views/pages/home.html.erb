@@ -10,8 +10,10 @@
       <hr class="my-2">
       <p>Connection en 3 clics avec votre compte Gmail!</p>
       <p class="lead">
-        <%= link_to "Connectez-vous avec Google", new_user_session_path, class: "btn btn-primary btn-lg"%>
-      </p>
+        <%= link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn btn-primary btn-lg" do %>
+            <p class="lead mb-0">Se connecter avec Google
+            <%= image_tag "Google.png", class: "supplier-logo" %></p>
+        <% end %>      </p>
     </div>
   </div>
   <div id="email"></div>

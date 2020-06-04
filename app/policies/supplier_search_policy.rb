@@ -9,7 +9,7 @@ class SupplierSearchPolicy < ApplicationPolicy
   end
   
   def create?
-    record.user == user
+    user
   end
 
   def destroy?
@@ -23,4 +23,5 @@ class SupplierSearchPolicy < ApplicationPolicy
   def not_subscribing?
     true
   end
+  
 end

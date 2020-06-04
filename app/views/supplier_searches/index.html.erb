@@ -14,7 +14,7 @@
                   <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
               <% end %>
               <p class="card-text pl-4">
-                <% counter = Receipt.where(supplier_search_id: search.id, status: "new").count %>
+                <% counter = GmailApi::CountUserMessages.new(current_user).call(search.query) %>
                 <% if counter > 0 %>
                   <strong class="bg-success rounded-circle text-dark p-2"><%= counter %></strong> reçus<br>
                 <% else %>

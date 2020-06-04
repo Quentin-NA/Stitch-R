@@ -5,22 +5,22 @@ class SupplierSearchPolicy < ApplicationPolicy
       # For a multi-tenant SaaS app, you may want to use:
       # scope.where(user: user)
     end
+    def create?
+      record.user == user
+    end
 
-  end
-  
-  def create?
-    record.user == user
+    def destroy?
+      record.user == user
+    end
+
+    def subscribing?
+      true
+    end
+
+    def not_subscribing?
+      true
+    end
   end
 
-  def destroy?
-    record.user == user
-  end
 
-  def subscribing?
-    true
-  end
-
-  def not_subscribing?
-    true
-  end
 end

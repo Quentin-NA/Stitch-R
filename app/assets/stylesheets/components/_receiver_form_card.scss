@@ -1,0 +1,18 @@
+.receiver-label {
+  .receiver-logo {
+    height: 100px;
+    border-radius: 5px;
+    object-fit: contain;
+    filter: grayscale(1);
+  }
+  > div {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 5px;
+  }
+}
+fieldset.receiver_name {
+  input:checked ~ label .receiver-logo {
+    filter: none;
+  }
+}

@@ -19,20 +19,21 @@ class ReceiversController < ApplicationController
 
   def create
     @receiver = Receiver.new(receiver_params)
+    @receiver.image = "logos/#{@receiver.name.downcase}.png"
     @receiver.user = current_user
+    authorize @receiver
     if @receiver.save
-      redirect_to supplier_searches_path
+      redirect_to dashboard_path
     else
       render :new
     end
-    authorize @receiver
   end
 
   def destroy
     @receiver = Receiver.find(params[:id])
+    authorize @receiver
     @receiver.destroy
     redirect_to receivers_path
-    authorize @receiver
   end
 
   private

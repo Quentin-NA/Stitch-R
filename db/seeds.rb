@@ -6,8 +6,8 @@ puts 'SupplierSearch Creation'
 a = SupplierSearch.create(
   name: "Uber",
   from: "uber.france@uber.com",
-  contains: "'votre course'",
-  not_contains: "Jump",
+  contains: "course",
+  not_contains: "Jump pourboire",
   image: "logos/uber.png",
   start_date: "01/01/2018"
   )

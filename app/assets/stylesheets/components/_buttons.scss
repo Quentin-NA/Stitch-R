@@ -1,0 +1,46 @@
+.stitch-btn {
+  color: white;
+  border: 1px solid lightgray;
+  background: lightgray;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 0.8em;
+  text-align: center;
+  &:hover {
+    text-decoration: none;
+    background: transparent;
+    color: lightgray;
+  }
+}
+.stitch-btn-green {
+  @extend .stitch-btn;
+  color: white;
+  border-color: $green;
+  background: $green;
+  &:hover {
+    background: transparent;
+    color: $green;
+  }
+}
+.stitch-btn-outline {
+  @extend .stitch-btn;
+  color: lightgray;
+  border-color: lightgray;
+  background: transparent;
+  &:hover {
+    background: lightgray;
+    color: white;
+  }
+}
+.stitch-btn-outline-green {
+  @extend .stitch-btn-outline;
+  color: $green;
+  border-color: $green;
+  background: transparent;
+  &:hover {
+    background: $green;
+    color: white;
+  }
+}

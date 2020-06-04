@@ -1,0 +1,24 @@
+.supplier-searches-show-header {
+  border-radius: 0px;
+  background-color: transparent !important;
+  overflow: unset;
+  .receipt-line-date {
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.1);
+  }
+  .receipt-line-content {
+    h1 {
+      margin: 0;
+    }
+    > div {
+      opacity: 0.5;
+    }
+  }
+}
+.go-back.stitch-btn-outline {
+  display: inline-block;
+  margin-bottom: 10px;
+}

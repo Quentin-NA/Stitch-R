@@ -23,9 +23,9 @@
       <% end %>
       <div class="supplier-card-subscription text-center">
         <% if current_user.supplier_searches.include?(search) %>
-          <%= link_to "Désactiver", not_subscribing_supplier_searches_user_path(search), class: "#{'visible-btn' if controller_name == 'supplier_searches_users'}" %>
+          <%= link_to "Désactiver", not_subscribing_supplier_searches_user_path(search), class: "stitch-btn #{'stitch-btn-green' if controller_name == 'supplier_searches_users'}" %>
         <% else %>
-          <%= link_to "Souscrire", subscribing_supplier_searches_user_path(search), class: "#{'visible-btn' if controller_name == 'supplier_searches_users'}" %>
+          <%= link_to "Souscrire", subscribing_supplier_searches_user_path(search), class: "stitch-btn #{'stitch-btn-green' if controller_name == 'supplier_searches_users'}" %>
         <% end %>
       </div>
     </div>

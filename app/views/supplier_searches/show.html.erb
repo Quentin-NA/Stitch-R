@@ -1,60 +1,83 @@
 <div class="container">
-  <div>
-    <div class="d-flex justify-content-between pt-2">
-      <div class="d-flex flex-row m-2">
-        <div>
-          <%= image_tag @supplier_search.image, class: "supplier-logo"%>
-          <h2 class= "text-left pl-3">Reçus <%= @supplier_search.name %></h2>
-        </div>
-        <div class="justify-content-between">
-          <%#= link_to share_receipt_path(@receipts, receiver_id: current_user.receivers.first.id) do %>
-          <button class="btn btn-primary">tout partager</button>
-          <%# end %>
-          <%#= link_to dismiss_receipt_path(@receipts) do %>
-          <button class="btn btn-outline-secondary">tout ignorer</button>
-          <%# end %>
-        </div>
-      </div>
-      <% count_new = @supplier_search.receipts.where(status: "new").count %>
-      <p><%= count_new %> nouveaux reçus à traiter</p>
-  </div>
-  <% if count_new > 0 %>
-    <div class="receipts-table-header receipt-line">
-      <div class="receipt-line-date">Date/Heure</div>
-      <div class="receipt-line-content">Objet</div>
-      <div class="receipt-line-ctas"></div>
+
+  <%= link_to "<< Retour", supplier_searches_path, class: 'go-back stitch-btn-outline' %>
+
+  <div class="supplier-searches-show-header receipt-line">
+    <div class="receipt-line-date" style="background-image: url(<%= image_path @supplier_search.image %>)">
     </div>
-    <% @receipts.each do |receipt| %>
-      <div class="receipts-table-header receipt-line">
-        <div class="receipt-line-date">
-          <%= receipt.send_date.strftime("%d-%m-%y %n à %H:%M")%>
+    <div class="receipt-line-content">
+      <h1 class=""><%= @supplier_search.name %></h1>
+      <div><span><%= pluralize(@receipts.count, 'reçu', 'reçus') %></span> à traiter</div>
+    </div>
+    <% unless @receipts.empty? %>
+      <div class="receipt-line-ctas">
+        <%= link_to "Tout partager", "", class: 'stitch-btn-green' %>
+        <%= link_to "Tout annuler", "", class: 'stitch-btn' %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @receipts.empty? %>
+
+
+
+  <% else %>
+    <!-- fake line -->
+    <div class="receipt-line">
+      <div class="receipt-line-date text-center">
+        <%= Time.now.strftime("%d/%m/%y")%>
+        <br>
+        <%= Time.now.strftime("%H:%M")%>
+      </div>
+      <div class="receipt-line-content">
+        <div class="subject">
+          <%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptatibus, molestiae enim laboriosam labore minima harum, exercitationem iure deserunt vel, ipsa nihil. Aperiam numquam natus nam nesciunt odit fugit asperiores!".truncate(50) %>
         </div>
-        <div class="receipt-line-content">
-          <span class="text-weight-bold"><%= receipt.subject %> >></span>
-          <% if receipt.attachment_names.present? %>
-            <span class="text-weight-light"><%= receipt.snippet.truncate(100) %></span>
-            <% receipt.attachment_names.each do |attachment| %>
-              <span class="badge badge-secondary badge-pill"><%= attachment %></span>
-            <% end %>
+        <div class="snippet">
+          <%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptatibus, molestiae enim laboriosam labore minima harum, exercitationem iure deserunt vel, ipsa nihil. Aperiam numquam natus nam nesciunt odit fugit asperiores!".truncate(80) %>
+          <%#= receipt.snippet.truncate(100) %>
+        </div>
+        <div class="attachments">
+          <div><i class="fas fa-paperclip"></i></div>
+          <% %w(Lorem ipsum dolor).each do |attachement| %>
+            <div class="attachement"><%= attachement %></div>
           <% end %>
         </div>
-        <div class="receipt-line-ctas">
-          <div class="justify-content-between">
-            <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
-            <button class="btn btn-primary btn-sm">partager</button>
-              <!-- <i class="fas fa-share-square"></i> -->
-            <% end %>
-            <%= link_to dismiss_receipt_path(receipt) do %>
-            <button class="btn btn-outline-secondary btn-sm">ignorer</button>
-              <!-- <i class="far fa-window-close"></i> -->
+      </div>
+      <div class="receipt-line-ctas">
+        <%= link_to "Partager", "", class: 'stitch-btn-outline-green' %>
+        <%= link_to "Annuler", "", class: 'stitch-btn-outline' %>
+      </div>
+    </div>
+
+    <% @receipts.each do |receipt| %>
+
+      <div class="receipt-line">
+        <div class="receipt-line-date text-center">
+          <%= receipt.send_date.strftime("%d/%m/%y")%>
+          <br>
+          <%= receipt.send_date.strftime("%H:%M")%>
+        </div>
+        <div class="receipt-line-content">
+          <div class="subject"><%= receipt.subject %></div>
+          <div class="snippet">
+            <%= receipt.snippet.truncate(80) %>
+          </div>
+          <div class="attachments">
+            <div><i class="fas fa-paperclip"></i></div>
+            <% receipt.attachment_names.each do |attachment| %>
+              <div class="attachement"><%= attachement %></div>
             <% end %>
           </div>
         </div>
+        <div class="receipt-line-ctas">
+          <%= link_to "Partager", share_receipt_path(receipt, receiver_id: current_user.receivers.first.id), class: 'stitch-btn-outline-green' %>
+          <%= link_to "Annuler", dismiss_receipt_path(receipt), class: 'stitch-btn-outline' %>
+        </div>
       </div>
+
     <% end %>
 
-  <% else %>
-  <p>Tous les reçus ont été traités 🎉 </p>
-  <button class="btn btn-secondary">Retour</button>
   <% end %>
+
 </div>

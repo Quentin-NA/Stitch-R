@@ -1,4 +1,5 @@
 class SupplierSearchesController < ApplicationController
+  before_action :set_supplier_search, only: [:show, :destroy]
 
   def index
     @searches = policy_scope(SupplierSearch)
@@ -6,10 +7,9 @@ class SupplierSearchesController < ApplicationController
   end
 
   def show
-    @supplier_search = SupplierSearch.find(params[:id])
-    StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
-    @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new", user_id: current_user)
-    authorize @supplier_search
+    # StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
+    @receipts = @supplier_search.receipts.where(status: "new", user: current_user)
+    # @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new", user_id: current_user)
   end
 
   def new
@@ -30,11 +30,16 @@ class SupplierSearchesController < ApplicationController
   end
 
   def destroy
-    @supplier_search = SupplierSearch.find(params[:id])
     @supplier_search.destroy
     redirect_to supplier_searches_path
+  end
+
+  private
+
+  def set_supplier_search
+    @supplier_search = SupplierSearch.find(params[:id])
     authorize @supplier_search
-    end
+  end
 
   def search_params
     params.require(:supplier_search).permit(:from, :category, :keyword, :subject, :contains, :not_contains, :start_date, :end_date, :label, :attachment)

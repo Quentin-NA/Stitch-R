@@ -3,7 +3,7 @@
 <p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés. Vous voulez en ajouter? Cliquez ici</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
-      <% if search.subscribe == true %>
+      <%# if search.subscribe == true %>
         <div class="card">
           <div class="card-body">
             <div class="d-flex">
@@ -34,7 +34,7 @@
             </div>
           </div>
         <% end %>
-    <% end %>
+    <%# end %>
     <div class="card">
       <div class="card-body">
         <div class="d-flex">

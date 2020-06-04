@@ -22,19 +22,20 @@ Rails.application.routes.draw do
   end
   resources :receivers, only: [:index, :new, :create, :destroy]
   resources :supplier_searches, only: [:index, :show, :new, :create, :destroy]
-  
+
   resources :supplier_searches_users, only: [:index] do
     member do
       get :subscribing
       get :not_subscribing
     end
   end
- 
+
   resources :supplier_searches_users, only: [:index]
 
   get "/dashboard", to: "pages#dashboard"
   get "/profil", to: "pages#profil"
   get "/history", to: "pages#history"
   get "/trash", to: "pages#trash"
+  get '/mailbox_scanning', to: 'pages#mailbox_scanning'
 
 end

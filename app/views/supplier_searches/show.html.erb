@@ -15,9 +15,10 @@
           <%# end %>
         </div>
       </div>
-    <p><%= @supplier_search.receipts.count %> nouveaux reçus à traiter</p>
+      <% count_new = @supplier_search.receipts.where(status: "new").count %>
+      <p><%= count_new %> nouveaux reçus à traiter</p>
   </div>
-  <% if @supplier_search.receipts.count > 0%>
+  <% if count_new > 0%>
     <table class="table table-hover table-responsive text-left">
       <thead>
         <tr>
@@ -59,9 +60,7 @@
       </tbody>
     </table>
   <% else %>
-  <p>Vous n'avez pas de reçu à traiter pour ce fournisseur</p>
-  <button class="btn btn-secondary">tout ignorer</button>
-
-
+  <p>Tous les reçus ont été traités 🎉 </p>
+  <button class="btn btn-secondary">Retour</button>
   <% end %>
 </div>

@@ -98,7 +98,7 @@ k = SupplierSearch.create(
   )
 
 l = SupplierSearch.create(
-  name: "Oui-go",
+  name: "OuiGo",
   image: "https://lh3.googleusercontent.com/01DZthgdocCF5tYXt3MxpV_zTxXV1CST6U9Fbsr9SXygqw7dD42YjlZMAxUO6N4-VZI=s360-rw",
   from: "ne-pas-repondre@pasngr.ouigo.com",
   attachment: true,
@@ -106,11 +106,11 @@ l = SupplierSearch.create(
   )
 
 m = SupplierSearch.create(
-  name: "Taxi G7",
-  from: "no-reply@g7.fr",
+  name: "TaxiG7",
+  from: "no-reply@taxig7.fr",
   image: "logos/taxiG7.png",
-  subject: "votre course",
-  start_date: "01/01/2019"
+  subject: "votre facture",
+  start_date: "01/01/2015"
   )
 # => https://lh3.googleusercontent.com/7_oQX4naDvPEgU61ktMMJV3pX2v9qMH7oG9UeqqiKO37Tep0VGCqH7BKOASN2ra_DTY=s360-rw
 

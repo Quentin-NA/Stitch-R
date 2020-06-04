@@ -5,16 +5,20 @@
   <div class="form w-75 mx-auto">
 
     <%= simple_form_for @receiver, html: { class: 'text-center' } do |f| %>
-      <h3>Ajouter un partenaire bancaire</h3>
+      <!-- <h3>Ajouter un partenaire bancaire</h3> -->
+      <%# receivers = Receiver::PAYMENT.push('accountant') %>
       <%= f.input :name, as: :radio_buttons,
-          label: "Sélectionner votre partenaire bancaire",
+          label: '',
           collection: Receiver::PAYMENT,
           input_html: { class: 'd-none' },
           label_method: lambda { |payment| render "receivers/form_label", receiver: payment },
           wrapper: :vertical_collection_inline %>
-      <%= f.input :email,
+      <div id='additionnal-fields' class="d-none">
+        <%= f.input :email,
           label: 'Ajouter votre email',
           placeholder: "eg. votre-email@spendesk.com" %>
+      </div>
+
       <%= f.submit 'Ajouter', class: "btn btn-primary mt-3 mb-3" %>
     <% end %>
 <!--
@@ -30,8 +34,8 @@
 
   </div>
 
-  <div class="on-boarding-navs d-flex justify-content-end">
-    <%= link_to "Aller sur votre dashboard", dashboard_path, class: 'btn btn-success' %>
-  </div>
+  <!-- <div class="on-boarding-navs d-flex justify-content-end">
+    <%#= link_to "Aller sur votre dashboard", dashboard_path, class: 'btn btn-success' %>
+  </div> -->
 </div>
 

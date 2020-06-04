@@ -23,7 +23,7 @@ class ReceiversController < ApplicationController
     @receiver.user = current_user
     authorize @receiver
     if @receiver.save
-      redirect_to dashboard_path
+      redirect_to supplier_searches_path
     else
       render :new
     end

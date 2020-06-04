@@ -22,6 +22,11 @@ class ApplicationController < ActionController::Base
     supplier_searches_users_path
   end
 
+  def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
+
   private
 
   def skip_pundit?

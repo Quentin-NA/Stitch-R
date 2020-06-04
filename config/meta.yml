@@ -1,0 +1,7 @@
+meta_product_name: "Stitch-R"
+meta_title: "Stitchr est une solution d'automatisation gratuite
+           qui trie les messages de vos fournisseurs préférés
+           et vous permet de les partagez comme vous le souhaitez."
+meta_description: "Relevant description"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards

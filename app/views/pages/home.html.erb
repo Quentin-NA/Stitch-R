@@ -7,11 +7,14 @@
                   qui trie les messages de vos fournisseurs préférés<br>
                   et vous permet de les partagez comme vous le souhaitez.
                 </p>
-      <hr class="my-2">
-      <p>Connection en 3 clics avec votre compte Gmail!</p>
-      <p class="lead">
-        <%= link_to "Connectez-vous avec Google", new_user_session_path, class: "btn btn-primary btn-lg"%>
-      </p>
+        <hr class="my-2">
+        <p>Connection en 3 clics avec votre compte Gmail!</p>
+        <%= link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn btn-primary btn-lg" do %>
+          <div class="d-flex align-items-center">
+            <%= image_tag "Google.png", class: "supplier-logo mr-1" %>
+            <p class="lead mb-0">Se connecter avec Google</p>
+          </div>
+        <% end %>
     </div>
   </div>
   <div id="email"></div>

@@ -1,6 +1,6 @@
 <div class="container">
 <h1>Votre tableau de bord </h1>
-<p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés. Vous voulez en ajouter? Cliquez ici</p>
+<p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés.</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
       <%# if search.subscribe == true %>
@@ -13,24 +13,26 @@
                   <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
                   <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
               <% end %>
-              <p class="card-text pl-1">
-                <span><%= Receipt.where(supplier_search_id: search.id, status: "new").count %></span>
-                nouveaux reçus, <br><%= Receipt.where(supplier_search_id: search.id, status: "shared").count  %>
-                partagés avec (accountant).
-              <br><%= link_to "Voir tous les reçus", supplier_search_path(search) %>
+              <p class="card-text pl-4">
+                <% counter = Receipt.where(supplier_search_id: search.id, status: "new").count %>
+                <% if counter > 0 %>
+                  <strong class="bg-success rounded-circle text-dark p-2"><%= counter %></strong> reçus<br>
+                <% else %>
+                  <span><%= counter %></span> reçu<br>
+                <% end %>
+                <br><%= link_to "Voir les reçus", supplier_search_path(search) %>
               </p>
-              <div class="btn-group dropright">
+              <div class="dropdown burger-top-right">
                 <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                 <div class="dropdown-menu" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item" href="#"><%= link_to "Ignorer", not_subscribing_supplier_searches_user_path(search) %>
-                  <a class="dropdown-item" href="#">Automatiser</a>
+                  <%= link_to "Ignorer", not_subscribing_supplier_searches_user_path(search), class: "dropdown-item text-primary" %>
+                  <a class="dropdown-item text-primary" href="#">Automatiser</a>
+                  <a class="dropdown-item text-primary" href="#">Actualiser</a>
                 </div>
               </div>
             </div>
-            <div class="card-footer d-flex">
-              <div class="flex-grow-1 pl-1"><p><i class="fas fa-sync-alt"></i>
-                <%= search.updated_at.strftime("%d-%m-%y à %H:%M") %></p>
-              </div>
+            <div class="card-footer font-weight-light footnote">
+                <p><i class="fas fa-history"></i> | <%= search.updated_at.strftime("%d-%b-%y à %Hh%M")%></p>
             </div>
           </div>
         </div>

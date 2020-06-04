@@ -19,30 +19,35 @@
                 partagés avec (accountant).
               <br><%= link_to "Voir tous les reçus", supplier_search_path(search) %>
               </p>
-              <div><%= link_to supplier_search_path(search), method: :delete, data: { confirm: "Voulez-vous effacer cette recherche?" } do %>
-                      <i class="far fa-times-circle"></i>
-                      <% end %>
-                  </div>
+              <div class="btn-group dropright">
+                <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <div class="dropdown-menu" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
+                  <a class="dropdown-item" href="#"><%= link_to "Ignorer", not_subscribing_supplier_searches_user_path(search) %>
+                  <a class="dropdown-item" href="#">Automatiser</a>
+                </div>
               </div>
             </div>
             <div class="card-footer d-flex">
-              <div class="flex-grow-1 pl-1"><p>Dernière recherche <br> <%= search.updated_at.strftime("%d %b %Y - %H:%M") %></p></div>
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                <label class="custom-control-label" for="customSwitch1">Automatiser?</label>
+              <div class="flex-grow-1 pl-1"><p><i class="fas fa-sync-alt"></i>
+                <%= search.updated_at.strftime("%d-%m-%y à %H:%M") %></p>
               </div>
             </div>
           </div>
-        <% end %>
-    <%# end %>
+        </div>
+      <%# end %>
+    <% end %>
     <div class="card">
       <div class="card-body">
-        <div class="d-flex">
+        <div class="d-flex content">
           <p>
-            <%= link_to "Ajoutez des fournisseurs", supplier_searches_users_path, class: "btn btn-primary m-3" %>
+            <%= image_tag "/logo/plus.png", class: "supplier-logo align-self-center"%>
+            <%= link_to "Ajoutez des recherches", supplier_searches_users_path %>
+            </i>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+

@@ -16,7 +16,7 @@
             <p class="card-text pl-1"><span class="badge badge-success text-white"><%= count %> reçus</span></p>
             <div>
               <% if current_user.supplier_searches.include?(supplier_search) %>
-                <%= link_to "Ne pas souscrire", not_subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
+                <%= link_to "Ignorer", not_subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
               <% else %>
                 <%= link_to "Souscrire", subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
               <% end %>

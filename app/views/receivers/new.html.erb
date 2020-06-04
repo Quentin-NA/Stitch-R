@@ -1,46 +1,37 @@
-  <h1 class="text-center mt-3">Ajouter un partenaire bancaire</h1>
+<div id="on-boarding-receiver" class="on-boarding-container">
+
+  <h1 class="text-center mt-3">2/2 - Ajouter vos partenaires</h1>
   <p class="text-center">Facilitez la réconciliation et l'enregistrement comptable, renseigner les partenaires avec lesquels vous souhaitez partager vos reçus.</p>
   <div class="form w-75 mx-auto">
 
-    <%= simple_form_for @receiver do |f| %>
-      <div class= "d-flex justify-content-around mt-5">
-        <div class="flex-grow-1">
-          <%= f.input :name, :label => 'Votre comptable' %>
-        </div>
-        <div class="category ml-5">
-          <%= f.input :email, :label => 'Email', placeholder: "email@comptable.com" %>
-        </div>
-      </div>
-      <p>Votre partenaire bancaire</p>
-
-      <div class="flex-fill">
-        <div class="category-choices">
-          <% Receiver::PAYMENT.each do |payment| %>
-          <div class="flex-fill">
-            <%= image_tag "logos/#{payment.downcase}.png", class: "supplier-logo" %>
-            <input type="checkbox" class="hidden" value="payment<%#= category.id %>" name="post[category_ids][]" id="post_category_ids_payment<%#= category.id %>">
-            <label for="post_category_ids_payment<%#= category.id %>">
-              <%= payment %>
-            </label>
-          <% end %>
-          </div>
-         </div>
-      </div>
-      <div class="category ml-5">
-        <%= f.input :email, :label => 'Email', placeholder: "eg. votre-email@spendesk.com" %>
-      </div>
-
-      <div class= "d-flex justify-content-around mt-5">
-        <div class="flex-grow-1">
-          <%#= f.association :categories, as:  :radio_buttons, collection: Receiver::PAYMENT, wrapper: :vertical_collection_inline  %>
-          <%= f.input :name, as: :radio_buttons, collection: Receiver::PAYMENT, wrapper: :vertical_collection_inline %>
-        </div>
-      <div class="form-group">
-        <label class="control-label check_boxes optional">Categories</label>
-        <input type="hidden" name="post[category_ids][]" value="">
-      </div>
-      </div>
-        <%= f.button :submit, :label => 'Ajouter', class: "btn btn-primary mt-3 mb-3" %>
+    <%= simple_form_for @receiver, html: { class: 'text-center' } do |f| %>
+      <h3>Ajouter un partenaire bancaire</h3>
+      <%= f.input :name, as: :radio_buttons,
+          label: "Sélectionner votre partenaire bancaire",
+          collection: Receiver::PAYMENT,
+          input_html: { class: 'd-none' },
+          label_method: lambda { |payment| render "receivers/form_label", receiver: payment },
+          wrapper: :vertical_collection_inline %>
+      <%= f.input :email,
+          label: 'Ajouter votre email',
+          placeholder: "eg. votre-email@spendesk.com" %>
+      <%= f.submit 'Ajouter', class: "btn btn-primary mt-3 mb-3" %>
     <% end %>
+<!--
+    <br><br>
 
+    <%#= simple_form_for @receiver, html: { class: 'text-center' } do |f| %>
+      <h3>Ajouter votre comptable</h3>
+      <%#= f.input :name, :label => 'Votre comptable' %>
+      <%#= f.input :email, :label => 'Email', placeholder: "eg. votre-email@spendesk.com" %>
+      <%#= f.submit 'Ajouter', class: "btn btn-primary mt-3 mb-3" %>
+    <%# end %> -->
+
+
+  </div>
+
+  <div class="on-boarding-navs d-flex justify-content-end">
+    <%= link_to "Aller sur votre dashboard", dashboard_path, class: 'btn btn-success' %>
+  </div>
+</div>
 

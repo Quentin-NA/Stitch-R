@@ -1,0 +1,15 @@
+#on-boarding-supplier {
+  height: calc(100vh - 66px);
+  display: flex;
+  flex-direction: column;
+  > h1, > p, #on-boarding-nav {
+    flex: 0 0 auto;
+  }
+  > .card-container {
+    flex: 1 1 auto;
+    overflow: scroll;
+  }
+  > #on-boarding-nav {
+    padding: 20px 0 40px;
+  }
+}

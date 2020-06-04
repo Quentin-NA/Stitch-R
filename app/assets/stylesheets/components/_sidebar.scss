@@ -40,3 +40,22 @@
 .inline {
   display:inline;
 }
+
+.side-bar-item i {
+  font-size: 30px;
+  margin-right: 10px;
+  opacity: 0.8;
+}
+
+.side-bar-item {
+  opacity: 0.8;
+}
+
+.side-bar-item:hover {
+  opacity: 1;
+}
+
+ul#medias {
+  margin-top: 265px;
+  font-size: 20px;
+}

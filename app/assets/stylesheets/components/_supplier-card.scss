@@ -1,3 +1,72 @@
+.supplier-card {
+  margin: 10px;
+}
+.supplier-card-logo {
+  position: relative;
+  > a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+  }
+}
+.supplier-card-image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px 10px 0 0;
+}
+.supplier-card-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.3em;
+  box-shadow: 0 0 10px 2px rgba(255,255,255,0.5);
+  &.badge-green {
+    background-color: $green;
+  }
+}
+.supplier-card-footer {
+  background: white;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+}
+.supplier-card-runtime {
+  font-size: 0.7em;
+}
+.supplier-card-subscription a {
+  color: lightgray;
+  border: 1px solid lightgray;
+  padding: 2px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 0.8em;
+  &:hover {
+    text-decoration: none;
+    background: lightgray;
+    color: white;
+  }
+}
+.supplier-card-subscription a.visible-btn {
+  color: $green;
+  border-color: $green;
+  &:hover {
+    background: $green;
+    color: white;
+  }
+}
+
 .supplier-logo{
   object-fit: contain;
   height: 50px;

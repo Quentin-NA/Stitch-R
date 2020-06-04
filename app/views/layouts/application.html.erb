@@ -50,12 +50,12 @@
     </div>
 <!--     <p class="alert"><%#= alert %></p> -->
   <% elsif controller_name == "supplier_searches_users" && action_name == "index" %>
-    <div class="without-dashboard-container">
+    <div class="container">
       <%= yield %>
     </div>
     <!-- <p class="alert"><%= alert %></p> -->
   <% else %>
-    <div class="with-dashboard-container pt-3">
+    <div class="with-dashboard-container">
       <%= yield %>
     </div>
   <% end  %>

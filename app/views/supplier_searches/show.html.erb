@@ -18,47 +18,41 @@
       <% count_new = @supplier_search.receipts.where(status: "new").count %>
       <p><%= count_new %> nouveaux reçus à traiter</p>
   </div>
-  <% if count_new > 0%>
-    <table class="table table-hover table-responsive text-left">
-      <thead>
-        <tr>
-          <th>Date/Heure</th>
-          <th>Objet</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @receipts.each do |receipt| %>
-          <tr>
-            <th>
-              <%= receipt.send_date.strftime("%d-%m-%y %n à %H:%M")%>
-            </th>
-            <td>
-              <span class="text-weight-bold"><%= receipt.subject %> >></span>
-                <% if receipt.attachment_names.present? %>
-                  <span class="text-weight-light"><%= receipt.snippet.truncate(100) %></span>
-                  <% receipt.attachment_names.each do |attachment| %>
-                    <span class="badge badge-secondary badge-pill"><%= attachment %></span>
-                  <% end %>
-                <% end %>
-              </p>
-            </td>
-            <td scope="row">
-              <div class="justify-content-between">
-                <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
-                <button class="btn btn-primary btn-sm">partager</button>
-                  <!-- <i class="fas fa-share-square"></i> -->
-                <% end %>
-                <%= link_to dismiss_receipt_path(receipt) do %>
-                <button class="btn btn-outline-secondary btn-sm">ignorer</button>
-                  <!-- <i class="far fa-window-close"></i> -->
-                <% end %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <% if count_new > 0 %>
+    <div class="receipts-table-header receipt-line">
+      <div class="receipt-line-date">Date/Heure</div>
+      <div class="receipt-line-content">Objet</div>
+      <div class="receipt-line-ctas"></div>
+    </div>
+    <% @receipts.each do |receipt| %>
+      <div class="receipts-table-header receipt-line">
+        <div class="receipt-line-date">
+          <%= receipt.send_date.strftime("%d-%m-%y %n à %H:%M")%>
+        </div>
+        <div class="receipt-line-content">
+          <span class="text-weight-bold"><%= receipt.subject %> >></span>
+          <% if receipt.attachment_names.present? %>
+            <span class="text-weight-light"><%= receipt.snippet.truncate(100) %></span>
+            <% receipt.attachment_names.each do |attachment| %>
+              <span class="badge badge-secondary badge-pill"><%= attachment %></span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="receipt-line-ctas">
+          <div class="justify-content-between">
+            <%= link_to share_receipt_path(receipt, receiver_id: current_user.receivers.first.id) do %>
+            <button class="btn btn-primary btn-sm">partager</button>
+              <!-- <i class="fas fa-share-square"></i> -->
+            <% end %>
+            <%= link_to dismiss_receipt_path(receipt) do %>
+            <button class="btn btn-outline-secondary btn-sm">ignorer</button>
+              <!-- <i class="far fa-window-close"></i> -->
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
   <% else %>
   <p>Tous les reçus ont été traités 🎉 </p>
   <button class="btn btn-secondary">Retour</button>

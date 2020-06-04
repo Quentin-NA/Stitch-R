@@ -83,7 +83,7 @@ i = SupplierSearch.create(
 
 j = SupplierSearch.create(
   name: "Uber Jump",
-  image: "s/jump.png",
+  image: "logos/jump.png",
   from: "uber.france@uber.com",
   subject: "Jump",
   start_date: "01/01/2019"

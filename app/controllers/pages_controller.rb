@@ -23,4 +23,7 @@ class PagesController < ApplicationController
     @user = current_user
     @receipts = Receipt.where(status: 'dismissed', user_id: current_user)
   end
+
+  def mailbox_scanning
+  end
 end

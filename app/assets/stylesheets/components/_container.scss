@@ -1,14 +1,18 @@
 .with-dashboard-container {
   position: fixed;
-  top: 70px;
-  left: 230px;
-  width: 80%;
-  height: 90%;
-  margin-bottom: 20px;
-  color: grey;
-  list-style: none;
+  // top: 70px;
+  bottom: 0;
+  right: 0;
+  // left: 230px;
+  height: calc(100vh - 66px);
+  width: calc(100vw - 220px);
+  padding: 20px 40px;
+  // height: 90%;
+  // margin-bottom: 20px;
+  // color: grey;
+  // list-style: none;
   overflow: scroll;
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  // box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
 
 .without-dashboard-container {
@@ -27,4 +31,5 @@
 .on-boarding-container {
   width: 80%;
   margin: auto;
+  min-height: calc(100vh - 66px);
 }

@@ -1,0 +1,33 @@
+<% session["search#{search.id}"] = GmailApi::CountUserMessages.new(current_user).call(search.query) unless session["search#{search.id}"] %>
+<% if controller_name == "supplier_searches" %>
+  <!-- TODO => check counter -->
+  <% counter = session["search#{search.id}"] %>
+<% else %>
+  <% counter = session["search#{search.id}"] %>
+<% end %>
+<% if counter > 0 %>
+  <div class="supplier-card">
+    <div class="supplier-card-logo">
+      <%= link_to '', supplier_search_path(search) if controller_name == "supplier_searches" %>
+      <%#= image_tag search.image %>
+      <div class="supplier-card-image" style="background-image: url(<%= image_path(search.image) %>)"></div>
+      <div class="supplier-card-badge <%= 'badge-green' if counter == 0 %>">
+        <%= counter %>
+      </div>
+    </div>
+    <div class="supplier-card-footer">
+      <% if controller_name == "supplier_searches" %>
+        <div class="supplier-card-runtime text-center">
+          <i class="fas fa-history"></i> | <%= search.updated_at.strftime("%d-%b-%y à %Hh%M")%>
+        </div>
+      <% end %>
+      <div class="supplier-card-subscription text-center">
+        <% if current_user.supplier_searches.include?(search) %>
+          <%= link_to "Désactiver", not_subscribing_supplier_searches_user_path(search), class: "#{'visible-btn' if controller_name == 'supplier_searches_users'}" %>
+        <% else %>
+          <%= link_to "Souscrire", subscribing_supplier_searches_user_path(search), class: "#{'visible-btn' if controller_name == 'supplier_searches_users'}" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

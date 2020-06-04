@@ -3,52 +3,57 @@
 <p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés.</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
+      <%= render 'supplier_searches/card', search: search %>
+
       <%# if search.subscribe == true %>
-        <div class="card">
+<!--         <div class="card">
           <div class="card-body">
             <div class="d-flex">
-              <% if search.image.present? %>
-                  <%= image_tag search.image, class: "supplier-logo"%>
-                <% else %>
-                  <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-                  <%= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
-              <% end %>
+              <%# if search.image.present? %>
+                  <%#= image_tag search.image, class: "supplier-logo"%>
+                <%# else %>
+                  <%# @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+                  <%#= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
+              <%# end %>
               <p class="card-text pl-4">
-                <% counter = GmailApi::CountUserMessages.new(current_user).call(search.query) %>
-                <% if counter > 0 %>
-                  <strong class="bg-success rounded-circle text-dark p-2"><%= counter %></strong> reçus<br>
-                <% else %>
-                  <span><%= counter %></span> reçu<br>
-                <% end %>
-                <br><%= link_to "Voir les reçus", supplier_search_path(search) %>
+                <%# counter = GmailApi::CountUserMessages.new(current_user).call(search.query) %>
+                <%# if counter > 0 %>
+                  <strong class="bg-success rounded-circle text-dark p-2"><%#= counter %></strong> reçus<br>
+                <%# else %>
+                  <span><%#= counter %></span> reçu<br>
+                <%# end %>
+                <br><%#= link_to "Voir les reçus", supplier_search_path(search) %>
               </p>
               <div class="dropdown burger-top-right">
                 <i class="fas fa-ellipsis-v" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                 <div class="dropdown-menu" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <%= link_to "Ignorer", not_subscribing_supplier_searches_user_path(search), class: "dropdown-item text-primary" %>
+                  <%#= link_to "Ignorer", not_subscribing_supplier_searches_user_path(search), class: "dropdown-item text-primary" %>
                   <a class="dropdown-item text-primary" href="#">Automatiser</a>
                   <a class="dropdown-item text-primary" href="#">Actualiser</a>
                 </div>
               </div>
             </div>
             <div class="card-footer font-weight-light footnote">
-                <p><i class="fas fa-history"></i> | <%= search.updated_at.strftime("%d-%b-%y à %Hh%M")%></p>
+                <p><i class="fas fa-history"></i> | <%#= search.updated_at.strftime("%d-%b-%y à %Hh%M")%></p>
             </div>
           </div>
-        </div>
+        </div> -->
       <%# end %>
     <% end %>
-    <div class="card">
+    <div class="supplier-card d-flex align-items-center justify-content-center">
+      <%= link_to "Ajoutez des recherches", supplier_searches_users_path, class: 'btn btn-primary' %>
+    </div>
+    <!-- <div class="card">
       <div class="card-body">
         <div class="d-flex content">
           <p>
             <%= image_tag "/logo/plus.png", class: "supplier-logo align-self-center"%>
-            <%= link_to "Ajoutez des recherches", supplier_searches_users_path %>
+            <%= link_to "Ajouter des recherches", supplier_searches_users_path %>
             </i>
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

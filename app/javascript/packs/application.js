@@ -30,6 +30,7 @@ import "bootstrap";
 import { checked } from '../components/select-row';
 import { selectRow } from '../components/select-row';
 import { showAdditionnalFields } from '../components/show_additionnal_fields';
+import { goToOnBoarding } from '../components/go_to_onboarding';
 
 document.addEventListener('turbolinks:load', () => {
   showAdditionnalFields();
@@ -37,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // selectRow();
   // checked();
+  goToOnBoarding();
 });

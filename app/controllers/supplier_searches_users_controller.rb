@@ -17,6 +17,10 @@ class SupplierSearchesUsersController < ApplicationController
     @search = SupplierSearchesUser.find_by(user: current_user, supplier_search: SupplierSearch.find(params[:id]))
     @search.destroy
     flash[:notice] = "Vous avez supprimé cette recherche"
-    redirect_to supplier_searches_users_path
+    if request.referer.include?('/supplier_searches_users')
+      redirect_to supplier_searches_users_path
+    else
+      redirect_to supplier_searches_path
+    end
   end
 end

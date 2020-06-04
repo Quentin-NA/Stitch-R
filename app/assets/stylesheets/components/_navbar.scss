@@ -11,3 +11,21 @@
   width: 100px;
   height: 40px;
 }
+
+.nav-item #login {
+  color: grey;
+  font-size: larger;
+  opacity: 0.8;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.nav-item #login:hover{
+  text-decoration: none;
+  color: black;
+  opacity: 1;
+}
+
+.nav-item #login-link:hover{
+  text-decoration: none;
+}

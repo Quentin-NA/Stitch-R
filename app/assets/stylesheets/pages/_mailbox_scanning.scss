@@ -1,0 +1,15 @@
+.sync-icon-container {
+  font-size: 10em;
+  > i {
+    animation: rotate-forever 1s infinite linear;
+  }
+}
+
+@keyframes rotate-forever {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}

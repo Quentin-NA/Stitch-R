@@ -32,7 +32,7 @@
   <body>
     <%= render 'shared/navbar'%>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/sidebar' unless (controller_name == "pages" && action_name == "home" ) ||
+    <%= render 'shared/sidebar' unless (controller_name == "pages" && ["home", "mailbox_scanning"].include?(action_name)) ||
                                        (controller_name == "supplier_searches_users" && action_name == "index") ||
                                        (controller_name == "receivers" && action_name == "new" )%>
 
@@ -41,10 +41,10 @@
       <div class="content-wrapper">
         <%= yield %>
       </div>
-      <p class="alert"><%= alert %></p>
+      <!-- <p class="alert"><%= alert %></p> -->
     </div>
     <%= render 'shared/footer' %>
-  <% elsif controller_name == "receivers" && action_name == "new" %>
+  <% elsif (controller_name == "receivers" && action_name == "new") || (controller_name == "pages" && action_name == "mailbox_scanning") %>
     <div class="container">
       <%= yield %>
     </div>
@@ -53,7 +53,7 @@
     <div class="without-dashboard-container">
       <%= yield %>
     </div>
-    <p class="alert"><%= alert %></p>
+    <!-- <p class="alert"><%= alert %></p> -->
   <% else %>
     <div class="with-dashboard-container pt-3">
       <%= yield %>

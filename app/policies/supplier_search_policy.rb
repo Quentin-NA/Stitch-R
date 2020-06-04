@@ -6,9 +6,11 @@ class SupplierSearchPolicy < ApplicationPolicy
       # scope.where(user: user)
     end
 
-    def create?
-      record.user == user
-    end
+  end
+
+  def create?
+    user
+  end
 
     def destroy?
       record.user == user
@@ -23,5 +25,3 @@ class SupplierSearchPolicy < ApplicationPolicy
     end
   end
 
-
-end

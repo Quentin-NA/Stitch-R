@@ -39,16 +39,14 @@
       <%# end %>
     <% end %>
     <div class="card">
-      <div class="card-body">
-        <div class="d-flex content">
-          <p>
-            <%= image_tag "/logo/plus.png", class: "supplier-logo align-self-center"%>
-            <%= link_to "Ajoutez des recherches", supplier_searches_users_path %>
-            </i>
-          </p>
+        <div class="card-body mx-auto">
+          <div class="d-flex">
+              <%= link_to new_supplier_search_path do %>
+                <i id= "btn-plus-index" class="fas fa-plus"></i>
+              <% end %>
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 

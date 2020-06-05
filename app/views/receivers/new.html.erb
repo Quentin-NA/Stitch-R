@@ -4,20 +4,20 @@
   <p class="text-center">Facilitez la réconciliation et l'enregistrement comptable, renseigner les partenaires avec lesquels vous souhaitez partager vos reçus.</p>
   <div class="form w-75 mx-auto">
 
-    <%= simple_form_for @receiver, html: { class: 'text-center' } do |f| %>
+    <%= simple_form_for @receiver, html: { class: 'text-center mt-5' } do |f| %>
       <%= f.input :name, as: :radio_buttons,
           label: '',
           collection: Receiver::PAYMENT,
           input_html: { class: 'd-none' },
           label_method: lambda { |payment| render "receivers/form_label", receiver: payment },
           wrapper: :vertical_collection_inline %>
-      <div id='additionnal-fields' class="d-none">
+      <div id='additionnal-fields' class="d-none mt-5">
         <%= f.input :email,
           label: "Ajouter l'email de destination",
           placeholder: "eg. votre-email@spendesk.com" %>
       </div>
 
-      <%= f.submit 'Ajouter', class: "stitch-btn-green btn-large" %>
+      <%= f.submit 'Ajouter', class: "stitch-btn-green btn-large mt-4" %>
     <% end %>
 
 </div>

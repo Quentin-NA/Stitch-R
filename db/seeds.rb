@@ -100,7 +100,7 @@ k = SupplierSearch.create(
 
 l = SupplierSearch.create(
   name: "OuiGo",
-  image: "https://lh3.googleusercontent.com/01DZthgdocCF5tYXt3MxpV_zTxXV1CST6U9Fbsr9SXygqw7dD42YjlZMAxUO6N4-VZI=s360-rw",
+  image: "ouigo.png",
   from: "ne-pas-repondre@pasngr.ouigo.com",
   attachment: true,
   start_date: "01/01/2019"

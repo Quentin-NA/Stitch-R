@@ -1,5 +1,60 @@
+// #on-boarding-supplier {
+//   > .card-container {
+//     flex: 1 1 auto;
+//     overflow: scroll;
+//   }
+//   > #on-boarding-nav {
+//     padding: 20px 0 40px;
+//   }
+// }
+
+
+
 #on-boarding-receiver {
-  form {
-    margin-top: 30px;
+  height: calc(100vh - 66px - 20px);
+  display: flex;
+  flex-direction: column;
+  > h1, > p, #on-boarding-nav {
+    flex: 0 0 auto;
   }
+  form {
+    flex: 1 1 auto;
+    overflow: scroll;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    > div:first-of-type {
+      flex: 1;
+    }
+    > div:last-child {
+      flex: 0 0 auto;
+      padding: 20px 0 40px;
+    }
+  }
+  .receiver_name .form-check-inline {
+    margin-right: 2em;
+  }
+  .receiver_name label {
+    cursor: pointer;
+  }
+  .receiver_name input ~ label .supplier-card-footer {
+    i:first-child {
+      display: inline;
+    }
+    i:last-child {
+      display: none;
+    }
+  }
+  .receiver_name input:checked ~ label .supplier-card-footer {
+    i:first-child {
+      display: none;
+    }
+    i:last-child {
+      display: inline;
+    }
+  }
+}
+#additionnal-fields {
+  width: 70%;
+  margin: auto;
 }

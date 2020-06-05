@@ -1,23 +1,26 @@
 
 <section class="jumbotron">
-  <div class ="ml-5">
+  <!-- <div class ="ml-5"> -->
     <div class="container">
-      <h1 class="display-3">Trouvez et partagez vos e-reçus<br> sans-effort</h1>
+      <h1 class="display-3">Trouvez et partagez vos<br>
+                            reçus électroniques<br>
+                            sans-effort</h1>
       <p class="lead"><strong>Stitchr</strong> est une solution d'automatisation gratuite<br>
                   qui trie les messages de vos fournisseurs préférés<br>
-                  et vous permet de les partagez comme vous le souhaitez.
+                  et vous permet de les partagez avec votre comptable <br>
+                  ou une solution de gestion des frais.
                 </p>
-        <hr class="my-2">
-        <p>Connection en 3 clics avec votre compte Gmail!</p>
+<!--         <hr class="my-2"> -->
         <%= link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn btn-primary btn-lg" do %>
           <div class="d-flex align-items-center">
             <%= image_tag "Google.png", class: "supplier-logo mr-1" %>
-            <p class="lead mb-0">Se connecter avec Google</p>
+            <p class="lead mt-2">se connecter avec Google</p>
           </div>
         <% end %>
+        <p>Testez 👀 en 3 clics avec Gmail ou découvrez l'offre 👇</p>
+      <div id="email"></div>
     </div>
-  </div>
-  <div id="email"></div>
+  <!-- </div> -->
 </section>
 
 <section class="container">

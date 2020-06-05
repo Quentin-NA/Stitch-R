@@ -38,3 +38,11 @@
   padding: 20px 40px;
   box-sizing: border-box;
 }
+
+.empty-page-container {
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

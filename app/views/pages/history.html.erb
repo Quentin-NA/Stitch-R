@@ -1,16 +1,13 @@
 <div class="container">
 
   <%= link_to "<< Retour", supplier_searches_path, class: 'go-back stitch-btn-outline' %>
-
-  <div class="receipt-line-date" style="background-image: url(<%= image_path current_user.receivers.first.image %>)">
-    </div>
   <h1>Reçus transférés</h1>
 
   <% if @receipts.empty? %>
 
-    <div>
+    <div class='empty-page-container'>
       <h2 class=text-center>Tout va bien 😊, tous vos reçus sont enregistré par <%= current_user.receivers.first.name %> </h2>
-      <%= link_to "<< Retour", supplier_searches_path, class: 'btn btn-secondary btn-lg' %>
+      <%= link_to "<< Retour", supplier_searches_path, class: 'stitch-btn btn-large' %>
     </div>
 
   <% else %>

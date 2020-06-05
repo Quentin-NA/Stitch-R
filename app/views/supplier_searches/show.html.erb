@@ -19,34 +19,6 @@
 
   <% unless @receipts.empty? %>
 
-    <!-- fake line -->
-    <div class="receipt-line">
-      <div class="receipt-line-date text-center">
-        <%= Time.now.strftime("%d/%m/%y")%>
-        <br>
-        <%= Time.now.strftime("%H:%M")%>
-      </div>
-      <div class="receipt-line-content">
-        <div class="subject">
-          <%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptatibus, molestiae enim laboriosam labore minima harum, exercitationem iure deserunt vel, ipsa nihil. Aperiam numquam natus nam nesciunt odit fugit asperiores!".truncate(50) %>
-        </div>
-        <div class="snippet">
-          <%= "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptatibus, molestiae enim laboriosam labore minima harum, exercitationem iure deserunt vel, ipsa nihil. Aperiam numquam natus nam nesciunt odit fugit asperiores!".truncate(80) %>
-          <%#= receipt.snippet.truncate(100) %>
-        </div>
-        <div class="attachments">
-          <div><i class="fas fa-paperclip"></i></div>
-          <% %w(Lorem ipsum dolor).each do |attachement| %>
-            <div class="attachement"><%= attachement %></div>
-          <% end %>
-        </div>
-      </div>
-      <div class="receipt-line-ctas">
-        <%= link_to "Partager", "", class: 'stitch-btn-outline-green' %>
-        <%= link_to "Annuler", "", class: 'stitch-btn-outline' %>
-      </div>
-    </div>
-
     <% @receipts.each do |receipt| %>
 
       <div class="receipt-line">
@@ -64,14 +36,14 @@
             <div class="attachments">
               <div><i class="fas fa-paperclip"></i></div>
               <% receipt.attachment_names.each do |attachment| %>
-                <div class="attachement"><%= attachement %></div>
+                <div class="attachement"><%= attachment %></div>
               <% end %>
             </div>
           <% end %>
         </div>
         <div class="receipt-line-ctas">
           <%= link_to "Partager", share_receipt_path(receipt, receiver_id: current_user.receivers.first.id), class: 'stitch-btn-outline-green' %>
-          <%= link_to "Annuler", dismiss_receipt_path(receipt), class: 'stitch-btn-outline' %>
+          <%= link_to "Ignorer", dismiss_receipt_path(receipt), class: 'stitch-btn-outline' %>
         </div>
       </div>
 

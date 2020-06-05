@@ -19,7 +19,6 @@
 
   <% unless @receipts.empty? %>
 
-
     <% @receipts.each do |receipt| %>
 
       <div class="receipt-line">
@@ -44,7 +43,7 @@
         </div>
         <div class="receipt-line-ctas">
           <%= link_to "Partager", share_receipt_path(receipt, receiver_id: current_user.receivers.first.id), class: 'stitch-btn-outline-green' %>
-          <%= link_to "Annuler", dismiss_receipt_path(receipt), class: 'stitch-btn-outline' %>
+          <%= link_to "Ignorer", dismiss_receipt_path(receipt), class: 'stitch-btn-outline' %>
         </div>
       </div>
 

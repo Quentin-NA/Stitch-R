@@ -1,0 +1,49 @@
+.receipt-line {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  > div {
+    padding: 10px 20px;
+  }
+}
+.receipt-line-date {
+  flex: 0 0 100px;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+.receipt-line-content {
+  flex: 1;
+  .subject {
+    font-weight: normal;
+  }
+  .snippet {
+    opacity: 0.8;
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+  .attachments {
+    display: flex;
+    align-iems: center;
+    justify-content: flex-start;
+    > div:first-child {
+      opacity: 0.2;
+    }
+  }
+  .attachement {
+    border-radius: 5px;
+    padding: 2px 5px;
+    background-color: $light-gray;
+    font-size: 0.7em;
+    font-weight: bold;
+    margin: 3px;
+  }
+}
+.receipt-line-ctas {
+  flex: 0 0 200px;
+  > a {
+    display: block;
+  }
+}

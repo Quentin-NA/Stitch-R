@@ -1,5 +1,19 @@
 .supplier-card {
   margin: 10px;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  &:hover {
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+
+  }
+  &.add-supplier {
+    height: calc(100% - 20px);
+    background-color: white;
+    color: lightgray;
+    font-size: 3em;
+    min-height: 215px;
+  }
 }
 .supplier-card-logo {
   position: relative;
@@ -44,28 +58,28 @@
 .supplier-card-runtime {
   font-size: 0.7em;
 }
-.supplier-card-subscription a {
-  color: lightgray;
-  border: 1px solid lightgray;
-  padding: 2px 10px;
-  border-radius: 5px;
-  margin-top: 5px;
-  display: inline-block;
-  font-size: 0.8em;
-  &:hover {
-    text-decoration: none;
-    background: lightgray;
-    color: white;
-  }
-}
-.supplier-card-subscription a.visible-btn {
-  color: $green;
-  border-color: $green;
-  &:hover {
-    background: $green;
-    color: white;
-  }
-}
+// .supplier-card-subscription a {
+//   color: lightgray;
+//   border: 1px solid lightgray;
+//   padding: 2px 10px;
+//   border-radius: 5px;
+//   margin-top: 5px;
+//   display: inline-block;
+//   font-size: 0.8em;
+//   &:hover {
+//     text-decoration: none;
+//     background: lightgray;
+//     color: white;
+//   }
+// }
+// .supplier-card-subscription a.visible-btn {
+//   color: $green;
+//   border-color: $green;
+//   &:hover {
+//     background: $green;
+//     color: white;
+//   }
+// }
 
 .supplier-logo{
   object-fit: contain;

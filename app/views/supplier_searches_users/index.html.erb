@@ -7,55 +7,6 @@
     <% end %>
   </div>
   <div id="on-boarding-nav" class="d-flex justify-content-end">
-    <%= link_to "Ajouter un partenaire >>", new_receiver_path, class:'btn btn-outline-success' %>
-    <!-- <div class="content-right"> <%#= link_to new_receiver_path do %>
-      <span class="btn btn-primary mt-3">Ajouter un partenaire</span>
-    <%# end %> -->
+    <%= link_to "Étape suivante >>", new_receiver_path, class:'stitch-btn-outline-green btn-large' %>
   </div>
 </div>
-
-<!-- <h1 class= "p-3">Bienvenue <%= current_user.first_name %>!</h1>
-<p class= "p-3">Nous avons analysé votre boîte mail et trouvé des reçus pour les fournisseurs suivants. Notre catalogue de recherches contient les fournisseurs les plus fréquements recherchés. A vous de jouer! sélectionnez les fournisseurs que vous souhaitez ajouter à votre espace et créez vos propres recherches si besoin.</p>
-<div class="card-container p-3">
-  <%# @supplier_searches.each do |supplier_search| %>
-    <%# count = GmailApi::CountUserMessages.new(current_user).call(supplier_search.query) %>
-    <%# if count > 0 %>
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex justify-space-between">
-            <%# if supplier_search.image.present? %>
-              <%#= image_tag supplier_search.image, class: "supplier-logo"%>
-            <%# else %>
-              <%# @email = supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-              <%#= image_tag "//logo.clearbit.com/#{@email}.com", class: "supplier-logo"%>
-            <%# end %>
-            <p class="card-text pl-1"><span class="badge badge-success text-white"><%#= count %> reçus</span></p>
-            <div>
-              <%# if current_user.supplier_searches.include?(supplier_search) %>
-                <%#= link_to "Ignorer", not_subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
-              <%# else %>
-                <%#= link_to "Souscrire", subscribing_supplier_searches_user_path(supplier_search), class: "btn btn-link" %>
-              <%# end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <%# end %>
-  <%# end %>
-      <div class="card">
-        <div class="card-body mx-auto">
-          <div class="d-flex">
-              <%#= link_to new_supplier_search_path do %>
-                <i class="fas fa-plus"></i>
-              <%# end %>
-          </div>
-        </div>
-      </div>
-  </div>
-  <br> -->
-<!--   <div class="justify-content-end">
-    <div class="content-right"> <%#= link_to new_receiver_path do %>
-        <span class="btn btn-primary mt-3">Ajouter un partenaire</span>
-    <%# end %>
-  </div>
-</div> -->

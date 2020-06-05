@@ -10,8 +10,8 @@ class SupplierSearchesController < ApplicationController
   end
 
   def show
-    # StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
-    # @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new", user_id: current_user)
+     StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
+     @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new", user_id: current_user)
   end
 
   def share_all_receipts

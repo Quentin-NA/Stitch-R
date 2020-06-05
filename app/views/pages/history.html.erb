@@ -1,25 +1,40 @@
-<div class="container text-left">
-  <div class="pl-2">
-    <h1>Dépenses à enregistrer</h1>
-    <p>Reçu et factures en attente de réconciliation avec vos relevés bancaires.</p>
-  </div>
-    <table class="table table-hover table-responsive">
-      <thead>
-        <tr>
-          <th>Date/Heure</th>
-          <th>Objet</th>
-          <th>Statut</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @receipts.each do |receipt| %>
-          <tr class = "font-weight-light">
-            <td><%= receipt.send_date.strftime("%d-%m-%y à %H:%M") %> </td>
-            <td><strong><%= receipt.subject %></strong>
-            <td><strong><%= receipt.status %></strong>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="container">
+
+  <%= link_to "<< Retour", supplier_searches_path, class: 'go-back stitch-btn-outline' %>
+
+  <h1>Reçus transférés</h1>
+
+  <% unless @receipts.empty? %>
+
+
+    <% @receipts.each do |receipt| %>
+
+      <div class="receipt-line">
+        <div class="receipt-line-date text-center">
+          <%= receipt.send_date.strftime("%d/%m/%y")%>
+          <br>
+          <%= receipt.send_date.strftime("%H:%M")%>
+        </div>
+        <div class="receipt-line-content">
+          <div class="subject"><%= receipt.subject %></div>
+          <div class="snippet">
+            <%= receipt.snippet.truncate(80) %>
+          </div>
+          <% unless receipt.attachment_names.empty? %>
+            <div class="attachments">
+              <div><i class="fas fa-paperclip"></i></div>
+              <% receipt.attachment_names.each do |attachment| %>
+                <div class="attachement"><%= attachment %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    <% end %>
+
+  <% end %>
+
 </div>
+
 

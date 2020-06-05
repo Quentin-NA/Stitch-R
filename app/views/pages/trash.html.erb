@@ -1,21 +1,38 @@
-<div class="container text-left">
-  <h1 class="pl-2">Corbeille</h1>
-    <table class="table table-hover table-responsive">
-      <thead>
-        <tr>
-          <th>Objet</th>
-          <th>Date/Heure</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @receipts.each do |receipt| %>
-          <tr class = "font-weight-light">
-            <td><strong><%= receipt.subject %></strong>
-                    <br><span><%= receipt.snippet %></span></td>
-            <td><%= receipt.send_date.strftime("%d %b %Y - %H:%M") %> </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-</div>
+<div class="container">
 
+  <%= link_to "<< Retour", supplier_searches_path, class: 'go-back stitch-btn-outline' %>
+
+  <h1>Reçus ignorés</h1>
+
+  <% unless @receipts.empty? %>
+
+
+    <% @receipts.each do |receipt| %>
+
+      <div class="receipt-line">
+        <div class="receipt-line-date text-center">
+          <%= receipt.send_date.strftime("%d/%m/%y")%>
+          <br>
+          <%= receipt.send_date.strftime("%H:%M")%>
+        </div>
+        <div class="receipt-line-content">
+          <div class="subject"><%= receipt.subject %></div>
+          <div class="snippet">
+            <%= receipt.snippet.truncate(80) %>
+          </div>
+          <% unless receipt.attachment_names.empty? %>
+            <div class="attachments">
+              <div><i class="fas fa-paperclip"></i></div>
+              <% receipt.attachment_names.each do |attachment| %>
+                <div class="attachement"><%= attachment %></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+</div>

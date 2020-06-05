@@ -16,7 +16,7 @@ class SupplierSearchesUsersController < ApplicationController
     skip_authorization
     @search = SupplierSearchesUser.find_by(user: current_user, supplier_search: SupplierSearch.find(params[:id]))
     @search.destroy
-    flash[:notice] = "Vous avez supprimé cette recherche"
+    flash[:alert] = "Vous avez supprimé cette recherche"
     if request.referer.include?('/supplier_searches_users')
       redirect_to supplier_searches_users_path
     else

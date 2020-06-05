@@ -6,16 +6,16 @@ class ReceiptsController < ApplicationController
     @receipts = policy_scope(Receipt)
     # authorize @receipts
   end
-  
+
   def dismiss
     @receipt = Receipt.find(params[:id])
     authorize @receipt
     @receipt.status = "dismissed"
     @receipt.save
-    flash[:notice] = "Le reçu a bien été ignoré"
+    flash[:alert] = "Le reçu a bien été ignoré"
     redirect_to supplier_search_path(@receipt.supplier_search)
   end
-  
+
   def share
     @receipt = Receipt.find(params[:id])
     authorize @receipt

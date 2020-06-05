@@ -113,6 +113,13 @@ m = SupplierSearch.create(
   subject: "votre facture",
   start_date: "01/01/2015"
   )
+
+m = SupplierSearch.create(
+  name: "Heroku",
+  from: "bot@heroku.com",
+  image: "logos/heroku.png",
+  start_date: "01/01/2015"
+  )
 # => https://lh3.googleusercontent.com/7_oQX4naDvPEgU61ktMMJV3pX2v9qMH7oG9UeqqiKO37Tep0VGCqH7BKOASN2ra_DTY=s360-rw
 
 

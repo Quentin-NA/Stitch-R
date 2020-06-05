@@ -25,7 +25,7 @@
         <% if current_user.supplier_searches.include?(search) %>
           <%= link_to "Désactiver", not_subscribing_supplier_searches_user_path(search), class: "stitch-btn" %>
         <% else %>
-          <%= link_to "Souscrire", subscribing_supplier_searches_user_path(search), class: "stitch-btn-green" %>
+          <%= link_to "Activer", subscribing_supplier_searches_user_path(search), class: "stitch-btn-green" %>
         <% end %>
       </div>
     </div>

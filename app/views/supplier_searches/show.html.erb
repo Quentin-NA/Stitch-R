@@ -32,7 +32,7 @@
           <div class="snippet">
             <%= receipt.snippet.truncate(80) %>
           </div>
-          <% unless receipt.attachment_names.empty? %>
+          <% unless receipt.attachment_names.blank? %>
             <div class="attachments">
               <div><i class="fas fa-paperclip"></i></div>
               <% receipt.attachment_names.each do |attachment| %>

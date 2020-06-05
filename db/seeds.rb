@@ -136,9 +136,18 @@ end
 puts 'SupplierSearchesUser  Created'
 puts 'Receipts  Creation'
 
-User.all.each do |user|
-  CreateReceiptsForUserJob.perform_now(User.first.id)
+jack = User.find_by(email: 'dwissink@gmail.com')
+
+if jack
+  puts "Création des receipts pour #{jack.email}..."
+  CreateReceiptsForUserJob.perform_now(jack)
+else
+  puts "Création des receipts pour tous les users..."
+  User.all.each do |user|
+    CreateReceiptsForUserJob.perform_now(User.first.id)
+  end
 end
+
 
 puts 'Receipts  Created'
 

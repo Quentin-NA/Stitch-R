@@ -140,7 +140,7 @@ jack = User.find_by(email: 'dwissink@gmail.com')
 
 if jack
   puts "Création des receipts pour #{jack.email}..."
-  CreateReceiptsForUserJob.perform_now(jack)
+  CreateReceiptsForUserJob.perform_now(jack.id)
 else
   puts "Création des receipts pour tous les users..."
   User.all.each do |user|

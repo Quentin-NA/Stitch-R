@@ -1,5 +1,5 @@
 class Receiver < ApplicationRecord
-  PAYMENT = ['Comptable', 'Qonto','Shine','Spendesk']
+  PAYMENT = ['Accountant', 'Qonto','Shine','Spendesk']
   EXPENSE = ['Expensya','Rydoo','Concur','Jenji','Expensify']
 
   belongs_to :user

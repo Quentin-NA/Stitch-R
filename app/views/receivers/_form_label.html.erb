@@ -1,7 +1,7 @@
 <div class="supplier-card-logo">
-  <%= image_tag "logos/#{receiver.downcase}.png", class: 'supplier-card-image'%>
+  <%= image_tag "logos/#{receiver.downcase}.png", class: 'supplier-card-image' %>
     <div class="supplier-card-subscription text-center">
-      <% if receiver == 'comptable' %>
+      <% if receiver.downcase == 'accountant' %>
           Mon comptable
       <% else %>
           <%= receiver %>
@@ -9,6 +9,7 @@
 
   </div>
   <div class="supplier-card-footer text-center">
-    <div class="stitch-btn-green">Ajouter</div>
+    <i class="far fa-square color-gray"></i>
+    <i class="far fa-check-square color-green"></i>
   </div>
 </div>

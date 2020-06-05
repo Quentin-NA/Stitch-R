@@ -58,6 +58,36 @@
 .supplier-card-runtime {
   font-size: 0.7em;
 }
+.supplier-card-subscription a {
+  font-size: 32px;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+
+  &.color-gray {
+    color: lightgray;
+  }
+  &.color-green {
+    color: $green;
+  }
+}
+.supplier-card-footer i.fa-check-square, .supplier-card-footer i.fa-square {
+  font-size: 32px;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  &.color-gray {
+    color: lightgray;
+  }
+  &.color-green {
+    color: $green;
+  }
+}
+
 // .supplier-card-subscription a {
 //   color: lightgray;
 //   border: 1px solid lightgray;

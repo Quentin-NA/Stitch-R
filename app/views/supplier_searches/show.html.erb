@@ -5,19 +5,28 @@
   <div class="supplier-searches-show-header receipt-line">
     <div class="receipt-line-date" style="background-image: url(<%= image_path @supplier_search.image %>)">
     </div>
+    <div class="receipt-line-date" style="background-image: url(<%= image_path current_user.receivers.first.image %>)">
+    </div>
     <div class="receipt-line-content">
       <h1 class=""><%= @supplier_search.name %></h1>
-      <div><span><%= pluralize(@receipts.count, 'reçu', 'reçus') %></span> à traiter</div>
+      <div><span class="badge badge-secondary"><%= pluralize(@receipts.count, 'reçu', 'reçus') %></span> à partager avec <%= current_user.receivers.first.name %></div>
     </div>
     <% unless @receipts.empty? %>
       <div class="receipt-line-ctas">
         <%= link_to "Tout partager", share_all_receipts_supplier_search_path(@supplier_search), class: 'stitch-btn-green' %>
-        <%= link_to "Tout annuler", dismiss_all_receipts_supplier_search_path(@supplier_search), class: 'stitch-btn' %>
+        <%= link_to "Tout ignorer", dismiss_all_receipts_supplier_search_path(@supplier_search), class: 'stitch-btn' %>
       </div>
     <% end %>
   </div>
 
-  <% unless @receipts.empty? %>
+  <% if @receipts.empty? %>
+
+    <div>
+        <h2>Tout va bien, aucun reçu en attente 🤗</h2>
+        <%= link_to "<< Retour", supplier_searches_path, class: 'btn btn-secondary btn-lg' %>
+    </div>
+
+  <% else %>
 
     <% @receipts.each do |receipt| %>
 
@@ -28,15 +37,15 @@
           <%= receipt.send_date.strftime("%H:%M")%>
         </div>
         <div class="receipt-line-content">
-          <div class="subject"><%= receipt.subject %></div>
+          <div class="subject"><%= receipt.subject.truncate(80) %></div>
           <div class="snippet">
-            <%= receipt.snippet.truncate(80) %>
+            <%= receipt.snippet.truncate(100) %>
           </div>
           <% unless receipt.attachment_names.blank? %>
             <div class="attachments">
               <div><i class="fas fa-paperclip"></i></div>
               <% receipt.attachment_names.each do |attachment| %>
-                <div class="attachement"><%= attachment %></div>
+                <div class="attachement"><%= attachment.truncate(20) %></div>
               <% end %>
             </div>
           <% end %>

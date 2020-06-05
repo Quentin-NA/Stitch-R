@@ -2,9 +2,18 @@
 
   <%= link_to "<< Retour", supplier_searches_path, class: 'go-back stitch-btn-outline' %>
 
+  <div class="receipt-line-date" style="background-image: url(<%= image_path current_user.receivers.first.image %>)">
+    </div>
   <h1>Reçus transférés</h1>
 
-  <% unless @receipts.empty? %>
+  <% if @receipts.empty? %>
+
+    <div>
+      <h2 class=text-center>Tout va bien 😊, tous vos reçus sont enregistré par <%= current_user.receivers.first.name %> </h2>
+      <%= link_to "<< Retour", supplier_searches_path, class: 'btn btn-secondary btn-lg' %>
+    </div>
+
+  <% else %>
 
 
     <% @receipts.each do |receipt| %>
@@ -24,7 +33,7 @@
             <div class="attachments">
               <div><i class="fas fa-paperclip"></i></div>
               <% receipt.attachment_names.each do |attachment| %>
-                <div class="attachement"><%= attachment %></div>
+                <div class="attachement"><%= attachment.truncate(20) %></div>
               <% end %>
             </div>
           <% end %>

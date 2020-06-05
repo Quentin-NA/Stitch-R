@@ -69,6 +69,7 @@ h = SupplierSearch.create(
   name: "Easyjet",
   image: "logos/easyjet.png",
   from: "confirmation@easyjet.com",
+  attachment: true,
   start_date: "01/01/2019"
   )
 

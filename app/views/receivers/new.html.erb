@@ -1,8 +1,9 @@
-<div id="on-boarding-receiver" class="on-boarding-container">
+<h1 class="text-center mt-3">2/2 - Ajouter vos partenaires</h1>
+<p class="text-center">Facilitez la réconciliation et l'enregistrement comptable, renseigner les partenaires avec lesquels vous souhaitez partager vos reçus.</p>
 
-  <h1 class="text-center mt-3">2/2 - Ajouter vos partenaires</h1>
-  <p class="text-center">Facilitez la réconciliation et l'enregistrement comptable, renseigner les partenaires avec lesquels vous souhaitez partager vos reçus.</p>
-  <div class="form w-75 mx-auto">
+  <div id="on-boarding-receiver" class="on-boarding-container">
+
+  <div class="form">
 
     <%= simple_form_for @receiver, html: { class: 'text-center mt-5' } do |f| %>
       <%= f.input :name, as: :radio_buttons,
@@ -14,11 +15,11 @@
       <div id='additionnal-fields' class="d-none mt-5">
         <%= f.input :email,
           label: "Ajouter l'email de destination",
-          placeholder: "eg. votre-email@spendesk.com" %>
+          placeholder: "eg. votre-email@partenaire.com" %>
       </div>
 
-      <%= f.submit 'Ajouter', class: "stitch-btn-green btn-large mt-4" %>
+      <%= f.submit 'Etape suivante >>', class: "stitch-btn-outline-green btn-large mt-4" %>
     <% end %>
-
 </div>
 
+</div>

@@ -11,17 +11,14 @@
     </div>
     <% unless @receipts.empty? %>
       <div class="receipt-line-ctas">
-        <%= link_to "Tout partager", "", class: 'stitch-btn-green' %>
-        <%= link_to "Tout annuler", "", class: 'stitch-btn' %>
+        <%= link_to "Tout partager", share_all_receipts_supplier_search_path(@supplier_search), class: 'stitch-btn-green' %>
+        <%= link_to "Tout annuler", dismiss_all_receipts_supplier_search_path(@supplier_search), class: 'stitch-btn' %>
       </div>
     <% end %>
   </div>
 
-  <% if @receipts.empty? %>
+  <% unless @receipts.empty? %>
 
-
-
-  <% else %>
     <!-- fake line -->
     <div class="receipt-line">
       <div class="receipt-line-date text-center">
@@ -63,12 +60,14 @@
           <div class="snippet">
             <%= receipt.snippet.truncate(80) %>
           </div>
-          <div class="attachments">
-            <div><i class="fas fa-paperclip"></i></div>
-            <% receipt.attachment_names.each do |attachment| %>
-              <div class="attachement"><%= attachement %></div>
-            <% end %>
-          </div>
+          <% unless receipt.attachment_names.empty? %>
+            <div class="attachments">
+              <div><i class="fas fa-paperclip"></i></div>
+              <% receipt.attachment_names.each do |attachment| %>
+                <div class="attachement"><%= attachement %></div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <div class="receipt-line-ctas">
           <%= link_to "Partager", share_receipt_path(receipt, receiver_id: current_user.receivers.first.id), class: 'stitch-btn-outline-green' %>

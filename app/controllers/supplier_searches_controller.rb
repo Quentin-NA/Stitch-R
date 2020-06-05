@@ -1,5 +1,8 @@
 class SupplierSearchesController < ApplicationController
-  before_action :set_supplier_search, only: [:show, :destroy]
+  before_action :set_supplier_search, only: [:show, :share_all_receipts,
+    :dismiss_all_receipts, :destroy]
+  before_action :set_receipts, only: [:show, :share_all_receipts,
+    :dismiss_all_receipts]
 
   def index
     @searches = policy_scope(SupplierSearch)
@@ -8,8 +11,24 @@ class SupplierSearchesController < ApplicationController
 
   def show
     # StoreSupplierSearchReceipts.new(current_user, @supplier_search).call
-    @receipts = @supplier_search.receipts.where(status: "new", user: current_user)
     # @receipts = Receipt.where(supplier_search_id: params[:id]).where(status: "new", user_id: current_user)
+  end
+
+  def share_all_receipts
+    @receipts.each do |receipt|
+      receipt.status = "shared"
+      receipt.receiver = current_user.receivers.first
+      receipt.save
+    end
+    redirect_to supplier_search_path(@supplier_search)
+  end
+
+  def dismiss_all_receipts
+    @receipts.each do |receipt|
+      receipt.status = "dismissed"
+      receipt.save
+    end
+    redirect_to supplier_search_path(@supplier_search)
   end
 
   def new
@@ -39,6 +58,10 @@ class SupplierSearchesController < ApplicationController
   def set_supplier_search
     @supplier_search = SupplierSearch.find(params[:id])
     authorize @supplier_search
+  end
+
+  def set_receipts
+    @receipts = @supplier_search.receipts.where(status: "new", user: current_user)
   end
 
   def search_params

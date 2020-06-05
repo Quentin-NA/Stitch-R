@@ -1,5 +1,6 @@
-SupplierSearchesUser.destroy_all
+Receipt.destroy_all
 SupplierSearch.destroy_all
+SupplierSearchesUser.destroy_all
 # image urls coming from Android store (/!\ ip gets blocked when pinging too often)
 
 puts 'SupplierSearch Creation'
@@ -99,7 +100,7 @@ k = SupplierSearch.create(
 
 l = SupplierSearch.create(
   name: "OuiGo",
-  image: "https://lh3.googleusercontent.com/01DZthgdocCF5tYXt3MxpV_zTxXV1CST6U9Fbsr9SXygqw7dD42YjlZMAxUO6N4-VZI=s360-rw",
+  image: "ouigo.png",
   from: "ne-pas-repondre@pasngr.ouigo.com",
   attachment: true,
   start_date: "01/01/2019"
@@ -116,7 +117,27 @@ m = SupplierSearch.create(
 
 
 puts 'SupplierSearch Created'
+puts 'SupplierSearchesUser  Creation'
 
+User.all.each do |user|
+  SupplierSearch.all.each do |search|
+    p search.query
+    SupplierSearchesUser.create(supplier_search: search, user: user)
+  end
+end
+
+puts 'SupplierSearchesUser  Created'
+puts 'Receipts  Creation'
+
+User.all.each do |user|
+  CreateReceiptsForUserJob.perform_now(User.first.id)
+end
+
+puts 'Receipts  Created'
+
+SupplierSearchesUser.destroy_all
+
+puts 'SupplierSearchesUser  Deleted'
 
 # SupplierSearchesUser.create(supplier_search: a, user: User.first)
 # SupplierSearchesUser.create(supplier_search: b, user: User.first)

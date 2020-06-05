@@ -1,5 +1,6 @@
-SupplierSearchesUser.destroy_all
+Receipt.destroy_all
 SupplierSearch.destroy_all
+SupplierSearchesUser.destroy_all
 # image urls coming from Android store (/!\ ip gets blocked when pinging too often)
 
 puts 'SupplierSearch Creation'
@@ -116,7 +117,27 @@ m = SupplierSearch.create(
 
 
 puts 'SupplierSearch Created'
+puts 'SupplierSearchesUser  Creation'
 
+User.all.each do |user|
+  SupplierSearch.all.each do |search|
+    p search.query
+    SupplierSearchesUser.create(supplier_search: search, user: user)
+  end
+end
+
+puts 'SupplierSearchesUser  Created'
+puts 'Receipts  Creation'
+
+User.all.each do |user|
+  CreateReceiptsForUserJob.perform_now(User.first.id)
+end
+
+puts 'Receipts  Created'
+
+SupplierSearchesUser.destroy_all
+
+puts 'SupplierSearchesUser  Deleted'
 
 # SupplierSearchesUser.create(supplier_search: a, user: User.first)
 # SupplierSearchesUser.create(supplier_search: b, user: User.first)

@@ -1,8 +1,7 @@
 .card-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
   > a {
     opacity: 0.8;
     &:hover {
@@ -13,6 +12,10 @@
       }
     }
   }
+}
+
+.mr-100px{
+  padding-right:150px;
 }
 
 @keyframes quarter-rotate {

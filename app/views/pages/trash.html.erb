@@ -24,7 +24,7 @@
             <div class="attachments">
               <div><i class="fas fa-paperclip"></i></div>
               <% receipt.attachment_names.each do |attachment| %>
-                <div class="attachement"><%= attachment %></div>
+                <div class="attachement"><%= attachment.truncate(20) %></div>
               <% end %>
             </div>
           <% end %>

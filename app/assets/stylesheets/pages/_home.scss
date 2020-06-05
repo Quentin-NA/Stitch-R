@@ -1,15 +1,24 @@
-// Specific CSS for your home-page
-h1{
-  font-size: 2.5em;
-}
-
-
-.jumbotron {
-  display: inline-flex;
-  width: 100%;
-
-  .display-3{
-    font-size: 2.5em;
+#home-banner {
+  background-color: #e9ecef;
+  height: calc(100vh - 66px);
+  .container {
+    height: 100%;
+  }
+  .text-content {
+    h1 {
+      font-size: 3em;
+    }
+    flex: 1 1 50%;
+    margin-right: 30px;
+  }
+  #email {
+    flex: 0 0 400px;
+    height: 400px;
+    background-image: url('mobile-emails2.png');
+    background-size: cover;
+    margin-left: 1em;
+    border-radius: 1em 1em 0 0;
+    box-shadow: 0px -10px 23px 5px rgba(0,0,0,0.1);
   }
 }
 
@@ -17,11 +26,8 @@ h1{
   width: 300px;
 }
 
-#email{
-  background-image: url('mobile-emails2.png');
-  background-size: cover;
-  width: 40%;
-  margin-left: 1em;
-  border-radius: 1em;
-}
 
+.google-logo {
+  object-fit: contain;
+  height: 40px;
+}

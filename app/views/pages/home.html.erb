@@ -1,3 +1,10 @@
+<!-- can remove jumbotron related BS classes
+      text-content = makes header smaller
+      lead mt-4 = lead makes sub-text bigger (changes font?)
+      lead mt-2 = adds margin top ...
+      connect with google guidelines = https://developers.google.com/identity/branding-guidelines#font
+      -->
+
 <div id="home-banner" class="wrapper-gray">
   <div class="container d-flex align-items-center">
     <div class="text-content">
@@ -5,12 +12,16 @@
         Trouvez et partagez vos reçus électroniques sans-effort
       </h1>
       <p class="lead mt-4">
-        <strong>Stitchr</strong> est une solution d'automatisation gratuite qui trie les messages de vos fournisseurs préférés et vous permet de les partagez avec votre comptable ou une solution de gestion des frais.
+        <strong>Stitchr</strong> est une solution d'automatisation gratuite
+        qui trie les messages de vos fournisseurs préférés et vous permet
+        de les partagez avec votre comptable ou une solution de gestion de frais.
       </p>
       <%= link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn btn-primary btn-lg mt-4" do %>
         <div class="d-flex align-items-center">
-          <%= image_tag "Google.png", class: "supplier-logo mr-1" %>
-          <p class="lead mt-2">se connecter avec Google</p>
+          <%= image_tag "Google.png", class: "google-logo mr-1" %>
+          <p class="lead mt-2">se connecter avec Google
+          <style> @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+          </style></p>
         </div>
       <% end %>
       <p class="mt-4">Testez en 3 clics avec Gmail.</p>
@@ -19,45 +30,92 @@
   </div>
 </div>
 
-<section class="container">
-  <div>
-    <div class="d-flex">
-      <div class = "flex-fill">
-        <h4>Freelance ou en Startup?</h4>
-        <p>Concentrez vous sur votre job, déchargez vous de vos taches administratives</p>
-        <p>N'oubliez plus de dépenses et faites-vous rembourser plus vite</p>
-        <p>Transférez automatiquement à vos solutions de paiement, de note de frais ou directement à votre comptable</p>
+<section id="home-sub-section" class="bg-white">
+  <div class="container h-100 d-flex flex-column justify-content-between">
+    <div class="h-100 d-flex flex-column justify-content-between">
+      <h1 class="text-center mt-5">Le compagnon idéal de votre boîte mail</h1>
+      <div class="d-inline-flex justify-content-around px-5">
+        <div class="feature m-5">
+          <%= image_tag "gmail.png", class: "feature img" %>
+          <span class="feature text">connection directe Gmail*</span>
+        </div>
+        <div class="feature m-5">
+          <%= image_tag "search.png", class: "feature img" %>
+          <span class="feature text">créez vos propres recherches*</span>
+        </div>
+        <div class="feature m-5">
+          <%= image_tag "share.png", class: "feature img" %>
+          <span class="feature text">partagez vos reçus et factures</span>
+        </div class="feature m-5">
+
+        <div class= "feature m-5">
+          <%= image_tag "g-drive.png", class: "feature img" %>
+          <span class="feature text">stockage automatique sur G drive</span>
+        </div>
+        <div class="feature m-5">
+          <%= image_tag "label.png", class: "feature img" %>
+          <span class="feature text">catégorise vos dépense dans Gmail</span>
+        </div>
       </div>
-      <div class = "flex-fill">
-        <h4>Connexion directe avec Gmail</h4>
-        <p>partager reçus et factures</p>
-        <p>créez vos propres recherches</p>
-      </div>
+      <p class="sub-text">stitchr est aujourd’hui en version beta, seules les fonctionnalités marquées d'un * sont disponibles à ce jour </p>
     </div>
-  </div>
-    <h2>Comment ça marche?</h2>
-    <ol>
-      <li>Autorisez l'accès à vos email dès l'inscription</li>
-      <li>Sélectionnez vos recherches et visualisez les reçus trouvés</li>
-      <li>Créez vos règles de partage</li>
-    </ol>
-  </div>
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-3">Besoin d'information?</h1>
-      <p class="lead">
-        <ul>
-          <li>Service client et FAQ vous guideront</li>
-          <li>Nous prenons soin de vos données, nos accès et enregistrements sont restreints au strict minimum</li>
-          <li>Vous restez en contrôle et pouvez supprimer votre connexion et vos données à tout moment</li>
-        </ul>
-      </p>
+    <div class="suppliers d-inline-flex align-items-center justify-content-around">
+      <span class= "suppliers-text">+100 reçus fournisseurs dont</span>
+      <%= image_tag "logos/kapten-bw.png", class: "supplier-logo" %>
+      <%= image_tag "logos/easyjet-bw.png", class: "supplier-logo" %>
+      <%= image_tag "logos/heroku-bw.png", class: "supplier-logo" %>
+      <%= image_tag "logos/bouygtel-bw.png", class: "supplier-logo" %>
+      <%= image_tag "logos/airbnb-bw.png", class: "supplier-logo" %>
     </div>
-  </div>
-  <br>
-  <div class="container">
-    <h2>Encore des points à éclaircir avant de vous inscrire sur Stitch-R? Posez nous vos questions@get-stichr.com</h2>
   </div>
 </section>
 
+<section id="home-sub-section" class="bg-light">
+  <div class="container d-flex flex-column align-items-center justify-content-center">
+    <h1 class="mb-5">Freelance ou Startup-er?</h1>
+    <div>
+      <div>
+        <i class="fas fa-check"></i>
+        <span>Ne perdez plus de temps à chercher vos reçus dans vos emails</span>
+      </div>
+      <div>
+        <i class="fas fa-check"></i>
+        <span>Concentrez vous sur votre job, déchargez vous de vos tâches administratives</span>
+      </div>
+      <div>
+        <i class="fas fa-check"></i>
+        <span>N'oubliez plus de dépenses et faites-vous rembourser plus vite</span>
+      </div>
+      <div>
+        <i class="fas fa-check"></i>
+        <span>Transférez automatiquement à vos solutions de paiement, de note de frais ou directement à votre comptable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrapper-gray" id="home-sub-section">
+  <div class="container h-100 d-flex flex-inline justify-content-around">
+    <div class="setup-steps">
+      <div class="circle">1</div>
+      <div class="text">Autorisez l'accès à vos email</div>
+    </div>
+    <i class="fas fa-angle-double-right"></i>
+    <div class="setup-steps">
+      <div class="circle">2</div>
+      <div class="text">Sélectionnez vos fournisseurs</div>
+    </div>
+    <div class="setup-steps">
+      <div class="circle">3</div>
+      <div class="text">Ajouter vos partenaires</div>
+    </div>
+    <div class="setup-steps">
+      <div class="circle">4</div>
+      <div class="text">Vérifiez et partagez vos reçus</div>
+    </div>
+
+  </div>
+</section>
+
+<script defer id="io.birdseed.script-tag" type="text/javascript" src="https://cdn.birdseed.io/widget.js"></script><div id="birdseed-widget-container" data-token="a4cd6b1ccdf9ec5d0594c6879fe63956"></div>
 

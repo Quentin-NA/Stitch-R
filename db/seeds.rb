@@ -16,7 +16,7 @@ a = SupplierSearch.create(
 
 b = SupplierSearch.create(
   name: "Oui-SNCF",
-  image: "https://lh3.googleusercontent.com/1SOSCf--cpvBQPBx3hlfMdWXpQfvlWwHoxg6F5aTI8WVTzRudsA7YeohiDkH7WsyRw=s360-rw",
+  #image: "https://lh3.googleusercontent.com/1SOSCf--cpvBQPBx3hlfMdWXpQfvlWwHoxg6F5aTI8WVTzRudsA7YeohiDkH7WsyRw=s360-rw",
   from: "noreply@oui.sncf",
   attachment: true,
   start_date: "01/01/2019"

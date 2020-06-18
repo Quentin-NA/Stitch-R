@@ -30,10 +30,40 @@
   </div>
 </div>
 
+<section id="home-sub-section" class="bg-light">
+  <div class="container">
+    <h1 class="text-center mt-5">Freelance ou Startup-er?</h1>
+    <div class="d-inline-flex align-items-center ">
+      <div>
+        <%= image_tag "undraw_digital_nomad.svg", class: "w-50" %>
+      </div>
+      <div>
+        <div>
+          <i class="fas fa-check"></i>
+          <span>Ne perdez plus de temps à chercher vos reçus dans vos emails</span>
+        </div>
+        <div>
+          <i class="fas fa-check"></i>
+          <span>Concentrez vous sur votre job, déchargez vous de vos tâches administratives</span>
+        </div>
+        <div>
+          <i class="fas fa-check"></i>
+          <span>N'oubliez plus de dépenses et faites-vous rembourser plus vite</span>
+        </div>
+        <div>
+          <i class="fas fa-check"></i>
+          <span>Transférez automatiquement à vos solutions de paiement, de note de frais ou directement à votre comptable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="home-sub-section" class="bg-white">
   <div class="container h-100 d-flex flex-column justify-content-between">
     <div class="h-100 d-flex flex-column justify-content-between">
       <h1 class="text-center mt-5">Le compagnon idéal de votre boîte mail</h1>
+
       <div class="d-inline-flex justify-content-around px-5">
         <div class="feature m-5">
           <%= image_tag "gmail.png", class: "feature img" %>
@@ -54,9 +84,10 @@
         </div>
         <div class="feature m-5">
           <%= image_tag "label.png", class: "feature img" %>
-          <span class="feature text">catégorise vos dépense dans Gmail</span>
+          <span class="feature text">catégorise vos dépenses dans Gmail</span>
         </div>
       </div>
+
       <p class="sub-text">stitchr est aujourd’hui en version beta, seules les fonctionnalités marquées d'un * sont disponibles à ce jour </p>
     </div>
     <div class="suppliers d-inline-flex align-items-center justify-content-around">
@@ -70,51 +101,58 @@
   </div>
 </section>
 
-<section id="home-sub-section" class="bg-light">
-  <div class="container d-flex flex-column align-items-center justify-content-center">
-    <h1 class="mb-5">Freelance ou Startup-er?</h1>
-    <div>
-      <div>
-        <i class="fas fa-check"></i>
-        <span>Ne perdez plus de temps à chercher vos reçus dans vos emails</span>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <span>Concentrez vous sur votre job, déchargez vous de vos tâches administratives</span>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <span>N'oubliez plus de dépenses et faites-vous rembourser plus vite</span>
-      </div>
-      <div>
-        <i class="fas fa-check"></i>
-        <span>Transférez automatiquement à vos solutions de paiement, de note de frais ou directement à votre comptable</span>
-      </div>
+
+<section class="bg-white" id="home-sub-section">
+  <h1 class= "text-center mt-5">Comment ça marche?</h1>
+  <div class="container h-100 d-flex flex-inline justify-content-around">
+    <div class="setup-steps container">
+      <div class="circle">1</div>
+      <div class="text">Autorisez l'accès <br>à vos email</div>
+      <%= image_tag "step1.png", class: "img" %>
     </div>
+    <i class="fas fa-angle-double-right" id="next"></i>
+    <div class="setup-steps container">
+      <div class="circle">2</div>
+      <div class="text">Sélectionnez <br>vos fournisseurs</div>
+      <%= image_tag "step2.png", class: "img" %>
+    </div>
+    <i class="fas fa-angle-double-right" id="next"></i>
+    <div class="setup-steps container">
+      <div class="circle">3</div>
+      <div class="text">Ajouter <br>vos partenaires</div>
+      <%= image_tag "step3.png", class: "img" %>
+    </div>
+    <i class="fas fa-angle-double-right" id="next"></i>
+    <div class="setup-steps container">
+      <div class="circle">4</div>
+      <div class="text">Vérifiez et partagez <br>vos reçus</div>
+      <%= image_tag "step4.png", class: "img" %>
+    </div>
+
   </div>
 </section>
 
-<section class="wrapper-gray" id="home-sub-section">
-  <div class="container h-100 d-flex flex-inline justify-content-around">
-    <div class="setup-steps">
-      <div class="circle">1</div>
-      <div class="text">Autorisez l'accès à vos email</div>
+<section class="bg-gray  align-items-center " id="home-sub-section">
+    <h1 class="text-center my-5">A propos de Stitch-R</h1>
+    <div class="container d-flex flex-column">
+      <p>Stitch-r est un projet réalisé par Dick, Aurélien, Quentin et Fabien dans le cadre de leur
+      formation au Wagon batch #400 (Avr-Mai 2020). La solution a été présentée lors de la <a href="">spring Demo-Day le 05 juin (54 min)</a>.</p>
+      <div class="d-inline-flex justify-content-around px-5">
+        <%= image_tag "https://avatars.githubusercontent.com/diwink", class: "avatar-large" %>
+        <%= image_tag "https://avatars.githubusercontent.com/quentin-NA", class: "avatar-large" %>
+        <%= image_tag "https://avatars.githubusercontent.com/aurelienrolando", class: "avatar-large" %>
+        <%= image_tag "https://avatars.githubusercontent.com/fabiencruz", class: "avatar-large" %>
+      </div>
+      <span>Nous continuons a faire évoluer la solution pour consolider nos connaissances.
+      Si elle répond à un besoin pour vous et que vous souhaitez la voir évoluer, dîtes-le-nous 🙏 !</span>
+ <!-- <h3>Et vos données?</h3>
+      <ul>
+        <li>vous restez en contrôle à tout moment de nos accès grace a l'authentification Google,</li>
+        <li>nous n'accédons qu'aux messages des fournisseurs que vous avez selectionné,</li>
+        <li>StitchR ne stocke que les messages que vous décidez de partager,</li>
+        <li>lorsque vous supprimez une recherche, les données associées sont supprimées aussi</li> -->
+      </ul>
     </div>
-    <i class="fas fa-angle-double-right"></i>
-    <div class="setup-steps">
-      <div class="circle">2</div>
-      <div class="text">Sélectionnez vos fournisseurs</div>
-    </div>
-    <div class="setup-steps">
-      <div class="circle">3</div>
-      <div class="text">Ajouter vos partenaires</div>
-    </div>
-    <div class="setup-steps">
-      <div class="circle">4</div>
-      <div class="text">Vérifiez et partagez vos reçus</div>
-    </div>
-
-  </div>
 </section>
 
 <script defer id="io.birdseed.script-tag" type="text/javascript" src="https://cdn.birdseed.io/widget.js"></script><div id="birdseed-widget-container" data-token="a4cd6b1ccdf9ec5d0594c6879fe63956"></div>

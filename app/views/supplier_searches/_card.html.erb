@@ -9,11 +9,15 @@
   <div class="supplier-card">
     <div class="supplier-card-logo">
       <%= link_to '', supplier_search_path(search) if controller_name == "supplier_searches" %>
-      <%#= image_tag search.image %>
-      <div class="supplier-card-image" style="background-image: url(<%= image_path(search.image) %>)"></div>
+      <% if search.image.present? %>
+        <div class="supplier-card-image" style="background-image: url(<%= image_path(search.image) %>)"></div>
+      <% else %>
+      <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+        <div class="supplier-card-image" style="background-image: url(<%= image_tag "//logo.clearbit.com/#{@email}.com" %>)"></div>
+      <% end %>
       <div class="supplier-card-badge <%= 'badge-green' if counter == 0 %>">
         <%= counter %>
-      </div>
+    </div>
     </div>
     <div class="supplier-card-footer">
       <% if controller_name == "supplier_searches" %>

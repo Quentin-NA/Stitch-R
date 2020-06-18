@@ -3,8 +3,12 @@
   <%= link_to "<< Retour", supplier_searches_path, class: 'go-back stitch-btn-outline' %>
 
   <div class="supplier-searches-show-header receipt-line">
-    <div class="receipt-line-date" style="background-image: url(<%= image_path @supplier_search.image %>)">
-    </div>
+    <% if @supplier_search.image.present? %>
+        <div class="supplier-card-image" style="background-image: url(<%= image_path(@supplier_search.image) %>)"></div>
+      <% else %>
+      <% @email = @supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
+        <div class="supplier-card-image" style="background-image: url(<%= image_tag "//logo.clearbit.com/#{@email}.com" %>)"></div>
+    <% end %>
     <div class="receipt-line-content">
       <h1 class=""><%= @supplier_search.name %></h1>
       <div><span class="badge badge-secondary"><%= pluralize(@receipts.count, 'reçu', 'reçus') %></span> à partager avec <%= current_user.receivers.first.name %></div>

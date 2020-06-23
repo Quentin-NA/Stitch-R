@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to supplier_searches_path, class: "navbar-brand" do %>
-    <%= image_tag "logostitchr.png" %>
+    <%= image_tag "logostitchr-bw.png" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,10 +24,19 @@
         </li>
       <% else %>
         <li class="nav-item">
-        <%= link_to omniauth_authorize_path(:user, :google_oauth2), id: "login-link" do %>
-          <p id="login">Login</p>
-        <% end %>
+          <a class="nav-link" anchor="home-sub-section">Fonctionnalités</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" anchor="">Démarrage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" anchor="">A propos</a>
+        </li>
+<!--         <li class="nav-item">
+          <%#= link_to omniauth_authorize_path(:user, :google_oauth2), id: "login-link" do %>
+            <p id="login">Login</p>
+          <%# end %>
+        </li> -->
       <% end %>
     </ul>
   </div>

@@ -137,8 +137,7 @@ end
 puts 'SupplierSearchesUser  Created'
 puts 'Receipts  Creation'
 
-jack = User.find_by(email: 'dwissink@gmail.com')
-
+jack = User.find_by(email: 'quentin.natoly@gmail.com')
 if jack
   puts "Création des receipts pour #{jack.email}..."
   CreateReceiptsForUserJob.perform_now(jack.id)
@@ -149,12 +148,13 @@ else
   end
 end
 
-
 puts 'Receipts  Created'
 
 SupplierSearchesUser.destroy_all
 
 puts 'SupplierSearchesUser  Deleted'
+
+puts Receipt.count
 
 # SupplierSearchesUser.create(supplier_search: a, user: User.first)
 # SupplierSearchesUser.create(supplier_search: b, user: User.first)

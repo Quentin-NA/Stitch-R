@@ -6,9 +6,9 @@
     <% if @supplier_search.image.present? %>
         <div class="supplier-card-image" style="background-image: url(<%= image_path(@supplier_search.image) %>)"></div>
       <% else %>
-      <% @email = @supplier_search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-        <div class="supplier-card-image" style="background-image: url(<%= image_tag "//logo.clearbit.com/#{@email}.com" %>)"></div>
-    <% end %>
+        <% @email = @supplier_search.from.scan(/(?<=@)[^.]+(?=\.).*/).last%>
+        <div class="supplier-card-image" style="background-image: url(<%= image_path "//logo.clearbit.com/#{@email}" %>)"></div>
+      <% end %>
     <div class="receipt-line-content">
       <h1 class=""><%= @supplier_search.name %></h1>
       <div><span class="badge badge-secondary"><%= pluralize(@receipts.count, 'reçu', 'reçus') %></span> à partager avec <%= current_user.receivers.first.name %></div>

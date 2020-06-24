@@ -4,7 +4,6 @@ class SupplierSearch < ApplicationRecord
 
   has_many :supplier_searches_users, dependent: :destroy
   has_many :receipts, dependent: :destroy
-
   has_many :users, through: :supplier_searches_users
 
   def query

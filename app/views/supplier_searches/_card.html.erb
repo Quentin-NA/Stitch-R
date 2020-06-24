@@ -12,8 +12,8 @@
       <% if search.image.present? %>
         <div class="supplier-card-image" style="background-image: url(<%= image_path(search.image) %>)"></div>
       <% else %>
-      <% @email = search.from.scan(/(?<=@)[^.]+(?=\.)/).last%>
-        <div class="supplier-card-image" style="background-image: url(<%= image_tag "//logo.clearbit.com/#{@email}.com" %>)"></div>
+        <% @email = search.from.scan(/(?<=@)[^.]+(?=\.).*/).last%>
+        <div class="supplier-card-image" style="background-image: url(<%= image_path "//logo.clearbit.com/#{@email}" %>)"></div>
       <% end %>
       <div class="supplier-card-badge <%= 'badge-green' if counter == 0 %>">
         <%= counter %>

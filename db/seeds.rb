@@ -149,8 +149,7 @@ else
   end
 end
 
-
-puts 'Receipts  Created'
+puts "#{Receipt.count} Receipts  Created"
 
 SupplierSearchesUser.destroy_all
 

@@ -1,58 +1,50 @@
-<!-- can remove jumbotron related BS classes
-      text-content = makes header smaller
-      lead mt-4 = lead makes sub-text bigger (changes font?)
-      lead mt-2 = adds margin top ...
-      connect with google guidelines = https://developers.google.com/identity/branding-guidelines#font
-      -->
-
 <div id="home-banner" class="wrapper-gray">
   <div class="container d-flex align-items-center">
     <div class="text-content">
-      <h1 class="display-3">
+      <h1>
         Trouvez et partagez vos reçus électroniques sans-effort
       </h1>
-      <p class="lead mt-4">
-        <strong>Stitchr</strong> est une solution d'automatisation gratuite
+      <p class="sub-title mt-4">
+        <strong>Stitch-r</strong> est une solution d'automatisation gratuite
         qui trie les messages de vos fournisseurs préférés et vous permet
-        de les partagez avec votre comptable ou une solution de gestion de frais.
+        de partagez les reçus avec votre comptable ou une solution de gestion de frais.
       </p>
       <%= link_to omniauth_authorize_path(:user, :google_oauth2), class: "btn btn-primary btn-lg mt-4" do %>
         <div class="d-flex align-items-center">
-          <%= image_tag "Google.png", class: "google-logo mr-1" %>
-          <p class="lead mt-2">se connecter avec Google
-          <style> @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-          </style></p>
+          <%= image_tag "gmail.png", class: "google-logo mr-2" %>
+          <p class="mt-3">connectez votre boîte Gmail</p>
         </div>
       <% end %>
-      <p class="mt-4">Testez en 3 clics avec Gmail.</p>
+      <p class="mt-4">Testez en 3 clics ou consultez l'offre 👇</p>
     </div>
     <div id="email"></div>
   </div>
 </div>
 
 <section id="home-sub-section" class="bg-white">
-  <div class="container">
-    <h1 class="text-center p-4">Travailleur nomade, en freelance ou en startup?</h1>
+  <div class="container d-flex flex-column">
+    <h1 class="text-center pt-5">Travailleurs nomades?</h1>
+    <p class="sub-text text-center">En freelance ou en startup, si vous êtes amenés à vous déplacer régulièrement ...</p>
     <div class="d-inline-flex align-items-center ">
       <div>
-        <%= image_tag "undraw_digital_nomad.svg", class: "w-50" %>
+        <%= image_tag "undraw_digital_nomad.svg", class: "w-75 m-4" %>
       </div>
       <div>
-        <div>
-          <i class="fas fa-check"></i>
-          <span>Ne perdez plus de temps à chercher vos reçus dans vos emails</span>
+        <div class="d-flex justify-content-start">
+          <i class="fas fa-check text-secondary"></i>
+          <span class="m-3">Ne perdez plus de temps à chercher vos reçus dans vos emails</span>
         </div>
-        <div>
-          <i class="fas fa-check"></i>
-          <span>Concentrez vous sur votre job, déchargez vous de vos tâches administratives</span>
+        <div class="d-flex justify-content-start">
+          <i class="fas fa-check text-secondary"></i>
+          <span class="m-3">Concentrez vous sur votre job, déchargez vous de vos tâches administratives</span>
         </div>
-        <div>
-          <i class="fas fa-check"></i>
-          <span>N'oubliez plus de dépenses et faites-vous rembourser plus vite</span>
+        <div class="d-flex justify-content-start">
+          <i class="fas fa-check text-secondary"></i>
+          <span class="m-3">N'oubliez plus de dépenses et faites-vous rembourser plus vite</span>
         </div>
-        <div>
-          <i class="fas fa-check"></i>
-          <span>Transférez automatiquement à vos solutions de paiement, de note de frais ou directement à votre comptable</span>
+        <div class="d-flex justify-content-start">
+          <i class="fas fa-check text-secondary"></i>
+          <span class="m-3">Transférez automatiquement à vos solutions de paiement, de note de frais ou directement à votre comptable</span>
         </div>
       </div>
     </div>
@@ -62,50 +54,60 @@
 <section id="home-sub-section" class="bg-gray">
   <div class="container h-100 d-flex flex-column justify-content-between">
     <div class="h-100 d-flex flex-column justify-content-between">
-      <h1 class="text-center mt-4">Le compagnon idéal de votre boîte mail</h1>
+      <h1 class="text-center m-5">Le compagnon idéal pour votre comptabilité</h1>
+      <div class="d-inline-flex justify-content-center px-5">
+<!--         <div class="d-inline-flex justify-content-around px-5">
+        </div> -->
+        <div class="box">
+          <div class="feature">
+            <%= image_tag "receipt.png", class: "feature img" %>
+            <span class="feature text"><%= SupplierSearch.count %> modèles de recherche fournisseurs*</span>
+          </div>
+          <div class="feature">
+            <%= image_tag "search.png", class: "feature img" %>
+            <span class="feature text">créez vos propres recherches*</span>
+          </div>
+          <div class="feature">
+            <%= image_tag "share.png", class: "feature img" %>
+            <span class="feature text">partagez vos reçus et factures</span>
+          </div class="feature m-5">
+        </div>
+        <div class="separator"></div>
+        <div class="box">
+          <div class="feature">
+            <%= image_tag "gmail.png", class: "feature img" %>
+            <span class="feature text">connection directe Gmail*</span>
+          </div>
 
-      <div class="d-inline-flex justify-content-around px-5">
-        <div class="feature m-5">
-          <%= image_tag "gmail.png", class: "feature img" %>
-          <span class="feature text">connection directe Gmail*</span>
-        </div>
-        <div class="feature m-5">
-          <%= image_tag "search.png", class: "feature img" %>
-          <span class="feature text">créez vos propres recherches*</span>
-        </div>
-        <div class="feature m-5">
-          <%= image_tag "share.png", class: "feature img" %>
-          <span class="feature text">partagez vos reçus et factures</span>
-        </div class="feature m-5">
-
-        <div class= "feature m-5">
-          <%= image_tag "g-drive.png", class: "feature img" %>
-          <span class="feature text">stockage automatique sur G drive</span>
-        </div>
-        <div class="feature m-5">
-          <%= image_tag "label.png", class: "feature img" %>
-          <span class="feature text">catégorise vos dépenses dans Gmail</span>
+          <div class= "feature">
+            <%= image_tag "g-drive.png", class: "feature img" %>
+            <span class="feature text">stockage automatique sur G drive</span>
+          </div>
+          <div class="feature">
+            <%= image_tag "label.png", class: "feature img" %>
+            <span class="feature text">catégorise vos dépenses dans Gmail</span>
+          </div>
         </div>
       </div>
 
-      <p class="sub-text">stitchr est aujourd’hui en version beta, seules les fonctionnalités marquées d'un * sont disponibles à ce jour </p>
+      <p class="note text-center">stitchr est aujourd’hui en version beta, seules les fonctionnalités marquées d'un * sont disponibles à ce jour </p>
     </div>
-    <div class="suppliers d-inline-flex align-items-center justify-content-around">
+    <!-- <div class="suppliers d-inline-flex align-items-center justify-content-around">
       <span class= "suppliers-text">+100 reçus fournisseurs dont</span>
-      <%= image_tag "logos/kapten-bw.png", class: "supplier-logo" %>
-      <%= image_tag "logos/easyjet-bw.png", class: "supplier-logo" %>
-      <%= image_tag "logos/heroku-bw.png", class: "supplier-logo" %>
-      <%= image_tag "logos/bouygtel-bw.png", class: "supplier-logo" %>
-      <%= image_tag "logos/airbnb-bw.png", class: "supplier-logo" %>
-    </div>
+      <%#= image_tag "logos/kapten-bw.png", class: "supplier-logo" %>
+      <%#= image_tag "logos/easyjet-bw.png", class: "supplier-logo" %>
+      <%#= image_tag "logos/heroku-bw.png", class: "supplier-logo" %>
+      <%#= image_tag "logos/bouygtel-bw.png", class: "supplier-logo" %>
+      <%#= image_tag "logos/airbnb-bw.png", class: "supplier-logo" %>
+    </div> -->
   </div>
 </section>
 
 
 <section class="bg-white" id="home-sub-section">
-  <h1 class= "text-center p-4">Comment ça marche?</h1>
-  <div class="container h-100 d-flex flex-inline justify-content-center">
-    <div class="setup-steps container">
+  <h1 class= "text-center p-5">Comment ça marche?</h1>
+  <div class="container h-100 d-flex flex-inline justify-content-around">
+    <div class="setup-steps">
       <div class="circle">1</div>
       <div class="text">Autorisez l'accès <br>à vos email</div>
       <%= image_tag "step1.png", class: "img" %>
@@ -119,7 +121,7 @@
     <i class="fas fa-angle-double-right" id="next"></i>
     <div class="setup-steps container">
       <div class="circle">3</div>
-      <div class="text">Ajouter <br>vos partenaires</div>
+      <div class="text">Ajoutez <br>vos partenaires</div>
       <%= image_tag "step3.png", class: "img" %>
     </div>
     <i class="fas fa-angle-double-right" id="next"></i>
@@ -128,29 +130,23 @@
       <div class="text">Vérifiez et partagez <br>vos reçus</div>
       <%= image_tag "step4.png", class: "img" %>
     </div>
-
   </div>
 </section>
 
 <section class="bg-gray  align-items-center " id="home-sub-section">
-    <h1 class="text-center p-4">A propos de Stitch-R</h1>
+    <h1 class="text-center p-5">A propos de Stitch-R</h1>
     <div class="container d-flex flex-column">
       <p class="text-center">Stitch-r est un projet réalisé par Dick, Quentin, Aurélien et Fabien dans le cadre de leur
       formation au Wagon batch #400 (Avr-Mai 2020). La solution a été présentée lors de la <a href="https://lew.ag/replay-demoday-spring" target="_blank">Demo-Day le 05 juin (min 54)</a>.</p>
       <div class="d-inline-flex justify-content-around p-10 m-5">
-        <%= image_tag "https://avatars.githubusercontent.com/diwink", class: "avatar-large" %>
-        <%= image_tag "https://avatars.githubusercontent.com/quentin-NA", class: "avatar-large" %>
-        <%= image_tag "https://avatars.githubusercontent.com/aurelienrolando", class: "avatar-large" %>
-        <%= image_tag "https://avatars.githubusercontent.com/fabiencruz", class: "avatar-large" %>
+        <%= image_tag "https://avatars.githubusercontent.com/diwink", class: "avatar-large bordered" %>
+        <%= image_tag "https://avatars.githubusercontent.com/quentin-NA", class: "avatar-large bordered" %>
+        <%= image_tag "lewagon.png", class: "avatar-large" %>
+        <%= image_tag "https://avatars.githubusercontent.com/aurelienrolando", class: "avatar-large bordered" %>
+        <%= image_tag "https://avatars.githubusercontent.com/fabiencruz", class: "avatar-large bordered" %>
       </div>
-      <span class="text-center">Nous continuons à faire évoluer la solution pour consolider nos connaissances, avec un peu d'entrain et d'ecouragements elle devrait donc évoluer petit-à-petit.
-        Si vous voulez être tenu informé, nous donner du feedback ou simplement partager votre avis <a href='#bsd-home' class='birdseed-link'>cliquez-ici</a> 🙏!</span>
- <!-- <h3>Et vos données?</h3>
-      <ul>
-        <li>vous restez en contrôle à tout moment de nos accès grace a l'authentification Google,</li>
-        <li>nous n'accédons qu'aux messages des fournisseurs que vous avez selectionné,</li>
-        <li>StitchR ne stocke que les messages que vous décidez de partager,</li>
-        <li>lorsque vous supprimez une recherche, les données associées sont supprimées aussi</li> -->
+      <span class="text-center">Nous continuons à faire évoluer la solution pour consolider nos connaissances, avec un peu d'entrain et d'encouragement vous devriez voir quelques nouvelles fonctionnalités.
+        Si vous voulez être tenu informé, nous donner du feedback ou simplement partager votre avis 👉</span>
       </ul>
     </div>
 </section>

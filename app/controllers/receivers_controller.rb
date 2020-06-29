@@ -33,7 +33,7 @@ class ReceiversController < ApplicationController
     @receiver = Receiver.find(params[:id])
     authorize @receiver
     @receiver.destroy
-    redirect_to receivers_path
+    redirect_to profil_path
   end
 
   private

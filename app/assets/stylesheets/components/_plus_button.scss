@@ -1,0 +1,11 @@
+#plus-btn {
+  
+}
+
+#plus-btn:hover > .child {
+  transform: rotate(90deg);
+}
+
+#plus-rotation {
+  content: "\f067";
+}

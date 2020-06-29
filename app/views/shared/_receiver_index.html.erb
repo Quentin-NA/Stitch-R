@@ -1,0 +1,25 @@
+<div class="container text-left">
+  <h1 class = "text-center my-5">Mes partenaires</h1>
+  <% user = current_user %>
+  <div class = "d-flex justify-content-center">
+    <% user.receivers.each do |receiver|  %>
+      <li class="mt-3 text-dark mr-5 text-center"> <%= receiver.name %> <div class="supplier-card-logo">
+        <div class="supplier-card-subscription text-center">
+          <%= image_tag "logos/#{receiver.name.downcase}.png", class: 'supplier-card-image' %>
+          <%= link_to receiver_path(receiver), method: :delete, data: { confirm: "Voulez-vous effacer ce partenaire?" } do %>
+            <br><i class="fas fa-trash text-danger"></i>
+          <% end %>
+        </div> 
+      </li>
+    <% end %>
+    <%= link_to new_receiver_path, id: "plus-btn" do %>
+      <div class="supplier-card add-supplier d-flex align-items-center justify-content-center">
+        <i id = "plus-rotation" class="fas fa-plus"></i>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+  <%#= link_to "Ajouter un partenaire", new_receiver_path, class:"btn btn-primary mt-3" %>
+ 
+</div>

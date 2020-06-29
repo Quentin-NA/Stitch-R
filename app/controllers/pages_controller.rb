@@ -26,4 +26,5 @@ class PagesController < ApplicationController
 
   def mailbox_scanning
   end
+
 end

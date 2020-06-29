@@ -31,6 +31,7 @@ import { checked } from '../components/select-row';
 import { selectRow } from '../components/select-row';
 import { showAdditionnalFields } from '../components/show_additionnal_fields';
 import { goToOnBoarding } from '../components/go_to_onboarding';
+import { showInput } from '../components/show_input';
 
 document.addEventListener('turbolinks:load', () => {
   showAdditionnalFields();
@@ -39,4 +40,5 @@ document.addEventListener('turbolinks:load', () => {
   // selectRow();
   // checked();
   goToOnBoarding();
+  showInput();
 });

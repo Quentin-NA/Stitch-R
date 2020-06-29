@@ -52,3 +52,12 @@
   font-size: inherit !important;
   padding: 5px 20px;
 }
+
+#update-pen {
+  color: blue;
+  opacity: 0.8;
+   &:hover {
+     opacity: 1;
+     cursor: pointer;
+   }
+}

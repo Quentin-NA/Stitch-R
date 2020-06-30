@@ -20,7 +20,12 @@ Rails.application.routes.draw do
       get :dismiss
     end
   end
-  resources :receivers, only: [:index, :new, :create, :destroy]
+  resources :receivers, only: [:index, :new, :create, :destroy, :update] do
+    collection do
+      get :my_partners
+    end
+  end
+
   resources :supplier_searches, only: [:index, :show, :new, :create, :destroy] do
     member do
       get :share_all_receipts

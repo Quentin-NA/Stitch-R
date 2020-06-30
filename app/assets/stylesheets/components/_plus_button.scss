@@ -1,11 +1,27 @@
 #plus-btn {
-  
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 99.45px;
+  height: 100px;
+  margin-top: 41px;
+  &:hover {
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  &:hover > .fa-plus {
+    transform: rotate(90deg);
+  }
+}
+i.fas.fa-plus {
+  font-size: 30px;
+  opacity: 0.8;
+  color: #6c757d;
+  margin: 0 auto;
 }
 
-#plus-btn:hover > .child {
-  transform: rotate(90deg);
-}
-
-#plus-rotation {
-  content: "\f067";
+i.fas.fa-plus:hover {
+  opacity: 1;
 }

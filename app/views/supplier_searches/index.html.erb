@@ -3,11 +3,11 @@
   <p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés.</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
-      <% if Receipt.where(supplier_search: search).count != session["search#{search.id}"] %>
+      <% if Receipt.where(supplier_search: search).count == 0 %>
         <% StoreSupplierSearchReceipts.new(current_user, search).call %>
         <!-- count SupplierSearch messages for each SupplierSearchesUser on each login -->
         <!-- only refresh if message_count != receipt_count -->
-        <%# elsif Receipt.where(supplier_search: search).count == 0 %>
+        <%# elsif Receipt.where(supplier_search: search).count != session["search#{search.id}"] %>
         <%# StoreSupplierSearchReceipts.new(current_user, search).call %>
       <% end %>
       <%= render 'supplier_searches/card', search: search %>

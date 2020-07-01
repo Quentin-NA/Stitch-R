@@ -3,12 +3,18 @@
   <p>Voici les derniers reçus trouvés pour vos fournisseurs sélectionnés.</p>
   <div class="card-container">
     <% @supplier_searches.each do |search| %>
+      <% if Receipt.where(supplier_search: search).count != session["search#{search.id}"] %>
+        <% StoreSupplierSearchReceipts.new(current_user, search).call %>
+        <!-- count SupplierSearch messages for each SupplierSearchesUser on each login -->
+        <!-- only refresh if message_count != receipt_count -->
+        <%# elsif Receipt.where(supplier_search: search).count == 0 %>
+        <%# StoreSupplierSearchReceipts.new(current_user, search).call %>
+      <% end %>
       <%= render 'supplier_searches/card', search: search %>
     <% end %>
     <%= link_to new_supplier_search_path do %>
       <div class="supplier-card add-supplier d-flex align-items-center justify-content-center">
         <i class="fas fa-plus"></i>
-        <%#= image_tag "logos/plus.png", class: "supplier-logo align-self-center"%>
       </div>
     <% end %>
   </div>

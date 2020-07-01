@@ -1,6 +1,9 @@
 <form action="patch" id="new-mail" class="d-none">
-  <label for="">Entrez la nouvelle adresse mail de votre partenaire</label>
-  <input type="text">
-  <button><%= link_to "Confirmer" %></button>
+  <p>Adresse mail actuelle: <% @receivers. %></p>
+  <div class="d-flex">
+    <label for="">Nouvelle adresse mail:</label>
+    <input type="text" name="new-email">
+    <button><%= link_to "Confirmer" %></button>
+  </div>
 </form>
 

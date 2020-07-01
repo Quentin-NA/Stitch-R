@@ -21,9 +21,6 @@ Rails.application.routes.draw do
     end
   end
   resources :receivers, only: [:index, :new, :create, :destroy, :update] do
-    collection do
-      get :my_partners
-    end
   end
 
   resources :supplier_searches, only: [:index, :show, :new, :create, :destroy] do

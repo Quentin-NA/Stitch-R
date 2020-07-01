@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
   def profil
     @user = current_user
+    @receivers = Receiver.all
   end
 
   def history

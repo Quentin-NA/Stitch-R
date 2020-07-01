@@ -1,7 +1,9 @@
 <div class="container text-left">
   <div class="d-flex text-center align-items-center justify-content-center my-5">
   <h1 class="mr-3">Mes partenaires</h1>
+  <%= link_to receivers_path do %>
    <i class="fas fa-pen update-pen" style = "text-decoration: none;"></i>
+  <% end %>
   </div>
   <% user = current_user %>
   <div class = "d-flex justify-content-center">

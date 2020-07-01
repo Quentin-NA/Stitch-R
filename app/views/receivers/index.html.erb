@@ -1,0 +1,15 @@
+<h1 class="mb-5">Sélectionnez le partenaire que vous souhaitez modifier:</h1>
+  <li class="d-flex justify-content-around mx-2" style="list-style: none;"><% @receivers.each do |receiver| %>
+    <div class="my-3 text-center partner">
+      <%= image_tag "#{receiver.image}",class: 'supplier-card-image' %>
+      <br>
+      <h3><%= receiver.name %></h3>
+      <br>
+    </div>
+    <br>
+  <% end %>
+  </li>
+      <div class="text-center mx-auto" style="width: 200px;">
+        <%= render "shared/profil_update" %>
+      </div>
+

@@ -1,3 +1,5 @@
+// connect with google guidelines = https://developers.google.com/identity/branding-guidelines#font
+
 .stitch-btn {
   background: transparent;
   color: lightgray;
@@ -51,4 +53,12 @@
 .btn-large {
   font-size: inherit !important;
   padding: 5px 20px;
+}
+
+.btn-link {
+  color: black;
+  &:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+  }
 }

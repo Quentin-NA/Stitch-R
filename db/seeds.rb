@@ -115,12 +115,41 @@ m = SupplierSearch.create(
   start_date: "01/01/2015"
   )
 
-m = SupplierSearch.create(
+n = SupplierSearch.create(
   name: "Heroku",
   from: "bot@heroku.com",
   image: "logos/heroku.png",
   start_date: "01/01/2015"
   )
+
+o = SupplierSearch.create(
+  name: "Amazon",
+  from: "confirmation-commande@amazon.fr",
+  start_date: "01/01/2020"
+  )
+
+m = SupplierSearch.create(
+  name: "Apple",
+  from: "no_reply@email.apple.com",
+  contains: "facture",
+  start_date: "01/01/2020"
+  )
+
+p = SupplierSearch.create(
+  name: "Backmarket",
+  from: "no-reply@backbot.backmarket.fr",
+  subject: "facture",
+  start_date: "01/01/2019"
+  )
+
+q = SupplierSearch.create(
+  name: "Orange",
+  from: "noreply.mobile@orange.com",
+  start_date: "01/01/2019"
+  )
+
+
+
 # => https://lh3.googleusercontent.com/7_oQX4naDvPEgU61ktMMJV3pX2v9qMH7oG9UeqqiKO37Tep0VGCqH7BKOASN2ra_DTY=s360-rw
 
 

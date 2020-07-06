@@ -1,31 +1,43 @@
 <div class="container text-left">
   <div class="d-flex text-center align-items-center justify-content-center my-5">
-  <h1 class="mr-3">Mes partenaires</h1>
-  <%= link_to receivers_path do %>
-   <i class="fas fa-pen update-pen" style = "text-decoration: none;"></i>
-  <% end %>
+    <h1 class="mr-3">Mes partenaires</h1>
   </div>
   <% user = current_user %>
-  <div class = "d-flex justify-content-center">
+  
     <% user.receivers.each do |receiver|  %>
     <ul class = "resp-list">
-      <li class="receiver-card mt-3 text-dark mr-5 text-center rounded shadow-sm p-3 mb-5" style = "list-style: none;"> 
-        <%= receiver.name %>
-        <div class="supplier-card-logo">
-          <div class="supplier-card-subscription text-center">
-            <% if receiver.name == "" %>
-              <%= image_tag "logos/accountant.png", class: 'supplier-card-image' %>
-            <% else %>
-              <%= image_tag "#{receiver.image}", class: 'supplier-card-image' %>
-            <% end %>
+      <li class="receiver-card mt-3 text-dark mr-5 rounded shadow-sm p-3 mb-5" style = "list-style: none;"> 
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="text-center">
+            <%= receiver.name %>
+            <div class="supplier-card-logo">
+              <div class="supplier-card-subscription">
+                <% if receiver.name == "" %>
+                  <%= image_tag "logos/accountant.png", class: 'supplier-card-image' %>
+                <% else %>
+                  <%= image_tag "#{receiver.image}", class: 'supplier-card-image' %>
+                <% end %>
+              </div>
+          </div>
+        </div>
             <br>
+            <div class="ml-4">
             <%= receiver.email %>
-            <div class="d-flex justify-content-center align-items-center">
-              <%= link_to receiver_path(receiver), method: :delete, data: { confirm: "Voulez-vous effacer ce partenaire?" } do %>
-                <i class="fas fa-trash text-danger" style = "font-size: 25px;"></i>
+            </div>
+      </div>
+          <div class="">
+            <div class="mb-5">
+              <%= link_to receivers_path do %>
+                <i class="fas fa-pen update-pen" style = "text-decoration: none;"></i>
               <% end %>
             </div>
-          </div> 
+            <div class="mt-5">
+              <%= link_to receiver_path(receiver), method: :delete, data: { confirm: "Voulez-vous effacer ce partenaire?" } do %>
+                <i class="fas fa-trash text-danger" style = "font-size: 25px;"></i>
+              <% end %> 
+            </div>
+          </div>
         </div> 
       </li>
     </ul>
@@ -36,7 +48,6 @@
         <i class="fas fa-plus"></i> 
       </div>
     <% end %>
-  </div>
 
 </div>
   <%#= link_to "Ajouter un partenaire", new_receiver_path, class:"btn btn-primary mt-3" %>

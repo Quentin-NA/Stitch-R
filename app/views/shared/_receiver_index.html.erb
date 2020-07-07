@@ -1,0 +1,61 @@
+  <div class="d-flex text-center align-items-center justify-content-center my-5">
+    <h1 class="mr-3">Mes partenaires:</h1>
+  </div>
+  <% user = current_user %>
+  
+    <% user.receivers.each do |receiver|  %>
+    <ul class = "resp-list">
+      <li class="receiver-card mt-3 text-dark mr-5 rounded shadow-sm p-3 mb-5" style = "list-style: none;"> 
+        <div class="partners d-flex align-items-center justify-content-between">
+          <div class="supplier-card-logo">
+            <div class="supplier-card-subscription">
+              <% if receiver.name == "" %>
+                <%= image_tag "logos/accountant.png", class: 'supplier-card-image' %>
+              <% else %>
+                <%= image_tag "#{receiver.image}", class: 'supplier-card-image' %>
+              <% end %>
+            </div>
+          </div>
+          <div>
+            <%= receiver.name %>
+          </div>
+          <br>
+          <div>
+            <div style='margin-left: 11px;' class="mb-3 mail-address">
+              <%= receiver.email %>
+            </div>
+            <div class="new-mail d-none">
+              <%= simple_form_for(receiver) do |f| %>
+                <div class="d-flex">
+                  <div class="mr-2">
+                    <%= f.input :email, label: false, placeholder: 'Nouvelle adresse mail', class: 'ml-2' %>
+                  </div>
+                  <%= f.submit 'Modifier', class: "myButton" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="">
+            <div id="" class="mb-5 pen">
+              <i class="fas fa-pen update-pen" style = "text-decoration: none;"></i>
+            </div>
+            <div>
+              <%= link_to receiver_path(receiver), method: :delete, data: { confirm: "Voulez-vous effacer ce partenaire?" } do %>
+                <i class="fas fa-trash text-danger" style = "font-size: 25px;"></i>
+              <% end %> 
+            </div>
+          </div>
+        </div> 
+      </li>
+    </ul>
+    <% end %>
+    <%= link_to new_receiver_path, id: "plus-btn", class: "text-center" do %>
+      <div class="d-flex align-items-center justify-content-center">
+        <i class="fas fa-plus"></i> 
+      </div>
+    <% end %>
+
+</div>
+  <%#= link_to "Ajouter un partenaire", new_receiver_path, class:"btn btn-primary mt-3" %>
+ 
+</div>

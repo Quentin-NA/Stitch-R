@@ -1,5 +1,16 @@
 <div class="container text-left">
-  <h1>Prénom: <%= @user.first_name %></h1>
-  <h1>Nom: <%= @user.last_name %></h1>
-  <h2>Email: <%= @user.email %> </h2>
+  <h1 class="mb-5 text-center">Mes informations:</h1>
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <%= image_tag "#{@user.google_picture_url}", class: 'supplier-card-image' %>
+    </div>
+    <div class="container">
+      <h4><%= @user.first_name %></h4>
+      <h4><%= @user.last_name %></h4>
+      <h4><%= @user.email %></h4>
+    </div>
+  </div>
 </div>
+<%= render 'shared/receiver_index'%>
+
+

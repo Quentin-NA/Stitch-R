@@ -184,6 +184,7 @@ SupplierSearchesUser.destroy_all
 
 puts 'SupplierSearchesUser  Deleted'
 
+
 # SupplierSearchesUser.create(supplier_search: a, user: User.first)
 # SupplierSearchesUser.create(supplier_search: b, user: User.first)
 # SupplierSearchesUser.create(supplier_search: c, user: User.first)

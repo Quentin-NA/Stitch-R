@@ -1,6 +1,5 @@
-<div class="container text-left">
   <div class="d-flex text-center align-items-center justify-content-center my-5">
-    <h1 class="mr-3">Mes partenaires</h1>
+    <h1 class="mr-3">Mes partenaires:</h1>
   </div>
   <% user = current_user %>
   
@@ -22,13 +21,17 @@
           </div>
           <br>
           <div>
-            <div class="ml-4">
+            <div style='margin-left: 11px;' class="mb-3 mail-address">
               <%= receiver.email %>
             </div>
             <div class="new-mail d-none">
               <%= simple_form_for(receiver) do |f| %>
-                <%= f.input :email %>
-                <%= f.submit %>
+                <div class="d-flex">
+                  <div class="mr-2">
+                    <%= f.input :email, label: false, placeholder: 'Nouvelle adresse mail', class: 'ml-2' %>
+                  </div>
+                  <%= f.submit 'Modifier', class: "myButton" %>
+                </div>
               <% end %>
             </div>
           </div>
@@ -46,10 +49,10 @@
       </li>
     </ul>
     <% end %>
-    <%= link_to new_receiver_path, id: "plus-btn" do %>
-    <div class="d-flex align-items-center justify-content-center">
-      <i class="fas fa-plus"></i> 
-    </div>
+    <%= link_to new_receiver_path, id: "plus-btn", class: "text-center" do %>
+      <div class="d-flex align-items-center justify-content-center">
+        <i class="fas fa-plus"></i> 
+      </div>
     <% end %>
 
 </div>

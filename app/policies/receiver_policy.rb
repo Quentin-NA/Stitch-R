@@ -9,5 +9,11 @@ class ReceiverPolicy < ApplicationPolicy
     def create?
       record.user == user
     end
+
   end
+  
+  def update?
+    record.user == user
+  end
+  
 end

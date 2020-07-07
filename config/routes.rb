@@ -42,7 +42,6 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "pages#dashboard"
   get "/profil", to: "pages#profil"
-  # patch "/profil/update", to: "pages#update_profile"
   get "/history", to: "pages#history"
   get "/trash", to: "pages#trash"
   get '/mailbox_scanning', to: 'pages#mailbox_scanning'

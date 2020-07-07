@@ -29,6 +29,13 @@ class ReceiversController < ApplicationController
     end
   end
 
+  def update
+    @receiver = Receiver.find(params[:id])
+    @receiver.update(receiver_params)
+    authorize @receiver
+    redirect_to profil_path
+  end
+
   def destroy
     @receiver = Receiver.find(params[:id])
     authorize @receiver

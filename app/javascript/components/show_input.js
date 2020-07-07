@@ -3,11 +3,10 @@ const showInput = () => {
   pens.forEach((pen) => {
     pen.addEventListener('click', (event) => {  
       const par = pen.parentNode;
-      const para = par.parentNode;
-      const chi = para.children;
-        console.log(para);
-        console.log(chi);
+      const grandPar = par.parentNode;
+      const chi = grandPar.children;
         chi[3].childNodes[3].classList.toggle('d-none');
+        chi[3].childNodes[1].classList.toggle('d-none');
       })
     })
 }

@@ -7,32 +7,36 @@
     <% user.receivers.each do |receiver|  %>
     <ul class = "resp-list">
       <li class="receiver-card mt-3 text-dark mr-5 rounded shadow-sm p-3 mb-5" style = "list-style: none;"> 
-      <div class="d-flex align-items-center justify-content-between">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="text-center">
-            <%= receiver.name %>
-            <div class="supplier-card-logo">
-              <div class="supplier-card-subscription">
-                <% if receiver.name == "" %>
-                  <%= image_tag "logos/accountant.png", class: 'supplier-card-image' %>
-                <% else %>
-                  <%= image_tag "#{receiver.image}", class: 'supplier-card-image' %>
-                <% end %>
-              </div>
-          </div>
-        </div>
-            <br>
-            <div class="ml-4">
-            <%= receiver.email %>
-            </div>
-      </div>
-          <div class="">
-            <div class="mb-5">
-              <%= link_to receivers_path do %>
-                <i class="fas fa-pen update-pen" style = "text-decoration: none;"></i>
+        <div class="partners d-flex align-items-center justify-content-between">
+          <div class="supplier-card-logo">
+            <div class="supplier-card-subscription">
+              <% if receiver.name == "" %>
+                <%= image_tag "logos/accountant.png", class: 'supplier-card-image' %>
+              <% else %>
+                <%= image_tag "#{receiver.image}", class: 'supplier-card-image' %>
               <% end %>
             </div>
-            <div class="mt-5">
+          </div>
+          <div>
+            <%= receiver.name %>
+          </div>
+          <br>
+          <div>
+            <div class="ml-4">
+              <%= receiver.email %>
+            </div>
+            <div class="new-mail d-none">
+              <%= simple_form_for(receiver) do |f| %>
+                <%= f.input :email %>
+                <%= f.submit %>
+              <% end %>
+            </div>
+          </div>
+          <div class="">
+            <div id="" class="mb-5 pen">
+              <i class="fas fa-pen update-pen" style = "text-decoration: none;"></i>
+            </div>
+            <div>
               <%= link_to receiver_path(receiver), method: :delete, data: { confirm: "Voulez-vous effacer ce partenaire?" } do %>
                 <i class="fas fa-trash text-danger" style = "font-size: 25px;"></i>
               <% end %> 
@@ -42,11 +46,10 @@
       </li>
     </ul>
     <% end %>
-    <%= render 'shared/profil_update' %>
     <%= link_to new_receiver_path, id: "plus-btn" do %>
-      <div class="d-flex align-items-center justify-content-center">
-        <i class="fas fa-plus"></i> 
-      </div>
+    <div class="d-flex align-items-center justify-content-center">
+      <i class="fas fa-plus"></i> 
+    </div>
     <% end %>
 
 </div>

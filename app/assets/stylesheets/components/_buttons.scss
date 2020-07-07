@@ -1,3 +1,5 @@
+// connect with google guidelines = https://developers.google.com/identity/branding-guidelines#font
+
 .stitch-btn {
   background: transparent;
   color: lightgray;
@@ -84,4 +86,12 @@
 .myButton:active {
 	position:relative;
 	top:1px;
+  
+  // Commenté pour résoudre un conflit
+// .btn-link {
+//   color: black;
+//   &:hover {
+//     opacity: 0.6;
+//     text-decoration: underline;
+//   }
 }

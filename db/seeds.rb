@@ -16,7 +16,7 @@ a = SupplierSearch.create(
 
 b = SupplierSearch.create(
   name: "Oui-SNCF",
-  image: "https://lh3.googleusercontent.com/1SOSCf--cpvBQPBx3hlfMdWXpQfvlWwHoxg6F5aTI8WVTzRudsA7YeohiDkH7WsyRw=s360-rw",
+  #image: "https://lh3.googleusercontent.com/1SOSCf--cpvBQPBx3hlfMdWXpQfvlWwHoxg6F5aTI8WVTzRudsA7YeohiDkH7WsyRw=s360-rw",
   from: "noreply@oui.sncf",
   attachment: true,
   start_date: "01/01/2019"
@@ -115,12 +115,41 @@ m = SupplierSearch.create(
   start_date: "01/01/2015"
   )
 
-m = SupplierSearch.create(
+n = SupplierSearch.create(
   name: "Heroku",
   from: "bot@heroku.com",
   image: "logos/heroku.png",
   start_date: "01/01/2015"
   )
+
+o = SupplierSearch.create(
+  name: "Amazon",
+  from: "confirmation-commande@amazon.fr",
+  start_date: "01/01/2020"
+  )
+
+m = SupplierSearch.create(
+  name: "Apple",
+  from: "no_reply@email.apple.com",
+  contains: "facture",
+  start_date: "01/01/2020"
+  )
+
+p = SupplierSearch.create(
+  name: "Backmarket",
+  from: "no-reply@backbot.backmarket.fr",
+  subject: "facture",
+  start_date: "01/01/2019"
+  )
+
+q = SupplierSearch.create(
+  name: "Orange",
+  from: "noreply.mobile@orange.com",
+  start_date: "01/01/2019"
+  )
+
+
+
 # => https://lh3.googleusercontent.com/7_oQX4naDvPEgU61ktMMJV3pX2v9qMH7oG9UeqqiKO37Tep0VGCqH7BKOASN2ra_DTY=s360-rw
 
 
@@ -137,18 +166,19 @@ end
 puts 'SupplierSearchesUser  Created'
 puts 'Receipts  Creation'
 
-# jack = User.find_by(email: 'quentin.natoly@gmail.com')
-# if jack
-#   puts "Création des receipts pour #{jack.email}..."
-#   CreateReceiptsForUserJob.perform_now(jack.id)
-# else
-#   puts "Création des receipts pour tous les users..."
-#   User.all.each do |user|
-#     CreateReceiptsForUserJob.perform_now(User.first.id)
-#   end
-# end
+jack = User.find_by(email: 'dwissink@gmail.com')
 
-puts 'Receipts  Created'
+if jack
+  puts "Création des receipts pour #{jack.email}..."
+  CreateReceiptsForUserJob.perform_now(jack.id)
+else
+  puts "Création des receipts pour tous les users..."
+  User.all.each do |user|
+    CreateReceiptsForUserJob.perform_now(User.first.id)
+  end
+end
+
+puts "#{Receipt.count} Receipts  Created"
 
 SupplierSearchesUser.destroy_all
 

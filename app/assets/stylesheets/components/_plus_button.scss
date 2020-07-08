@@ -14,10 +14,8 @@
   &:hover {
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
   }
-  &:hover > .fa-plus {
-    transform: rotate(90deg);
-  }
 }
+
 i.fas.fa-plus {
   font-size: 30px;
   opacity: 0.8;
@@ -27,4 +25,9 @@ i.fas.fa-plus {
 
 i.fas.fa-plus:hover {
   opacity: 1;
+}
+
+.rotate {
+  transform: rotate(90deg);
+  transition-duration: 0.3s;
 }

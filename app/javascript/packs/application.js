@@ -27,11 +27,12 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-import { checked } from '../components/select-row';
-import { selectRow } from '../components/select-row';
+import { checked } from '../components/select_row';
+import { selectRow } from '../components/select_row';
 import { showAdditionnalFields } from '../components/show_additionnal_fields';
 import { goToOnBoarding } from '../components/go_to_onboarding';
 import { showInput } from '../components/show_input';
+import { plusRotation } from '../components/plus_rotation';
 
 document.addEventListener('turbolinks:load', () => {
   showAdditionnalFields();
@@ -41,4 +42,5 @@ document.addEventListener('turbolinks:load', () => {
   // checked();
   goToOnBoarding();
   showInput();
+  plusRotation();
 });
